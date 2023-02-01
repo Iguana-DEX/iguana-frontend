@@ -8,6 +8,8 @@ export const getNativeAssetId = (chainId: string): string => {
     '1': 'ethereum',
     '5': 'ethereum',
     '42': 'ethereum',
+    '56': 'bsc',
+    '97': 'bsc-testnet',
     '137': 'matic-network',
     '42161': 'ethereum',
   };
@@ -20,6 +22,8 @@ export const getPlatformId = (chainId: string): string => {
     '1': 'ethereum',
     '5': 'ethereum',
     '42': 'ethereum',
+    '56': 'binance-smart-chain',
+    '97': 'binance-smart-chain',
     '137': 'polygon-pos',
     '42161': 'arbitrum-one',
   };

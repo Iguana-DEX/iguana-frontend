@@ -158,7 +158,7 @@
 </template>
 
 <script lang="ts">
-import { SubgraphPoolBase } from '@balancer-labs/sdk';
+import { SubgraphPoolBase } from '@iguana-dex/sdk';
 import { getAddress, isAddress } from '@ethersproject/address';
 import { formatUnits } from '@ethersproject/units';
 import { computed, defineComponent, onBeforeMount, ref } from 'vue';

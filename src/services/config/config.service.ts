@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 
 import { networkId } from '@/composables/useNetwork';
 import { Config } from '@/lib/config';

@@ -4,14 +4,14 @@
       class="xl:container lg:px-4 xl:mx-auto dark:border-t dark:border-gray-800"
     >
       <div
-        class="flex flex-col md:flex-row gap-8 md:justify-between py-12 px-4 lg:px-0 text-primary"
+        class="flex flex-col md:flex-row gap-8 md:justify-between py-12 px-4 lg:px-0"
       >
         <div class="flex flex-col gap-8">
           <router-link
             class="font-medium link"
             :to="{ name: 'home', params: { networkSlug } }"
           >
-            <AppLogo class="mb-4" />
+            <AppLogo />
           </router-link>
 
           <div class="flex md:hidden flex-col gap-2">
@@ -19,6 +19,14 @@
               <router-link
                 class="text-lg font-medium link"
                 :to="{ name: 'home', params: { networkSlug } }"
+              >
+                {{ $t('home') }}
+              </router-link>
+            </p>
+            <p>
+              <router-link
+                class="text-lg font-medium link"
+                :to="{ name: 'pools', params: { networkSlug } }"
               >
                 {{ $t('pool') }}
               </router-link>
@@ -28,7 +36,7 @@
                 class="text-lg font-medium link"
                 :to="{ name: 'trade', params: { networkSlug } }"
               >
-                {{ $t('swap') }}
+                {{ $t('trade') }}
               </router-link>
             </p>
             <p>
@@ -52,13 +60,13 @@
                 class="text-lg font-medium link"
                 :to="{ name: 'vebal', params: { networkSlug } }"
               >
-                {{ $t('vebal') }}
+                DAO
               </router-link>
             </p>
           </div>
 
           <div class="flex flex-wrap md:order-3 gap-3 md:gap-4">
-            <BalLink
+            <!-- <BalLink
               :href="EXTERNAL_LINKS.Balancer.Home"
               external
               noStyle
@@ -66,7 +74,7 @@
             >
               {{ $t('about') }}
               <BalIcon name="arrow-up-right" size="sm" class="arrow" />
-            </BalLink>
+            </BalLink> -->
 
             <BalLink
               :href="EXTERNAL_LINKS.Balancer.Docs"
@@ -78,7 +86,7 @@
               <BalIcon name="arrow-up-right" size="sm" class="arrow" />
             </BalLink>
 
-            <BalLink
+            <!-- <BalLink
               :href="EXTERNAL_LINKS.Balancer.Forum"
               external
               noStyle
@@ -86,7 +94,7 @@
             >
               {{ $t('forum') }}
               <BalIcon name="arrow-up-right" size="sm" class="arrow" />
-            </BalLink>
+            </BalLink> -->
 
             <BalLink
               :href="EXTERNAL_LINKS.Balancer.Vote"
@@ -98,7 +106,7 @@
               <BalIcon name="arrow-up-right" size="sm" class="arrow" />
             </BalLink>
 
-            <BalLink
+            <!-- <BalLink
               :href="EXTERNAL_LINKS.Balancer.Grants"
               external
               noStyle
@@ -116,7 +124,7 @@
             >
               {{ $t('bugBounty') }}
               <BalIcon name="arrow-up-right" size="sm" class="arrow" />
-            </BalLink>
+            </BalLink> -->
 
             <BalLink
               :href="EXTERNAL_LINKS.Balancer.Analytics"
@@ -129,7 +137,7 @@
             </BalLink>
           </div>
         </div>
-        <div class="flex flex-col gap-8">
+        <div class="flex flex-col mt-6 gap-13">
           <div class="md:order-2">
             <div class="flex lg:flex-col md:justify-end">
               <div class="flex gap-3 md:justify-end">
@@ -148,13 +156,6 @@
                   <IconDiscord />
                 </BalLink>
                 <BalLink
-                  :href="EXTERNAL_LINKS.Balancer.Social.Medium"
-                  external
-                  noStyle
-                >
-                  <IconMedium />
-                </BalLink>
-                <BalLink
                   :href="EXTERNAL_LINKS.Balancer.Social.Youtube"
                   external
                   noStyle
@@ -168,26 +169,12 @@
                 >
                   <IconGithub />
                 </BalLink>
-                <BalLink
-                  :href="EXTERNAL_LINKS.Balancer.Social.Linkedin"
-                  external
-                  noStyle
-                >
-                  <IconLinkedin />
-                </BalLink>
-                <BalLink
-                  :href="EXTERNAL_LINKS.Balancer.Social.Mail"
-                  external
-                  noStyle
-                >
-                  <IconMail />
-                </BalLink>
               </div>
             </div>
           </div>
 
           <div
-            class="flex flex-wrap md:order-3 gap-x-3 lg:gap-x-4 gap-y-2 md:justify-end"
+            class="flex flex-wrap md:order-3 gap-x-3 lg:gap-x-4 gap-y-2 md:justify-end pt-11"
           >
             <p>
               <router-link class="policy" :to="{ name: 'terms-of-use' }">
@@ -197,11 +184,6 @@
             <p>
               <router-link class="policy" :to="{ name: 'privacy-policy' }">
                 {{ $t('policies.privacyPolicy') }}
-              </router-link>
-            </p>
-            <p>
-              <router-link class="policy" :to="{ name: 'cookies-policy' }">
-                {{ $t('policies.cookiesPolicy') }}
               </router-link>
             </p>
             <p>
@@ -224,9 +206,6 @@ import { useI18n } from 'vue-i18n';
 import { isThirdPartyServicesModalVisible } from '@/App.vue';
 import IconDiscord from '@/components/icons/IconDiscord.vue';
 import IconGithub from '@/components/icons/IconGithub.vue';
-import IconLinkedin from '@/components/icons/IconLinkedin.vue';
-import IconMail from '@/components/icons/IconMail.vue';
-import IconMedium from '@/components/icons/IconMedium.vue';
 import IconTwitter from '@/components/icons/IconTwitter.vue';
 import IconYoutube from '@/components/icons/IconYoutube.vue';
 import { EXTERNAL_LINKS } from '@/constants/links';
@@ -239,11 +218,8 @@ export default {
   components: {
     IconTwitter,
     IconDiscord,
-    IconMedium,
     IconYoutube,
     IconGithub,
-    IconMail,
-    IconLinkedin,
     AppLogo,
   },
   setup() {

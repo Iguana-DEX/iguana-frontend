@@ -11,6 +11,7 @@ export type ConnectorPayload = {
 
 export enum ConnectorId {
   InjectedMetaMask = 'injectedMetamask',
+  TrustWallet = 'trustwallet',
   InjectedTally = 'injectedTally',
   WalletConnect = 'walletconnect',
   WalletLink = 'walletlink',

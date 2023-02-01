@@ -2,7 +2,7 @@ import { computed, ref } from 'vue';
 
 import config from '@/lib/config';
 import { configService } from '@/services/config/config.service';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { RouteParamsRaw } from 'vue-router';
 
 /**
@@ -33,6 +33,8 @@ export const networkLabelMap = {
   [Network.ARBITRUM]: 'Arbitrum',
   [Network.GOERLI]: 'Goerli',
   [Network.OPTIMISM]: 'Optimism',
+  [Network.BSC]: 'BNB Chain',
+  [Network.BSCTESTNET]: 'BSC Testnet',
 };
 
 /**
@@ -45,9 +47,16 @@ export const isMainnet = computed(() => networkId.value === Network.MAINNET);
 export const isPolygon = computed(() => networkId.value === Network.POLYGON);
 export const isArbitrum = computed(() => networkId.value === Network.ARBITRUM);
 export const isGoerli = computed(() => networkId.value === Network.GOERLI);
+export const isOptimism = computed(() => networkId.value === Network.OPTIMISM);
+export const isBsc = computed(() => networkId.value === Network.BSC);
+export const isBscTestnet = computed(
+  () => networkId.value === Network.BSCTESTNET
+);
 
-export const isL2 = computed(() => isPolygon.value || isArbitrum.value);
-export const isTestnet = computed(() => isGoerli.value);
+export const isL2 = computed(
+  () => isPolygon.value || isArbitrum.value || isOptimism.value || isBsc.value
+);
+export const isTestnet = computed(() => isGoerli.value || isBscTestnet.value);
 
 /**
  * METHODS
@@ -59,6 +68,12 @@ export function networkFor(key: string | number): Network {
       return Network.MAINNET;
     case '5':
       return Network.GOERLI;
+    case '10':
+      return Network.OPTIMISM;
+    case '56':
+      return Network.BSC;
+    case '97':
+      return Network.BSCTESTNET;
     case '137':
       return Network.POLYGON;
     case '42161':

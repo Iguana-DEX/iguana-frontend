@@ -233,4 +233,50 @@ export class PriceService {
     if (!addressMap) return address;
     return invert(addressMap)[address.toLowerCase()] || address;
   }
+
+  /**
+   * Added by Styliann
+   */
+  async getTokensWithChange(
+    addresses: string[],
+    addressesPerRequest = 100
+  ): Promise<TokenPrices> {
+    try {
+      if (addresses.length / addressesPerRequest > 10)
+        throw new Error('Too many requests for rate limit.');
+
+      addresses = addresses
+        .map(getAddressFromPoolId)
+        .map(address => this.addressMapIn(address));
+      const pageCount = Math.ceil(addresses.length / addressesPerRequest);
+      const pages = Array.from(Array(pageCount).keys());
+      const requests: Promise<PriceResponse>[] = [];
+
+      pages.forEach(page => {
+        const addressString = addresses.slice(
+          addressesPerRequest * page,
+          addressesPerRequest * (page + 1)
+        );
+        const endpoint = `/simple/token_price/binance-smart-chain?contract_addresses=${addressString}&vs_currencies=${this.fiatParam}&include_24hr_change=true&precision=4`;
+        const request = retryPromiseWithDelay(
+          this.client.get<PriceResponse>(endpoint),
+          3,
+          2000
+        );
+        requests.push(request);
+      });
+
+      const paginatedResults = await Promise.all(requests);
+      const results = this.parsePaginatedTokens(paginatedResults);
+
+      return results;
+    } catch (error) {
+      console.error(
+        'Unable to fetch token prices and 24hchange',
+        addresses,
+        error
+      );
+      throw error;
+    }
+  }
 }

@@ -17,6 +17,10 @@ const HomePage = () =>
   import(
     /* webpackChunkName: "HomePage" */ /* webpackPrefetch: true */ '@/pages/index.vue'
   );
+const PoolsPage = () =>
+  import(
+    /* webpackChunkName: "PoolsPage" */ /* webpackPrefetch: true */ '@/pages/pool.vue'
+  );
 const PoolPage = () =>
   import(
     /* webpackChunkName: "PoolPage" */ /* webpackPrefetch: true */ '@/pages/pool/_id.vue'
@@ -44,7 +48,7 @@ const TradePage = () =>
 const UnlockVeBalPage = () =>
   import(/* webpackChunkName: "UnlockVeBalPage" */ '@/pages/unlock-vebal.vue');
 const VeBalPage = () =>
-  import(/* webpackChunkName: "VeBalPage" */ '@/pages/vebal.vue');
+  import(/* webpackChunkName: "VeBalPage" */ '@/pages/dao.vue');
 const FaucetPage = () =>
   import(/* webpackChunkName: "FaucetPage" */ '@/pages/faucet.vue');
 
@@ -88,6 +92,11 @@ const routes: RouteRecordRaw[] = [
     meta: { layout: 'ContentLayout' },
   },
   {
+    path: '/:networkSlug/pool',
+    name: 'pools',
+    component: PoolsPage,
+  },
+  {
     path: '/:networkSlug/trade/:assetIn?/:assetOut?',
     name: 'trade',
     component: TradePage,
@@ -128,7 +137,7 @@ const routes: RouteRecordRaw[] = [
     meta: { layout: 'FocusedLayout' },
   },
   {
-    path: '/:networkSlug/vebal',
+    path: '/:networkSlug/dao',
     name: 'vebal',
     component: VeBalPage,
   },

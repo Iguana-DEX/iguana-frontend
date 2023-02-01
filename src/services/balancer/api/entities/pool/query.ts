@@ -1,4 +1,4 @@
-import { GraphQLArgs } from '@balancer-labs/sdk';
+import { GraphQLArgs } from '@iguana-dex/sdk';
 import { merge } from 'lodash';
 
 const defaultArgs: GraphQLArgs = {

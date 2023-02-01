@@ -11,6 +11,14 @@
     "input": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     "output": "0x04DF6e4121c27713ED22341E7c7Df330F56f289B"
   },
+  "56": {
+    "input": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "output": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56"
+  },
+  "97": {
+    "input": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "output": "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee"
+  },
   "137": {
     "input": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     "output": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"

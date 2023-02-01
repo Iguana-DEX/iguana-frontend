@@ -8,7 +8,7 @@ import { AmountIn } from '@/providers/local/join-pool.provider';
 import { vaultService } from '@/services/contracts/vault.service';
 import { GasPriceService } from '@/services/gas-price/gas-price.service';
 import { Pool } from '@/services/pool/types';
-import { BalancerSDK, BatchSwap, SwapInfo } from '@balancer-labs/sdk';
+import { BalancerSDK, BatchSwap, SwapInfo } from '@iguana-dex/sdk';
 import {
   TransactionRequest,
   TransactionResponse,

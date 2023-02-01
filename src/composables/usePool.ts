@@ -1,4 +1,4 @@
-import { Network, AprBreakdown, PoolType } from '@balancer-labs/sdk';
+import { Network, AprBreakdown, PoolType } from '@iguana-dex/sdk';
 import { isAddress, getAddress } from '@ethersproject/address';
 import { computed, Ref } from 'vue';
 
@@ -168,9 +168,7 @@ export function noInitLiquidity(pool: AnyPool): boolean {
 }
 
 export function preMintedBptIndex(pool: Pool): number | void {
-  return pool.tokensList.findIndex(address =>
-    isSameAddress(address, pool.address)
-  );
+  return pool.tokens.findIndex(token => token.address === pool.address);
 }
 
 /**

@@ -2,7 +2,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import ConfigService from '@/services/config/config.service';
 import { WalletError } from '@/types';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { Connector, ConnectorId } from '../connector';
 
 export class WalletConnectConnector extends Connector {

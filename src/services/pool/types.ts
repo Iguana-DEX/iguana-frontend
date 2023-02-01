@@ -1,9 +1,22 @@
 import { BigNumber } from 'ethers';
 import { Address } from '@/types';
-import { Pool as SDKPool, PoolToken } from '@balancer-labs/sdk';
+import { Pool as SDKPool, PoolToken } from '@iguana-dex/sdk';
 
-export type { SubPool, PoolToken } from '@balancer-labs/sdk';
-export { PoolType } from '@balancer-labs/sdk';
+export type { SubPool, PoolToken } from '@iguana-dex/sdk';
+export { PoolType } from '@iguana-dex/sdk';
+
+// Added by Styliann
+export interface CoinData {
+  address: string;
+  name: string;
+  symbol: string;
+  weight: number;
+  price: number;
+  change24h: number;
+  realMarketCap: number;
+  volume: number;
+}
+
 export interface Pool extends SDKPool {
   tokens: PoolToken[];
   onchain?: OnchainPoolData;

@@ -39,8 +39,13 @@ const router = useRouter();
 const blockIcon = ref<HTMLDivElement>();
 
 const navLinks = [
-  { label: t('pool'), path: '/', goal: Goals.ClickNavPools },
-  { label: t('swap'), path: `/${networkSlug}/trade`, goal: Goals.ClickNavSwap },
+  { label: t('home'), path: `/${networkSlug}`, goal: Goals.ClickNavPools },
+  { label: t('pool'), path: `/${networkSlug}/pool`, goal: Goals.ClickNavPools },
+  {
+    label: t('trade'),
+    path: `/${networkSlug}/trade`,
+    goal: Goals.ClickNavSwap,
+  },
   {
     label: t('claim'),
     path: `/${networkSlug}/claim`,
@@ -51,13 +56,13 @@ const navLinks = [
     path: `/${networkSlug}/portfolio`,
     goal: Goals.ClickNavPortfolio,
   },
-  { label: 'veBAL', path: `/${networkSlug}/vebal`, goal: Goals.ClickNavVebal },
+  { label: 'DAO', path: `/${networkSlug}/vebal`, goal: Goals.ClickNavVebal },
 ];
 
 const ecosystemLinks = [
   { label: t('build'), url: 'https://balancer.fi/build' },
   { label: t('blog'), url: 'https://medium.com/balancer-protocol' },
-  { label: t('docs'), url: 'https://docs.balancer.fi/' },
+  { label: t('docs'), url: 'https://docs.iguanadex.com/' },
   { label: t('governance'), url: 'https://vote.balancer.fi/#/' },
   { label: t('analytics'), url: 'https://dune.xyz/balancerlabs' },
   { label: t('forum'), url: 'https://forum.balancer.fi/' },
@@ -70,24 +75,24 @@ const ecosystemLinks = [
 const socialLinks = {
   TwitterIcon: {
     component: TwitterIcon,
-    url: 'https://twitter.com/BalancerLabs',
+    url: 'https://twitter.com/IguanaDEX',
   },
   DiscordIcon: {
     component: DiscordIcon,
-    url: 'https://discord.balancer.fi/',
+    url: 'https://discord.com/invite/B7gYHM3A',
   },
   MediumIcon: {
     component: MediumIcon,
-    url: 'https://medium.com/balancer-protocol',
+    url: 'https://medium.com/iguana-dex',
   },
 
   YoutubeIcon: {
     component: YoutubeIcon,
-    url: 'https://www.youtube.com/channel/UCBRHug6Hu3nmbxwVMt8x_Ow',
+    url: 'https://www.youtube.com/@iguanadex',
   },
 
   GithubIcon: {
-    url: 'https://github.com/balancer-labs/',
+    url: 'https://github.com/iguana-dex/',
     component: GithubIcon,
   },
 };

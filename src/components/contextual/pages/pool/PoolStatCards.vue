@@ -7,7 +7,7 @@ import useNumbers, { FNumFormats } from '@/composables/useNumbers';
 import { totalAprLabel } from '@/composables/usePool';
 import { APR_THRESHOLD } from '@/constants/pools';
 import { Pool } from '@/services/pool/types';
-import { AprBreakdown } from '@balancer-labs/sdk';
+import { AprBreakdown } from '@iguana-dex/sdk';
 
 /**
  * TYPES

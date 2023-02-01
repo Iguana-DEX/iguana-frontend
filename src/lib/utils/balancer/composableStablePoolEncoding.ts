@@ -1,4 +1,4 @@
-import { ComposableStablePoolEncoder } from '@balancer-labs/sdk';
+import { ComposableStablePoolEncoder } from '@iguana-dex/sdk';
 import { BigNumberish } from '@ethersproject/bignumber';
 
 export type JoinStablePoolInit = {

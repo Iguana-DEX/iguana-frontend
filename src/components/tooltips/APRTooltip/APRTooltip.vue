@@ -11,7 +11,7 @@ import { hasStakingRewards } from '@/services/staking/utils';
 import StakingBreakdown from './components/StakingBreakdown.vue';
 import VeBalBreakdown from './components/VeBalBreakdown.vue';
 import YieldBreakdown from './components/YieldBreakdown.vue';
-import { AprBreakdown } from '@balancer-labs/sdk';
+import { AprBreakdown } from '@iguana-dex/sdk';
 
 /**
  * TYPES

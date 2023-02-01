@@ -5,7 +5,7 @@ import useNumbers from '@/composables/useNumbers';
 import { useUserSettings } from '@/providers/user-settings.provider';
 import { bnum } from '@/lib/utils';
 
-const FIXED_OPTIONS = ['0.005', '0.01', '0.02'];
+const FIXED_OPTIONS = ['0.001', '0.003', '0.005'];
 
 /**
  * COMPOSABLES

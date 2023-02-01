@@ -1,4 +1,4 @@
-import { phantomStableBPTForTokensZeroPriceImpact as _bptForTokensZeroPriceImpact } from '@balancer-labs/sdk';
+import { phantomStableBPTForTokensZeroPriceImpact as _bptForTokensZeroPriceImpact } from '@iguana-dex/sdk';
 import { BigNumber, BigNumberish } from '@ethersproject/bignumber';
 import { formatUnits, parseUnits } from '@ethersproject/units';
 import OldBigNumber from 'bignumber.js';

@@ -1,37 +1,48 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed, ref, onBeforeMount } from 'vue';
 
+import IndexTable from '@/components/tables/IndexTable/IndexTable.vue';
 import HomePageHero from '@/components/heros/HomePageHero.vue';
-import TokenSearchInput from '@/components/inputs/TokenSearchInput.vue';
-import FeaturedProtocols from '@/components/sections/FeaturedProtocols.vue';
-import PoolsTable from '@/components/tables/PoolsTable/PoolsTable.vue';
-import usePoolFilters from '@/composables/pools/usePoolFilters';
-import useBreakpoints from '@/composables/useBreakpoints';
-import useNetwork from '@/composables/useNetwork';
-import useWeb3 from '@/services/web3/useWeb3';
-import usePools from '@/composables/pools/usePools';
 
-// COMPOSABLES
-const router = useRouter();
-const { appNetworkConfig } = useWeb3();
-const isElementSupported = appNetworkConfig.supportsElementPools;
-const { selectedTokens, addSelectedToken, removeSelectedToken } =
-  usePoolFilters();
+import { coingeckoService } from '@/services/coingecko/coingecko.service';
+import dmiComponents from '../data/dmi_current_weights.json';
 
-const { pools, isLoading, poolsIsFetchingNextPage, loadMorePools } =
-  usePools(selectedTokens);
-const { upToMediumBreakpoint } = useBreakpoints();
-const { networkSlug, networkConfig } = useNetwork();
+function getAddressesString() {
+  const addresses: string[] = [];
+  for (let i = 0; i < dmiComponents.length; i++) {
+    addresses.push(dmiComponents[i].address.toLowerCase());
+  }
 
-const isPaginated = computed(() => pools.value.length >= 10);
+  return addresses;
+}
+
+const addresses = computed(() => getAddressesString());
+
+let isDataReady = ref(false);
 
 /**
  * METHODS
  */
-function navigateToCreatePool() {
-  router.push({ name: 'create-pool', params: { networkSlug } });
-}
+
+/**
+ * LIFECYCLE
+ */
+onBeforeMount(async () => {
+  const response = await coingeckoService.prices.getTokensWithChange(
+    addresses.value
+  );
+  const priceData = Object.fromEntries(
+    Object.entries(response).map(([k, v]) => [k.toLowerCase(), v])
+  );
+
+  for (let i = 0; i < addresses.value.length; i++) {
+    dmiComponents[i]['price'] = priceData[addresses.value[i]]['usd'];
+    dmiComponents[i]['change24h'] =
+      priceData[addresses.value[i]]['usd_24h_change'];
+  }
+
+  isDataReady.value = true;
+});
 </script>
 
 <template>
@@ -39,61 +50,18 @@ function navigateToCreatePool() {
     <HomePageHero />
     <div class="xl:container xl:px-4 pt-10 md:pt-12 xl:mx-auto">
       <BalStack vertical>
-        <div class="px-4 xl:px-0">
-          <div class="flex justify-between items-end mb-8">
-            <h3>
-              {{ networkConfig.chainName }}
-              <span class="lowercase">{{ $t('pools') }}</span>
-            </h3>
-            <BalBtn
-              v-if="upToMediumBreakpoint"
-              color="blue"
-              size="sm"
-              outline
-              :class="{ 'mt-4': upToMediumBreakpoint }"
-              @click="navigateToCreatePool"
-            >
-              {{ $t('createAPool.title') }}
-            </BalBtn>
-          </div>
-
-          <div
-            class="flex flex-col md:flex-row justify-between items-end lg:items-center w-full"
-          >
-            <TokenSearchInput
-              v-model="selectedTokens"
-              class="w-full md:w-2/3"
-              @add="addSelectedToken"
-              @remove="removeSelectedToken"
-            />
-            <BalBtn
-              v-if="!upToMediumBreakpoint"
-              color="blue"
-              size="sm"
-              outline
-              :class="{ 'mt-4': upToMediumBreakpoint }"
-              :block="upToMediumBreakpoint"
-              @click="navigateToCreatePool"
-            >
-              {{ $t('createAPool.title') }}
-            </BalBtn>
-          </div>
-        </div>
-        <PoolsTable
-          :data="pools"
-          :noPoolsLabel="$t('noPoolsFound')"
-          :isLoading="isLoading"
-          :selectedTokens="selectedTokens"
-          class="mb-8"
-          :hiddenColumns="['migrate', 'actions', 'lockEndDate']"
-          :isLoadingMore="poolsIsFetchingNextPage"
-          :isPaginated="isPaginated"
-          skeletonClass="pools-table-loading-height"
-          @load-more="loadMorePools"
-        />
-        <div v-if="isElementSupported" class="p-4 xl:p-0 mt-16">
-          <FeaturedProtocols />
-        </div>
+        <h3 class="flex justify-between items-end mb-8">
+          Composition of the Digital Market Index
+        </h3>
+        <suspense>
+          <IndexTable
+            v-if="isDataReady"
+            :data="dmiComponents"
+            :isLoading="false"
+            class="mb-8"
+            skeletonClass="pools-table-loading-height"
+          />
+        </suspense>
       </BalStack>
     </div>
   </div>

@@ -28,7 +28,7 @@ export class TallyConnector extends Connector {
         if ((err as WalletError).code === 4001) {
           // EIP-1193 userRejectedRequest error
           // If this happens, the user rejected the connection request.
-          console.log('Please connect to MetaMask.');
+          console.log('Please connect to Tally.');
         } else {
           console.error(err);
         }

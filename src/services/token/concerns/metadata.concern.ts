@@ -77,10 +77,15 @@ export default class MetadataConcern {
       addresses.forEach(address => {
         set(metaDict, `${address}.address`, address);
         set(metaDict, `${address}.chainId`, parseInt(network));
+        const networkName = [56, 97].includes(
+          this.service.configService.network.chainId
+        )
+          ? 'smartchain'
+          : 'ethereum';
         set(
           metaDict,
           `${address}.logoURI`,
-          `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
+          `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
         );
         multi.call(`${address}.name`, address, 'name');
         multi.call(`${address}.symbol`, address, 'symbol');

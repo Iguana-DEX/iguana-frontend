@@ -17,7 +17,7 @@ module.exports = {
     { pattern: /^mr/ },
     { pattern: /^w/ },
   ],
-  darkMode: 'class',
+  darkMode: 'class', // false or 'media' or 'class'
   theme: {
     fontFamily: {
       body: [
@@ -63,6 +63,17 @@ module.exports = {
       flex: {
         0: '0 0 auto',
       },
+      animation: {
+        shine: 'shine ls',
+      },
+      keyframes: {
+        shine: {
+          '100%': { left: '125%' },
+        },
+      },
+      transitionProperty: {
+        width: 'width',
+      },
       height: {
         112: '28rem',
       },
@@ -107,6 +118,18 @@ module.exports = {
           800: '#1a2ce1',
           900: '#1022d7',
         },
+        // green: {
+        //   50: '#697e43',
+        //   100: '#5f7448',
+        //   200: '#556a3e',
+        //   300: '#4b6034',
+        //   400: '#415634',
+        //   500: '#374c2a',
+        //   600: '#2d4220',
+        //   700: '#233816',
+        //   800: '#192e0c',
+        //   900: '#0f2402',
+        // },
         blue: {
           50: '#eff6ff',
           100: '#dbeafe',

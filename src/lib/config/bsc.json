@@ -1,0 +1,91 @@
+{
+  "key": "56",
+  "chainId": 56,
+  "chainName": "BNB Smart Chain",
+  "name": "BNB Smart Chain Mainnet",
+  "shortName": "bnb",
+  "slug": "bsc",
+  "network": "bsc",
+  "unknown": false,
+  "rpc": "https://bsc-mainnet.nodereal.io/v1/672561ef85dd4c94a8be7a26b996097a",
+  "ws": "wss://bsc-mainnet.nodereal.io/ws/v1/672561ef85dd4c94a8be7a26b996097a",
+  "loggingRpc": "",
+  "explorer": "https://bscscan.com",
+  "explorerName": "bscscan",
+  "subgraph": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
+  "balancerApi": "https://berfqtb52bc4hetoouojoshqem.appsync-api.eu-west-2.amazonaws.com/graphql",
+  "poolsUrlV2": "https://storageapi.fleek.co/johngrantuk-team-bucket/poolsV2.json",
+  "subgraphs": {
+    "main": [
+      "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-arbitrum-v2"
+    ],
+    "aave": "",
+    "gauge": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gauges-arbitrum",
+    "blocks": "https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-one-blocks"
+  },
+  "supportsEIP1559": false,
+  "supportsElementPools": false,
+  "blockTime": 3,
+  "nativeAsset": {
+    "name": "Binance Chain Native Token",
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "symbol": "BNB",
+    "decimals": 18,
+    "deeplinkId": "bnb",
+    "logoURI": "tokens/bnb.png",
+    "minTransactionBuffer": "0.05"
+  },
+  "addresses": {
+    "merkleRedeem": "",
+    "merkleOrchard": "",
+    "multicall": "0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B",
+    "authorizer": "",
+    "vault": "",
+    "weightedPoolFactory": "",
+    "stablePoolFactory": "",
+    "weth": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+    "rETH": "",
+    "stMATIC": "",
+    "stETH": "",
+    "wstETH": "",
+    "lidoRelayer": "",
+    "balancerHelpers": "",
+    "batchRelayer": "",
+    "batchRelayerV4": "",
+    "gaugeFactory": "",
+    "balancerMinter": "",
+    "gaugeController": "",
+    "tokenAdmin": "",
+    "veBAL": "",
+    "veDelegationProxy": "",
+    "veBALHelpers": "",
+    "feeDistributor": "",
+    "feeDistributorDeprecated": "",
+    "faucet": "",
+    "gaugeRewardsHelper": ""
+  },
+  "keys": {
+    "infura": "daaa68ec242643719749dd1caba2fc66",
+    "alchemy": "cQGZUiTLRCFsQS7kbRxPJK4eH4fTTu88",
+    "balancerApi": "da2-7a3ukmnw7bexndpx5x522uafui",
+    "nodereal": "672561ef85dd4c94a8be7a26b996097a"
+  },
+  "strategies": {
+    "0": {
+      "type": "0",
+      "name": "stablePool"
+    },
+    "1": {
+      "type": "1",
+      "name": "weightedPool"
+    },
+    "2": {
+      "type": "2",
+      "name": "weightedPool"
+    }
+  },
+  "gauges": {
+    "type": 6,
+    "weight": 0
+  }
+}

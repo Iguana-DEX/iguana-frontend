@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { BigNumber } from '@ethersproject/bignumber';
 import { JsonRpcProvider } from '@ethersproject/providers';
 
@@ -79,7 +79,6 @@ export class GaugeControllerDecorator {
 
     const decoratedGauges = votingGauges.map(gauge => {
       return {
-        id: gauge.address,
         ...gauge,
         ...this.formatVotes(votesDataMap.gauges[gauge.address]),
       };

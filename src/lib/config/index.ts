@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 
 import arbitrum from './arbitrum.json';
 import docker from './docker.json';
@@ -6,6 +6,8 @@ import goerli from './goerli.json';
 import homestead from './homestead.json';
 import optimism from './optimism.json';
 import polygon from './polygon.json';
+import bsc from './bsc.json';
+import bsctestnet from './bsctestnet.json';
 import test from './test.json';
 
 export interface Config {
@@ -96,6 +98,8 @@ const config: Record<Network | number, Config> = {
   [Network.POLYGON]: polygon,
   [Network.ARBITRUM]: arbitrum,
   [Network.OPTIMISM]: optimism,
+  [Network.BSC]: bsc,
+  [Network.BSCTESTNET]: bsctestnet,
   12345: test,
   // @ts-ignore
   17: docker,

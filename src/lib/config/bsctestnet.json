@@ -1,0 +1,90 @@
+{
+  "key": "97",
+  "chainId": 97,
+  "chainName": "BSC Testnet",
+  "name": "BSC Testnet",
+  "shortName": "bnbt",
+  "slug": "bsc-testnet",
+  "network": "bsc-testnet",
+  "unknown": false,
+  "rpc": "https://bsc-testnet.nodereal.io/v1/77e0f7b90d2f499196289fb0021242e3",
+  "ws": "wss://bsc-testnet.nodereal.io/ws/v1/77e0f7b90d2f499196289fb0021242e3",
+  "loggingRpc": "",
+  "explorer": "https://testnet.bscscan.com",
+  "explorerName": "bscscan-testnet",
+  "subgraph": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-goerli-v2",
+  "balancerApi": "https://berfqtb52bc4hetoouojoshqem.appsync-api.eu-west-2.amazonaws.com/graphql",
+  "poolsUrlV2": "",
+  "subgraphs": {
+    "main": [
+      "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-goerli-v2"
+    ],
+    "aave": "",
+    "gauge": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gauges-goerli",
+    "blocks": "https://api.thegraph.com/subgraphs/name/blocklytics/goerli-blocks"
+  },
+  "supportsEIP1559": false,
+  "supportsElementPools": false,
+  "blockTime": 3,
+  "nativeAsset": {
+    "name": "Binance Chain Native Token",
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "symbol": "tBNB",
+    "decimals": 18,
+    "deeplinkId": "tbnb",
+    "logoURI": "tokens/bnb.png",
+    "minTransactionBuffer": "0.05"
+  },
+  "addresses": {
+    "merkleRedeem": "",
+    "merkleOrchard": "",
+    "multicall": "0xA6949B8FBa9DF546b9c66F98CFCa960A96E3b68e",
+    "authorizer": "0x5E6203C9986C4878924074244232F9176b0C0d9c",
+    "vault": "0x7Ae333d44F87118883cff4B8aFe4b3c94690c2F7",
+    "weightedPoolFactory": "0x1b8E3E0d88368f21e25BD39Ca6af42E6FC54ccE5",
+    "stablePoolFactory": "0x448f70923Ad5A7bA209C640eeb0470399D962386",
+    "weth": "0xd66c6B4F0be8CE5b39D52E0Fd1344c389929B378",
+    "rETH": "",
+    "stMATIC": "",
+    "stETH": "",
+    "wstETH": "",
+    "lidoRelayer": "",
+    "balancerHelpers": "0xa338aB179C4eA5bf1F2B3c2a3FEa18F3E0845374",
+    "batchRelayer": "",
+    "batchRelayerV4": "",
+    "gaugeFactory": "",
+    "balancerMinter": "",
+    "gaugeController": "",
+    "tokenAdmin": "",
+    "veBAL": "",
+    "veDelegationProxy": "",
+    "veBALHelpers": "",
+    "feeDistributor": "",
+    "feeDistributorDeprecated": "",
+    "faucet": "",
+    "gaugeRewardsHelper": ""
+  },
+  "keys": {
+    "infura": "daaa68ec242643719749dd1caba2fc66",
+    "alchemy": "cQGZUiTLRCFsQS7kbRxPJK4eH4fTTu88",
+    "nodereal": "77e0f7b90d2f499196289fb0021242e3"
+  },
+  "strategies": {
+    "0": {
+      "type": "0",
+      "name": "stablePool"
+    },
+    "1": {
+      "type": "1",
+      "name": "weightedPool"
+    },
+    "2": {
+      "type": "2",
+      "name": "weightedPool"
+    }
+  },
+  "gauges": {
+    "type": 7,
+    "weight": 0
+  }
+}

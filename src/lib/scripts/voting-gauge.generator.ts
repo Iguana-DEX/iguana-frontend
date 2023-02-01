@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { getAddress } from '@ethersproject/address';
 import debug from 'debug';
 import fs from 'fs';
@@ -147,6 +147,8 @@ function getTrustWalletAssetsURI(
     [Network.POLYGON]: 'polygon',
     [Network.GOERLI]: 'goerli',
     [Network.OPTIMISM]: 'optimism',
+    [Network.BSC]: 'bsc',
+    [Network.BSCTESTNET]: 'bsc-testnet',
   };
 
   return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/${networksMap[network]}/assets/${tokenAddress}/logo.png`;

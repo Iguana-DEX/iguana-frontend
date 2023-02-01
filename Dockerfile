@@ -1,5 +1,5 @@
-# This Dockerfile runs a production build of balancer.
-# It requires specifying an Infura API key to pull data.
+# This Dockerfile runs a production build of balancer. 
+# It requires specifying an Infura API key to pull data. 
 # See README for futher information
 
 FROM node:14 AS base
@@ -19,9 +19,9 @@ RUN npm ci
 FROM dependencies AS build
 
 COPY . .
-RUN npm run build -- --mode docker
+RUN npm run build -- --mode docker --skip-plugins webpack-bundle-analyzer
 
-FROM nginx:1.23.3-alpine as release
+FROM nginx:1.22.1-alpine as release
 
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY --from=build /app/scripts/docker-init.sh /

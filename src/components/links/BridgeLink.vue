@@ -2,7 +2,7 @@
 import useNetwork from '@/composables/useNetwork';
 import { buildNetworkIconURL } from '@/lib/utils/urls';
 import { configService } from '@/services/config/config.service';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { computed } from 'vue';
 
 const { networkId } = useNetwork();
@@ -13,6 +13,10 @@ const bridgeUrl = computed((): string => {
       return 'https://wallet.polygon.technology/polygon/bridge';
     case Network.ARBITRUM:
       return 'https://bridge.arbitrum.io/';
+    case Network.OPTIMISM:
+      return 'https://app.optimism.io/bridge/';
+    case Network.BSC:
+      return 'https://app.multichain.org/';
     default:
       return '';
   }

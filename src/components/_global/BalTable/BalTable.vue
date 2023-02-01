@@ -401,7 +401,9 @@ watch(
 }
 
 .row-bg {
-  @apply bg-white dark:bg-gray-850 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ease-in duration-300;
+  @apply bg-white dark:bg-gray-850 hover:bg-gray-100 dark:hover:bg-gray-700;
+
+  /* @apply bg-white dark:bg-gray-850 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ease-in duration-100; */
 }
 
 .bal-table-pagination-btn {

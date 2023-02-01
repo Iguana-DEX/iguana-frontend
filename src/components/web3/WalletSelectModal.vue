@@ -52,10 +52,10 @@ const wallets = ref(SupportedWallets.filter(id => id !== 'gnosis'));
     <div
       class="p-4 bg-gradient-to-b from-gray-50 dark:from-gray-900 to-gray-100 dark:to-gray-850 rounded-lg"
     >
-      <h6>{{ $t('newToEthereum') }}</h6>
+      <h6>{{ $t('newToBnbChain') }}</h6>
       <p class="text-sm">
-        {{ $t('setUpEthereumWallet') }}
-        <BalLink :href="EXTERNAL_LINKS.Ethereum.Wallets" external>
+        {{ $t('setUpBnbChainWallet') }}
+        <BalLink :href="EXTERNAL_LINKS.BNBChain.Wallets" external>
           {{ $t('learnMore') }}
           <span class="align-middle"
             ><BalIcon name="arrow-up-right" size="sm"

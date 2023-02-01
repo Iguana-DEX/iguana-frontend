@@ -7,7 +7,7 @@ import { bnum, isSameAddress, selectByAddress } from '@/lib/utils';
 import { vaultService } from '@/services/contracts/vault.service';
 import { GasPriceService } from '@/services/gas-price/gas-price.service';
 import { Pool } from '@/services/pool/types';
-import { BalancerSDK, BatchSwap, SwapInfo, SwapType } from '@balancer-labs/sdk';
+import { BalancerSDK, BatchSwap, SwapInfo, SwapType } from '@iguana-dex/sdk';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { BigNumber, formatFixed, parseFixed } from '@ethersproject/bignumber';
 import { JsonRpcSigner } from '@ethersproject/providers';

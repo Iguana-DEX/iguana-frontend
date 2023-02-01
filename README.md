@@ -1,13 +1,18 @@
-# Balancer Frontend App (v2)
+# 🦎 IguanaDEX Frontend
 
-Official frontend app for the Balancer protocol (v2).
+<p align="center">
+  <img width="320" height="246" src="https://user-images.githubusercontent.com/34973295/206001164-103361a4-086e-4e12-83e6-8a2d7ccd4d59.png">
+</p>
 
 ## Development
+
+This project will ONLY work properly if you use Node.js version 14.x (Fermium LTS) and NPM version 7+.
+Do NOT attempt to run "npm audit fix" to reduce the number of warnings.
 
 To setup the development environment first clone the repo:
 
 ```bash
-git clone https://github.com/balancer-labs/frontend-v2.git && cd frontend-v2
+git clone https://github.com/iguana-dex/iguana-frontend-v2.git && cd iguana-frontend-v2
 ```
 
 ### Local env
@@ -21,10 +26,10 @@ npm install
 Start the app:
 
 ```bash
-npm run dev
+npm run serve
 ```
 
-The app should be live at [http://localhost:8080](http://localhost:8080)
+The app should now be live at [http://localhost:8080](http://localhost:8080)
 
 ### Testing
 
@@ -68,62 +73,15 @@ npm run build:watch
 
 This mode is useful when you need to reproduce/fix bugs/issues in a **production-like** environment.
 
-### Docker
-
-If you'd rather spin up the app in a docker container, first install dependencies to you local folder:
-
-```bash
-docker-compose build
-docker-compose run --rm web npm i
-```
-
-and start the app:
-
-```bash
-docker-compose up
-```
-
-The app should be live at [http://localhost:8080](http://localhost:8080)
-
-If you are on Apple Silicon, try this:
-
-```bash
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
-```
-
-source: https://stackoverflow.com/questions/65612411/forcing-docker-to-use-linux-amd64-platform-by-default-on-macos
-
 ## Self-Hosting
 
 As we believe in decentralization at all layers, we've made it easy to host your own Balancer Frontend.
 
-### Docker Production Image
+### Vercel Deployment
 
-We've created a production ready [docker image](./Dockerfile) runs
-a pre-built version of Balancer Frontend-v2 using nginx. You'll need your own
-[Infura](https://infura.io), [Alchemy](https://www.alchemy.com/), and
-[Blocknative](https://blocknative.com) API keys in order to fetch data and
+You'll need your own [Infura](https://infura.io), [Alchemy](https://www.alchemy.com/),
+[Blocknative](https://blocknative.com) and [NodeReal](https://nodereal.io/meganode) API keys in order to fetch data and
 execute transactions.
-
-Here's an example of how to run the container. This can also be found in [scripts/run-docker.sh](./scripts/run-docker.sh).
-
-```bash
-docker run \
-  -e INFURA_PROJECT_ID=   \ # Required
-  -e ALCHEMY_KEY=         \ # Required
-  -e BLOCKNATIVE_DAPP_ID= \ # Required
-  balancerfi/frontend-v2
-```
-
-### One Click Deploys
-
-The frontend can easily be deployed to any static host. Use the buttons below to spin up an instance. You will be prompted to provide your Infura Project ID, Alchemy Key, and Blocknative Dapp ID as these are required for the frontend to work correctly.
-
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/balancer-labs/frontend-v2/tree/master)
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/balancer-labs/frontend-v2)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/balancer-labs/frontend-v2)
 
 ## Vite setup
 
@@ -152,3 +110,64 @@ Analyze and visualize the bundle dependencies by adding these env vars to your `
 VITE_BUILD_ANALIZE=true
 VITE_BUILD_VISUALIZE=true
 ```
+
+# 📚 &nbsp;General Info
+
+<br />
+
+This repository contains the main features of [iguanadex.com](https://iguanadex.com):<br />
+[A) Home tab/landing page](https://github.com/Iguana-DEX/iguana-frontend#a-home-tab--landing-page) <br />
+[B) Swaps tab](https://github.com/Iguana-DEX/iguana-frontend#b-swaps-tab) <br />
+[C) DMI Pool tab](https://github.com/Iguana-DEX/iguana-frontend#c-dmi-pool-tab) <br />
+[D) DMI Borrow Market tab](https://github.com/Iguana-DEX/iguana-frontend#d-dmi-borrow-market-tab) <br />
+[E) DMI Perpetual Swaps tab](https://github.com/Iguana-DEX/iguana-frontend#e-dmi-perpetual-swaps-tab) <br />
+[F) DAO tab](https://github.com/Iguana-DEX/iguana-frontend#f-dao-tab) <br />
+
+The overall website is jungle-themed. Numerous animations are used to make it livelier, some of which are triggered by user interactions.
+On the sides of the page, there is a forest background with falling leaves. The leaves of the trees move when the pointer hovers over them.
+There are also iguanas sporadically showing up and sticking out their long curly red tongues.
+
+```diff
+Color Palette:
++ Green for the main color
+- Red undertones
+```
+
+## A) Home tab & landing page:
+
+The landing page displays the latest information about the Digital Market Index - the bedrock of the products offered by Iguana.
+
+There is also a "Time Machine" tab providing a wealth of information and charts regarding index changes, the index's performance and its components since January 2018.
+
+This is meant as information, something that users refer to quite often. Iguana uses it to promote the trading part of the DApp along with the option to _buy the DMI token off-chain_.
+
+## B) Swaps tab:
+
+Here "trader" iggies are able to swap a coin for another directly on-chain as long as both the token they're selling and the one they're buying are part of the 11 coins in the DMI pool (top 10 coins by real market cap + BUSD)
+
+The swap fee is 0.15%, out of which 0.12% are redistributed to the Liquidity Providers (see **1.**) and 0.03% go to the $IGN token holders.
+This swap fee is collected in the token being sold, e.g. if an iggie is swapping 1 BTC for ETH, 0.0015 BTC would be collected as swap fees.
+
+## C) DMI Pool tab:
+
+Here "saver" iggies can deposit to the **main DMI pool** - which is a **Balancer v2 weighted pool** (tweaked for IguanaDEX's needs) with weights set to match the Digital Market Index. Note that the Digital Market Index's weights change at 12am UTC on the 1st of each month.
+
+## D) DMI Borrow Market tab:
+
+Here "savvy" iggies can either provide DMI tokens and borrow some BUSD against them or vice-versa. The interest rate on the DMI and/or BUSD borrowed is based on a utilisation curve. This market will be based on Aave v3's isolated markets implementation (?).
+
+It is important that "arbitrager" iggies are able to borrow DMI tokens so that they can _short-sell_ spot DMI tokens and buy perpetual swaps against them in cases where the perpetual swap trades lower than the spot DMI token. This will be incentivised by a classic funding mechanism in addition to the opportunity to capture small price differentials - more on this in **4.**
+
+## E) DMI Perpetual Swaps tab:
+
+"Leveraged trader" or "Hedger" iggies can go long or short the Digital Market Index with up to 50x leverage cheaply and in large size.
+The trading of those perpetual swaps underpinned by an auction mechanism occuring twice a day, at 9am UTC and 9pm UTC.
+
+This process is similar to Nasdaq's [Opening Cross](https://www.investopedia.com/terms/o/opening-cross.asp).
+30 minutes before the auction, iggies can place limit buy and limit sell orders for DMI perpetual swaps.
+
+## F) DAO tab:
+
+Can buy or sell IGN tokens here. IGN is the native token of Iguana - IGN holders collect 100% of the revenues of Iguana.
+IGN holders can also vote on various proposals directly on this tab (thanks to snapshot.org's API).
+Minimal information about the breakdown of revenues and usage of the protocol are also available here?

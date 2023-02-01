@@ -1,4 +1,4 @@
-import { toNormalizedWeights } from '@balancer-labs/sdk';
+import { toNormalizedWeights } from '@iguana-dex/sdk';
 import { formatUnits } from '@ethersproject/units';
 
 import { isStableLike, isWeightedLike } from '@/composables/usePool';

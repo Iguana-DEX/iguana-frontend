@@ -3,15 +3,18 @@
  * veBAL page
  */
 import Hero from '@/components/contextual/pages/vebal/Hero.vue';
-import LMVoting from '@/components/contextual/pages/vebal/LMVoting/LMVoting.vue';
+// import LMVoting from '@/components/contextual/pages/vebal/LMVoting/LMVoting.vue';
 import MyVeBAL from '@/components/contextual/pages/vebal/MyVeBAL/MyVeBAL.vue';
 import { isVeBalSupported } from '@/composables/useVeBAL';
 </script>
 
 <template>
   <div>
-    <Hero v-if="isVeBalSupported" v-once />
-
+    <div v-if="isVeBalSupported" class="">
+      <div>
+        <Hero />
+      </div>
+    </div>
     <div class="py-16 xl:py-20 bg-gray-50 dark:bg-gray-900">
       <div v-if="isVeBalSupported" class="lg:container lg:mx-auto">
         <div class="px-4">
@@ -24,7 +27,7 @@ import { isVeBalSupported } from '@/composables/useVeBAL';
       class="xl:container xl:px-4 pt-16 xl:pt-20 xl:mx-auto"
     >
       <div class="xl:px-0 mb-16">
-        <LMVoting />
+        <!-- <LMVoting /> -->
       </div>
     </div>
     <div v-else class="text-center">

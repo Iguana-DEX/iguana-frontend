@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { Web3Provider } from '@ethersproject/providers';
 import debounce from 'lodash/debounce';
 import { computed, inject, reactive, ref } from 'vue';
@@ -69,6 +69,10 @@ export default function useWeb3() {
     () => appNetworkConfig.chainId === Network.MAINNET
   );
   const isGoerli = computed(() => appNetworkConfig.chainId === Network.GOERLI);
+  const isBsc = computed(() => appNetworkConfig.chainId === Network.BSC);
+  const isBscTestnet = computed(
+    () => appNetworkConfig.chainId === Network.BSCTESTNET
+  );
   const isPolygon = computed(
     () => appNetworkConfig.chainId === Network.POLYGON
   );
@@ -155,6 +159,8 @@ export default function useWeb3() {
     blockNumber,
     isMainnet,
     isGoerli,
+    isBsc,
+    isBscTestnet,
     isPolygon,
     isArbitrum,
     isEIP1559SupportedNetwork,

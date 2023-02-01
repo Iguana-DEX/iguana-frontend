@@ -1,7 +1,7 @@
 import { QueryObserverOptions } from 'react-query/core';
 import { computed, reactive, Ref, ref } from 'vue';
 import { useQuery } from 'vue-query';
-import { GraphQLArgs } from '@balancer-labs/sdk';
+import { GraphQLArgs } from '@iguana-dex/sdk';
 
 import { useTokens } from '@/providers/tokens.provider';
 import QUERY_KEYS from '@/constants/queryKeys';

@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import BlocknativeSdk from 'bnc-sdk';
 import { computed, inject } from 'vue';
 

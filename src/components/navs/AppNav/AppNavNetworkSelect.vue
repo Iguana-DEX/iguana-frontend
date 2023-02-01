@@ -35,6 +35,12 @@ const networks = ref([
     key: '1',
   },
   {
+    id: 'bsc',
+    name: 'BNB Chain',
+    networkSlug: 'bsc',
+    key: '56',
+  },
+  {
     id: 'polygon',
     name: 'Polygon',
     networkSlug: 'polygon',
@@ -54,6 +60,12 @@ const networksDev = ref([
     name: 'Goerli',
     networkSlug: 'goerli',
     key: '5',
+  },
+  {
+    id: 'bsc-testnet',
+    name: 'BSC Testnet',
+    networkSlug: 'bsc-testnet',
+    key: '97',
   },
 ]);
 
@@ -142,7 +154,7 @@ function isActive(network: NetworkOption): boolean {
             :alt="activeNetwork.name"
             class="w-6 h-6 rounded-full"
           />
-          <span class="ml-2">
+          <span v-if="!upToLargeBreakpoint" class="ml-2">
             {{ activeNetwork.name }}
           </span>
           <BalIcon name="chevron-down" size="sm" class="ml-2" />

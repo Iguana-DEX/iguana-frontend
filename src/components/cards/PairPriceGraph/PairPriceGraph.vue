@@ -200,7 +200,7 @@ const chartData = computed(() => {
   if (allChartValuesEqual.value) return [];
   return [
     {
-      name: `${outputSym.value}/${inputSym.value}`,
+      name: `${inputSym.value}/${outputSym.value}`,
       values: priceData.value || [],
     },
   ];
@@ -279,7 +279,7 @@ const chartGrid = computed(() => {
           <BalIcon v-if="isModal" name="x" class="text-secondary" />
         </button>
         <div v-if="!failedToLoadPriceData && !isLoadingPriceData" class="flex">
-          <h6 class="font-medium">{{ outputSym }}/{{ inputSym }}</h6>
+          <h6 class="font-medium">{{ inputSym }}/{{ outputSym }}</h6>
           <BalTooltip class="ml-2" :text="$t('coingeckoPricingTooltip')">
             <template #activator>
               <img class="h-5" src="@/assets/images/icons/coingecko.svg" />

@@ -4,7 +4,7 @@ import {
   JsonRpcSigner,
   Web3Provider,
 } from '@ethersproject/providers';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { setTag } from '@sentry/browser';
 import axios from 'axios';
 import { computed, reactive, Ref, ref, toRefs } from 'vue';
@@ -31,6 +31,7 @@ import { networkId } from '@/composables/useNetwork';
 
 export type Wallet =
   | 'metamask'
+  | 'trustwallet'
   | 'walletconnect'
   | 'gnosis'
   | 'walletlink'
@@ -38,14 +39,16 @@ export type Wallet =
 
 export const SupportedWallets = [
   'metamask',
-  'walletconnect',
+  'trustwallet',
+  'walletlink',
   'tally',
   'gnosis',
-  'walletlink',
+  'walletconnect',
 ] as Wallet[];
 
 export const WalletNameMap: Record<Wallet, string> = {
   metamask: 'Metamask',
+  trustwallet: 'Trust Wallet',
   walletconnect: 'WalletConnect',
   gnosis: 'Gnosis Safe',
   walletlink: 'Coinbase Wallet',
@@ -56,6 +59,9 @@ export const networkMap = {
   [Network.MAINNET]: 'mainnet',
   [Network.GOERLI]: 'goerli',
   [Network.POLYGON]: 'polygon',
+  [Network.OPTIMISM]: 'optimism',
+  [Network.BSC]: 'bsc',
+  [Network.BSCTESTNET]: 'bsc-testnet',
   [Network.ARBITRUM]: 'arbitrum-one',
 };
 
@@ -163,10 +169,18 @@ export default {
         return new MetamaskConnector(alreadyConnectedAccount.value);
       }
 
+      if (wallet === 'trustwallet') {
+        const { TrustWalletConnector } = await import(
+          /* webpackChunkName: "TrustWalletConnector" */
+          '@/services/web3/connectors/trustwallet/trustwallet.connector'
+        );
+        return new TrustWalletConnector(alreadyConnectedAccount.value);
+      }
+
       if (wallet === 'walletconnect') {
         const { WalletConnectConnector } = await import(
           /* webpackChunkName: "WalletConnectConnector" */
-          '@/services/web3/connectors/trustwallet/walletconnect.connector'
+          '@/services/web3/connectors/walletconnect/walletconnect.connector'
         );
         return new WalletConnectConnector(alreadyConnectedAccount.value);
       }
@@ -292,11 +306,14 @@ export function getConnectorName(
     return t('unknown');
   }
   if (connectorId === ConnectorId.InjectedMetaMask) {
-    if (provider.isCoinbaseWallet) {
-      return `Coinbase ${t('wallet')}`;
-    }
     if (provider.isMetaMask) {
       return 'MetaMask';
+    }
+    if (provider.isTrust) {
+      return 'Trust Wallet';
+    }
+    if (provider.isCoinbaseWallet) {
+      return `Coinbase ${t('wallet')}`;
     }
     if (provider.isImToken) {
       return 'imToken';
@@ -304,13 +321,13 @@ export function getConnectorName(
     if (provider.isStatus) {
       return 'Status';
     }
-    if (provider.isTrust) {
-      return 'Trust Wallet';
-    }
     if (provider.isFrame) {
       return 'Frame';
     }
     return t('browserWallet');
+  }
+  if (connectorId === ConnectorId.TrustWallet) {
+    return 'Trust Wallet';
   }
   if (connectorId === ConnectorId.InjectedTally) {
     return 'Tally';
@@ -355,6 +372,9 @@ export function getConnectorLogo(
       return frameLogo;
     }
     return metamaskLogo;
+  }
+  if (connectorId === ConnectorId.TrustWallet) {
+    return trustwalletLogo;
   }
   if (connectorId === ConnectorId.InjectedTally) {
     return tallyLogo;

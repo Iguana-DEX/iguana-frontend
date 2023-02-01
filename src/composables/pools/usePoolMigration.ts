@@ -1,4 +1,4 @@
-import { RelayerAuthorization } from '@balancer-labs/sdk';
+import { RelayerAuthorization } from '@iguana-dex/sdk';
 import {
   TransactionReceipt,
   TransactionResponse,

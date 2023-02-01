@@ -7,7 +7,7 @@ import {
 } from '@/composables/useNetwork';
 import { isJoinsDisabled } from '@/composables/usePool';
 import config from '@/lib/config';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { Router } from 'vue-router';
 
 /**

@@ -10,11 +10,12 @@ import AppNavAccountBtn from './AppNavAccountBtn.vue';
 import AppNavActivityBtn from './AppNavActivityBtn/AppNavActivityBtn.vue';
 import AppNavNetworkSelect from './AppNavNetworkSelect.vue';
 import { Goals, trackGoal } from '@/composables/useFathom';
+import DmiTokenDisplay from './DmiTokenDisplay.vue';
 
 /**
  * COMPOSABLES
  */
-const { isMobile, isDesktop } = useBreakpoints();
+const { isMobile, isDesktop, upToLargeBreakpoint } = useBreakpoints();
 const { account, connector, startConnectWithInjectedProvider } = useWeb3();
 const { setSidebarOpen } = useSidebar();
 
@@ -34,6 +35,9 @@ function connectWalletHandler() {
 
 <template>
   <div class="grid grid-rows-1 grid-flow-col gap-2">
+    <suspense>
+      <DmiTokenDisplay v-if="!upToLargeBreakpoint" />
+    </suspense>
     <DarkModeToggle v-if="isDesktop" />
     <AppNavActivityBtn v-if="account" />
     <AppNavAccountBtn v-if="account" />
@@ -44,7 +48,10 @@ function connectWalletHandler() {
       @click="connectWalletHandler"
     >
       <WalletIcon class="mr-2" />
-      <span class="hidden lg:inline-block" v-text="$t('connectWallet')" />
+      <span class="hidden lg:inline-block">
+        <span v-if="upToLargeBreakpoint" v-text="$t('connect')" />
+        <span v-else v-text="$t('connectWallet')" />
+      </span>
       <span class="lg:hidden" v-text="$t('connect')" />
     </BalBtn>
     <AppNavNetworkSelect v-if="!hideNetworkSelect" />

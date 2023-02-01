@@ -1,4 +1,4 @@
-import { FundManagement, TransactionData } from '@balancer-labs/sdk';
+import { FundManagement, TransactionData } from '@iguana-dex/sdk';
 import { TransactionResponse, Web3Provider } from '@ethersproject/providers';
 import { Contract } from 'ethers';
 

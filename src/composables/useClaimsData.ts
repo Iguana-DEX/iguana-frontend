@@ -12,7 +12,7 @@ import useProtocolRewardsQuery, {
 import { isQueryLoading } from './queries/useQueryHelpers';
 import { isGoerli, isL2 } from './useNetwork';
 import { subgraphFallbackService } from '@/services/balancer/subgraph/subgraph-fallback.service';
-import { PoolType } from '@balancer-labs/sdk';
+import { PoolType } from '@iguana-dex/sdk';
 
 export type GaugePool = {
   id: string;

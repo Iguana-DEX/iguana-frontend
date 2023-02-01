@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { computed, Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { networkId } from './useNetwork';
@@ -14,6 +14,8 @@ export enum PoolWarning {
 }
 
 const POOL_ISSUES = {
+  [Network.BSC]: {},
+  [Network.BSCTESTNET]: {},
   [Network.GOERLI]: {},
   [Network.MAINNET]: {
     [PoolWarning.PoolProtocolFeeVulnWarning]: [

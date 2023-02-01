@@ -1,6 +1,7 @@
 <template>
   <div class="app-hero">
-    <div class="mx-auto w-full max-w-lg">
+    <!-- <div class="mx-auto w-full max-w-lg"> -->
+    <div class="mx-auto w-full">
       <slot />
     </div>
   </div>
@@ -11,6 +12,6 @@
   @apply bg-cover bg-center flex items-center justify-center text-center px-4;
 
   transition: all 0.3s ease-in-out;
-  background-image: url('/images/backgrounds/bg-header.svg');
+  background-image: url('/images/backgrounds/bg-header.webp');
 }
 </style>

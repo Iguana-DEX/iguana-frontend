@@ -1,4 +1,4 @@
-import { BalancerSDK, Network } from '@balancer-labs/sdk';
+import { BalancerSDK, Network } from '@iguana-dex/sdk';
 import { configService } from '@/services/config/config.service';
 import { ref } from 'vue';
 import { isTestMode } from '@/plugins/modes';
@@ -9,6 +9,12 @@ const network = ((): Network => {
       return Network.MAINNET;
     case '5':
       return Network.GOERLI;
+    case '10':
+      return Network.OPTIMISM;
+    case '56':
+      return Network.BSC;
+    case '97':
+      return Network.BSCTESTNET;
     case '137':
       return Network.POLYGON;
     case '42161':

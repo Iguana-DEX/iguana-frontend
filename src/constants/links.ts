@@ -1,23 +1,25 @@
 export const EXTERNAL_LINKS = {
   Balancer: {
-    Home: 'https://balancer.fi',
+    Home: 'https://iguanadex.com',
     Analytics: 'https://dune.xyz/balancerlabs',
     BalForGas:
       'https://docs.balancer.finance/core-concepts/bal-balancer-governance-token/bal-for-gas',
     BugBounty: 'https://immunefi.com/bounty/balancer/',
-    Docs: 'https://docs.balancer.fi',
+    Docs: 'https://iguanadex.gitbook.io/iguanadex-docs/',
     Forum: 'https://forum.balancer.finance/',
     Grants: 'http://grants.balancer.community/',
     Social: {
-      Discord: 'https://discord.balancer.fi',
-      Github: 'https://github.com/balancer-labs/',
-      Mail: 'mailto:contact@balancer.finance',
-      Medium: 'https://medium.com/balancer-protocol',
-      Linkedin: 'https://www.linkedin.com/company/balancer-labs/',
-      Twitter: 'https://twitter.com/BalancerLabs',
-      Youtube: 'https://www.youtube.com/channel/UCBRHug6Hu3nmbxwVMt8x_Ow',
+      Discord: 'https://discord.gg/44VNyfNXVj',
+      Github: 'https://github.com/iguana-dex',
+      Medium: 'https://medium.com/iguana-dex',
+      Linkedin: 'https://www.linkedin.com/company/iguana-dex',
+      Twitter: 'https://twitter.com/IguanaDEX',
+      Youtube: 'https://www.youtube.com/@IguanaDEX',
     },
-    Vote: 'https://vote.balancer.finance/',
+    Vote: 'https://www.tally.xyz/group/iguanadex',
+  },
+  BNBChain: {
+    Wallets: 'https://www.bnbchain.org/en/wallets',
   },
   Gauntlet: {
     Home: 'https://gauntlet.network',
@@ -43,5 +45,8 @@ export const EXTERNAL_LINKS = {
   },
   Sense: {
     Home: 'https://sense.finance/',
+  },
+  Multichain: {
+    Home: 'https://multichain.org',
   },
 };

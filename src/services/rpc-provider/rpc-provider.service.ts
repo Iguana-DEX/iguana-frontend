@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 import { JsonRpcProvider, WebSocketProvider } from '@ethersproject/providers';
 
 import template from '@/lib/utils/template';

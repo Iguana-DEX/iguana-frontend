@@ -1,4 +1,4 @@
-import { SubgraphPoolBase, SwapType, SwapTypes } from '@balancer-labs/sdk';
+import { SubgraphPoolBase, SwapType, SwapTypes } from '@iguana-dex/sdk';
 import { BigNumber, formatFixed, parseFixed } from '@ethersproject/bignumber';
 import {
   AddressZero,

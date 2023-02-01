@@ -1,4 +1,4 @@
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@iguana-dex/sdk';
 
 import { networkId } from '@/composables/useNetwork';
 import { configService } from '@/services/config/config.service';
@@ -67,6 +67,18 @@ export const TOKENS_ARBITRUM: TokenConstants = {
   },
 };
 
+export const TOKENS_BSC: TokenConstants = {
+  Popular: {
+    Symbols: ['BNB', 'MATIC', 'BUSD'],
+  },
+  Addresses: {
+    nativeAsset: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+    wNativeAsset: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    WETH: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+    BAL: '0x0000000000000000000000000000000000000000',
+  },
+};
+
 export const TOKENS_GOERLI: TokenConstants = {
   Popular: {
     Symbols: ['WBTC', 'DAI', 'USDC', 'BAL', 'USDT', 'WETH'],
@@ -108,6 +120,31 @@ export const TOKENS_GOERLI: TokenConstants = {
   },
 };
 
+export const TOKENS_BSCTESTNET: TokenConstants = {
+  Popular: {
+    Symbols: ['BNB', 'BUSD', 'MATIC'],
+  },
+  Addresses: {
+    nativeAsset: '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+    wNativeAsset: '0x931Bf638fC27499506a4C1446e5f905b0EC73C81',
+    WETH: '0xdFCeA9088c8A88A76FF74892C1457C17dfeef9C1',
+    BAL: '0x0000000000000000000000000000000000000000',
+  },
+  PriceChainMap: {
+    /**
+     * Addresses must be lower case and map from goerli to mainnet, e.g
+     * [bsc-testnet address]: bsc address
+     */
+    '0x931Bf638fC27499506a4C1446e5f905b0EC73C81':
+      '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    '0xaB1a4d4f1D656d2450692D237fdD6C7f9146e814':
+      '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+    // AXS
+    '0x6b9A9df1e6a29F17BFC79040A8f505Aaa8866b6e':
+      '0x715D400F88C167884bbCc41C5FeA407ed4D2f8A0',
+  },
+};
+
 export const TOKENS_GENERIC: TokenConstants = {
   Popular: {
     Symbols: ['WBTC', 'DAI', 'USDC', 'BAL', 'AAVE', 'WETH'],
@@ -125,6 +162,8 @@ const TOKENS_MAP = {
   [Network.MAINNET]: TOKENS_MAINNET,
   [Network.POLYGON]: TOKENS_POLYGON,
   [Network.ARBITRUM]: TOKENS_ARBITRUM,
+  [Network.BSC]: TOKENS_BSC,
+  [Network.BSCTESTNET]: TOKENS_BSCTESTNET,
 };
 
 export const TOKENS: TokenConstants = TOKENS_MAP[networkId.value]

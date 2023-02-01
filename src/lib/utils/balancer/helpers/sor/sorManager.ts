@@ -5,7 +5,7 @@ import {
   SwapInfo,
   SwapOptions,
   SwapTypes,
-} from '@balancer-labs/sdk';
+} from '@iguana-dex/sdk';
 import { BigNumber } from '@ethersproject/bignumber';
 import { AddressZero } from '@ethersproject/constants';
 import { Provider } from '@ethersproject/providers';

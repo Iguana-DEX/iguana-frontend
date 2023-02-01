@@ -20,8 +20,7 @@ describe('useNetwork', () => {
     it('should get correct top level domains', () => {
       const urls = [
         { path: 'polygon.balancer.fi/#/test', result: 'polygon' },
-        { path: 'app.balancer.fi', result: 'app' },
-        { path: 'balancer.fi', result: 'balancer' },
+        { path: 'iguanadex.com', result: 'app' },
         { path: 'beta.balancer.fi/trade', result: 'balancer' },
         { path: 'beta.goerli.balancer.fi', result: 'goerli' },
         { path: 'beta.polygon.balancer.fi', result: 'polygon' },
@@ -121,6 +120,8 @@ describe('useNetwork', () => {
       { networkSlug: 'arbitrum' },
       { networkSlug: 'polygon' },
       { networkSlug: 'goerli' },
+      { networkSlug: 'bsc' },
+      { networkSlug: 'bsc-testnet' },
     ];
 
     localStorage.removeItem('networkId');

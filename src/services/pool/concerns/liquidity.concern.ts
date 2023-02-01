@@ -7,7 +7,7 @@ import { bnum, isSameAddress } from '@/lib/utils';
 import { TokenPrices } from '@/services/coingecko/api/price.service';
 import { AnyPool, OnchainTokenData } from '@/services/pool/types';
 import { TokenInfoMap } from '@/types/TokenList';
-import { PoolToken } from '@balancer-labs/sdk';
+import { PoolToken } from '@iguana-dex/sdk';
 
 interface OnchainTokenInfo extends OnchainTokenData {
   address: string;

@@ -12,7 +12,7 @@ import {
   someJoinExit,
   SubgraphPoolBase,
   SwapTypes,
-} from '@balancer-labs/sdk';
+} from '@iguana-dex/sdk';
 
 import useWeb3 from '@/services/web3/useWeb3';
 import { networkId } from '../useNetwork';

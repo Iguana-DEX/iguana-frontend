@@ -86,7 +86,7 @@ const { upToLargeBreakpoint, upToMediumBreakpoint } = useBreakpoints();
 const { networkSlug } = useNetwork();
 
 const wideCompositionWidth = computed(() =>
-  upToMediumBreakpoint.value ? 450 : undefined
+  upToMediumBreakpoint.value ? 300 : 180
 );
 
 /**
@@ -361,3 +361,4 @@ function iconAddresses(pool: PoolWithShares) {
     </BalTable>
   </BalCard>
 </template>
+

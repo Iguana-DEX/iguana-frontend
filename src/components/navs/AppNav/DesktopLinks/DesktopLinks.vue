@@ -29,6 +29,12 @@ function isActive(page: string): boolean {
       :active="isActive('home')"
       @click="trackGoal(Goals.ClickNavPools)"
     >
+      {{ $t('home') }}
+    </DesktopLinkItem>
+    <DesktopLinkItem
+      :to="{ name: 'pools', params: { networkSlug } }"
+      :active="isActive('pools')"
+    >
       {{ $t('pool') }}
     </DesktopLinkItem>
     <DesktopLinkItem
@@ -36,7 +42,7 @@ function isActive(page: string): boolean {
       :active="isActive('trade')"
       @click="trackGoal(Goals.ClickNavSwap)"
     >
-      {{ $t('swap') }}
+      {{ $t('trade') }}
     </DesktopLinkItem>
     <DesktopLinkItem
       :to="{ name: 'claim', params: { networkSlug } }"
@@ -66,7 +72,7 @@ function isActive(page: string): boolean {
       :active="isActive('vebal')"
       @click="trackGoal(Goals.ClickNavVebal)"
     >
-      veBAL
+      DAO
     </DesktopLinkItem>
   </div>
 </template>

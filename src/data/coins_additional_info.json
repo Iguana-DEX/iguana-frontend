@@ -1,0 +1,130 @@
+{
+  "BUSD": {
+    "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56/logo.png"
+  },
+  "BTC": {
+    "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
+  },
+  "ETH": {
+    "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+  },
+  "BNB": {
+    "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+  },
+  "XRP": {
+    "address": "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE/logo.png"
+  },
+  "DOGE": {
+    "address": "0xbA2aE424d960c26247Dd6c32edC70B295c744C43",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbA2aE424d960c26247Dd6c32edC70B295c744C43/logo.png"
+  },
+  "ADA": {
+    "address": "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+    "logoURI": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
+  },
+  "MATIC": {
+    "address": "0xCC42724C6683B7E57334c4E856f4c9965ED682bD",
+    "logoURI": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912"
+  },
+  "DOT": {
+    "address": "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
+    "logoURI": "https://assets.coingecko.com/coins/images/12171/large/polkadot.png?1639712644"
+  },
+  "LTC": {
+    "symbol": "LTC",
+    "address": "0x4338665CBB7B2485A8855A139b75D5e34AB0DB94",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x4338665CBB7B2485A8855A139b75D5e34AB0DB94/logo.png"
+  },
+  "SHIB": {
+    "symbol": "SHIB",
+    "address": "0x2859e4544C4bB03966803b044A93563Bd2D0DD4D",
+    "logoURI": "https://assets.coingecko.com/coins/images/11939/large/shiba.png?1622619446"
+  },
+  "SOL": {
+    "symbol": "SOL",
+    "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+    "logoURI": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422"
+  },
+  "TRX": {
+    "symbol": "TRX",
+    "address": "0x85EAC5Ac2F758618dFa09bDbe0cf174e7d574D5B",
+    "logoURI": "https://assets.coingecko.com/coins/images/1094/large/tron-logo.png?1547035066"
+  },
+  "UNI": {
+    "address": "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
+    "logoURI": "https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png?1600306604"
+  },
+  "AVAX": {
+    "address": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041",
+    "logoURI": "https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1670992574"
+  },
+  "OKB": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1642471050"
+  },
+  "ATOM": {
+    "address": "0x0Eb3a705fc54725037CC9e008bDede697f62F335",
+    "logoURI": "https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960"
+  },
+  "ETC": {
+    "address": "0x3d6545b08693daE087E957cb1180ee38B9e3c25E",
+    "logoURI": "https://assets.coingecko.com/coins/images/453/large/ethereum-classic-logo.png?1547034169"
+  },
+  "LINK": {
+    "address": "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
+    "logoURI": "https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1547034700"
+  },
+  "BCH": {
+    "address": "0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
+    "logoURI": "https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1594689492"
+  },
+  "APE": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/24383/large/apecoin.jpg?1647476455"
+  },
+  "CRO": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/7310/large/cro_token_logo.png?1669699773"
+  },
+  "LEO": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/8418/large/leo-token.png?1558326215"
+  },
+  "EOS": {
+    "address": "0x56b6fB708fC5732DEC1Afc8D8556423A2EDcCbD6",
+    "logoURI": "https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481"
+  },
+  "LUNA": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/8284/large/01_LunaClassic_color.png?1653547790"
+  },
+  "HBAR": {
+    "address": "",
+    "logoURI": "https://assets.coingecko.com/coins/images/3688/large/hbar.png?1637045634"
+  },
+  "1INCH": {
+    "address": "0x111111111117dC0aa78b770fA6A738034120C302",
+    "logoURI": "https://assets.coingecko.com/coins/images/13469/large/1inch-token.png?1608803028"
+  },
+  "CAKE": {
+    "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82/logo.png"
+  },
+  "USDT": {
+    "address": "0x55d398326f99059fF775485246999027B3197955",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x55d398326f99059fF775485246999027B3197955/logo.png"
+  },
+  "USDC": {
+    "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d/logo.png"
+  },
+  "DAI": {
+    "address": "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+    "logoURI": "https://raw.githubusercontent.com/Iguana-DEX/assets/main/assets/0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3.png"
+  }
+}
