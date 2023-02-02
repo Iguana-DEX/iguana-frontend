@@ -13,7 +13,7 @@ import {
   rpcProviderService,
 } from '../rpc-provider/rpc-provider.service';
 import { TransactionBuilder } from './transactions/transaction.builder';
-import { response } from 'msw';
+// import { response } from 'msw';
 
 interface Web3Profile {
   ens: string | null;
@@ -43,16 +43,16 @@ export default class Web3Service {
     this.txBuilder = new TransactionBuilder(signer);
   }
 
-  // async getSpaceIdName(address: string): Promise<string | null> {
-  //   const response = await fetch(
-  //     'https://api.prd.space.id/v1/getName?tld=&address=' + address
-  //   );
-  //   try {
-  //     return response.text();
-  //   } catch (error) {
-  //     return null;
-  //   }
-  // }
+  async getSpaceIdName(address: string): Promise<string | null> {
+    const response = await fetch(
+      'https://api.prd.space.id/v1/getName?tld=&address=' + address
+    );
+    try {
+      return response.text();
+    } catch (error) {
+      return null;
+    }
+  }
 
   async getEnsName(address: string): Promise<string | null> {
     try {
