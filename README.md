@@ -6,8 +6,7 @@
 
 ## Development
 
-This project will ONLY work properly if you use Node.js version 14.x (Fermium LTS) and NPM version 7+.
-Do NOT attempt to run "npm audit fix" to reduce the number of warnings.
+This project will ONLY work properly if you use Node.js version 16.x (Gallium LTS) and NPM version 8+.
 
 To setup the development environment first clone the repo:
 
