@@ -11,7 +11,7 @@ This project will ONLY work properly if you use Node.js version 16.x (Gallium LT
 To setup the development environment first clone the repo:
 
 ```bash
-git clone https://github.com/iguana-dex/iguana-frontend-v2.git && cd iguana-frontend-v2
+git clone https://github.com/iguana-dex/iguana-frontend.git && cd iguana-frontend
 ```
 
 ### Local env
