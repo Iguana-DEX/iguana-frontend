@@ -30,6 +30,7 @@
     "title": "Amp factor"
   },
   "analytics": "Analytics",
+  "andCollectFees": "And collect fees!",
   "apiErrorCodeDetails": {
     "DuplicateOrder": "There was another identical order already submitted. Please try again.",
     "InsufficientFee": "The signed fee is insufficient. It's possible that is higher now due to a change in the gas price, ether price, or the sell token price. Please try again to get an updated fee quote.",
@@ -93,7 +94,7 @@
   "build": "Build",
   "blog": "Blog",
   "boostedPool": "Balancer Boosted pool",
-  "byConnectingWallet": "By connecting a wallet, I agree to Iguana’s",
+  "byConnectingWallet": "By connecting a wallet, I agree to IguanaDEX’s",
   "cancel": "Cancel",
   "cancelling": "Cancelling",
   "change": "Change",
@@ -778,6 +779,7 @@
   "proportionalWithdrawal": "Proportional withdrawal",
   "protocolFees": "Protocol fees",
   "protocolIncentives": "Protocol revenue & veBAL incentives",
+  "putYourCoinsToWork": "Put your coins to work",
   "rank": "Rank (1{0})",
   "receipt": "Receipt",
   "receive": "Receive",

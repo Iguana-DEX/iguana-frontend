@@ -31,11 +31,6 @@ const wallets = ref(SupportedWallets.filter(id => id !== 'gnosis'));
         <span className="link">{{ $t('policies.termsOfUse') }}</span
         >,
       </router-link>
-      <router-link :to="{ name: 'cookies-policy' }" target="_blank">
-        <span className="link">{{
-          $t('policies.cookiesPolicy')
-        }}</span> </router-link
-      >,
       <span>{{ $t('useOf') }}&nbsp;</span>
       <button @click="onShowThirdParty">
         <BalLink>

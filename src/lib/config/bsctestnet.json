@@ -9,7 +9,6 @@
   "unknown": false,
   "rpc": "https://bsc-testnet.nodereal.io/v1/77e0f7b90d2f499196289fb0021242e3",
   "ws": "wss://bsc-testnet.nodereal.io/ws/v1/77e0f7b90d2f499196289fb0021242e3",
-  "loggingRpc": "",
   "explorer": "https://testnet.bscscan.com",
   "explorerName": "bscscan-testnet",
   "subgraph": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-goerli-v2",

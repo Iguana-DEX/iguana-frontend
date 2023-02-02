@@ -5,7 +5,7 @@ export const EXTERNAL_LINKS = {
     BalForGas:
       'https://docs.balancer.finance/core-concepts/bal-balancer-governance-token/bal-for-gas',
     BugBounty: 'https://immunefi.com/bounty/balancer/',
-    Docs: 'https://iguanadex.gitbook.io/iguanadex-docs/',
+    Docs: 'https://docs.iguanadex.com/',
     Forum: 'https://forum.balancer.finance/',
     Grants: 'http://grants.balancer.community/',
     Social: {

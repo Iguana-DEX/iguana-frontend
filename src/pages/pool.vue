@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HomePageHero />
+    <PoolsPageHero />
     <div class="xl:container xl:px-4 pt-10 md:pt-12 xl:mx-auto">
       <BalStack vertical>
         <div class="px-4 xl:px-0">
@@ -11,7 +11,7 @@
             </h3>
             <BalBtn
               v-if="upToMediumBreakpoint"
-              color="blue"
+              color="transparent-blue"
               size="sm"
               outline
               :class="{ 'mt-4': upToMediumBreakpoint }"
@@ -32,7 +32,7 @@
             />
             <BalBtn
               v-if="!upToMediumBreakpoint"
-              color="blue"
+              color="transparent-blue"
               size="sm"
               outline
               :class="{ 'mt-4': upToMediumBreakpoint }"
@@ -68,7 +68,7 @@
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 
-import HomePageHero from '@/components/heros/HomePageHero.vue';
+import PoolsPageHero from '@/components/heros/PoolsPageHero.vue';
 import TokenSearchInput from '@/components/inputs/TokenSearchInput.vue';
 import FeaturedProtocols from '@/components/sections/FeaturedProtocols.vue';
 import PoolsTable from '@/components/tables/PoolsTable/PoolsTable.vue';

@@ -10,7 +10,7 @@
           <div v-if="!hideDisconnect">
             <BalBtn
               outline
-              color="gray"
+              color="transparent-gray"
               size="xs"
               class="capitalize"
               @click="disconnectWallet"

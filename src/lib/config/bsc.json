@@ -9,7 +9,6 @@
   "unknown": false,
   "rpc": "https://bsc-mainnet.nodereal.io/v1/672561ef85dd4c94a8be7a26b996097a",
   "ws": "wss://bsc-mainnet.nodereal.io/ws/v1/672561ef85dd4c94a8be7a26b996097a",
-  "loggingRpc": "",
   "explorer": "https://bscscan.com",
   "explorerName": "bscscan",
   "subgraph": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",

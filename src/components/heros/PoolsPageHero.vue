@@ -1,32 +1,30 @@
 <template>
   <AppHero :class="classes">
     <span v-if="isDesktop">
-      <h1
-        class="headline"
-        v-text="$t('homeOfThe') + $t('digitalMarketIndex')"
-      />
-      <p class="subheadline" v-text="$t('cryptoInvestingSimple')" />
+      <h1 class="headline" v-text="$t('putYourCoinsToWork')" />
+      <p class="subheadline" v-text="$t('andCollectFees')" />
     </span>
     <span v-else>
-      <h1
-        class="headline_m"
-        v-text="$t('homeOfThe') + $t('digitalMarketIndex')"
-      />
-      <p class="subheadline_m" v-text="$t('cryptoInvestingSimple')" />
+      <h1 class="headline_m" v-text="$t('putYourCoinsToWork')" />
+      <p class="subheadline_m" v-text="$t('andCollectFees')" />
     </span>
     <div class="flex justify-center mt-6">
+      <HeroConnectWalletButton
+        v-if="!isWalletReady && !isWalletConnecting"
+        class="mr-4"
+      />
+
       <BalBtn
-        tag="router-link"
-        :to="{ name: 'trade', params: { networkSlug } }"
-        size="lg"
-        color="gradient-blue-green"
-        rounded
+        v-if="!upToLargeBreakpoint"
+        tag="a"
+        :href="EXTERNAL_LINKS.Balancer.Docs"
         target="_blank"
+        rel="noreferrer"
+        color="white"
         outline
       >
-        <span class="glow">
-          {{ $t('trade') }}
-        </span>
+        {{ $t('learnMore') }}
+        <BalIcon name="arrow-up-right" size="md" class="ml-1 text-bold" />
       </BalBtn>
     </div>
   </AppHero>
@@ -36,8 +34,10 @@
 import { computed } from 'vue';
 
 import AppHero from '@/components/heros/AppHero.vue';
-import useNetwork from '@/composables/useNetwork';
+import { EXTERNAL_LINKS } from '@/constants/links';
 import useWeb3 from '@/services/web3/useWeb3';
+
+import HeroConnectWalletButton from './HeroConnectWalletButton.vue';
 
 import useBreakpoints from '@/composables/useBreakpoints';
 
@@ -45,8 +45,7 @@ import useBreakpoints from '@/composables/useBreakpoints';
  * COMPOSABLES
  */
 const { isWalletReady, isWalletConnecting } = useWeb3();
-const { isDesktop } = useBreakpoints();
-const { networkSlug } = useNetwork();
+const { isDesktop, upToLargeBreakpoint } = useBreakpoints();
 
 /**
  * COMPUTED
@@ -86,35 +85,5 @@ const classes = computed(() => ({
 .learn_more {
   font-weight: 500;
   text-shadow: '0px 0px green';
-  background-color: rgb(96 165 250);
-}
-
-.glow::before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 100%;
-  background-image: linear-gradient(
-    120deg,
-    rgb(255 255 255 / 0%) 30%,
-    rgb(255 255 255 / 40%),
-    rgb(255 255 255 / 0%) 70%
-  );
-  top: 0;
-  left: -100px;
-  animation: shine 4s infinite linear;
-}
-@keyframes shine {
-  0% {
-    left: -100px;
-  }
-
-  20% {
-    left: 100%;
-  }
-
-  100% {
-    left: 100%;
-  }
 }
 </style>

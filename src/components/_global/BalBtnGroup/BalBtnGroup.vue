@@ -7,7 +7,9 @@
       size="sm"
       class="mr-2 capitalize w-18"
       v-bind="attrs_"
-      :color="modelValue === option.value ? 'blue' : 'gray'"
+      :color="
+        modelValue === option.value ? 'transparent-blue' : 'transparent-gray'
+      "
       @click="onSelect(option)"
     >
       {{ 'best' === option.label ? $t(option.label) : option.label }}

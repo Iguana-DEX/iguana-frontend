@@ -50,9 +50,12 @@ export default defineComponent({
       validator: (val: string): boolean =>
         [
           'primary',
+          'transparent', // Added by Styliann
+          'transparent-blue', // Added by Styliann
           'gradient',
           'gradient-reverse',
           'gradient-pink-yellow',
+          'gradient-blue-green',
           'gray',
           'red',
           'white',
@@ -79,7 +82,7 @@ export default defineComponent({
         case 'sm':
           return 'px-3 h-9 text-base';
         case 'lg':
-          return 'px-5 h-18 text-lg md:text-2xl';
+          return 'px-10 h-18 py-5 text-lg md:text-2xl';
         default:
           return 'px-4 h-12 text-base';
       }
@@ -101,7 +104,8 @@ export default defineComponent({
     });
 
     const bgGradientClasses = computed(() => {
-      if (props.outline) return 'bg-transparent hover:bg-gray-50';
+      if (props.color === 'transparent')
+        return 'bg-transparent hover:bg-gray-50';
 
       let fromColor = 'blue';
       let toColor = 'pink';
@@ -109,6 +113,9 @@ export default defineComponent({
       if (props.color === 'gradient-reverse') {
         fromColor = 'pink';
         toColor = 'blue';
+      } else if (props.color === 'gradient-blue-green') {
+        fromColor = 'blue';
+        toColor = 'green';
       } else if (props.color === 'gradient-pink-yellow') {
         fromColor = 'pink';
         toColor = 'yellow';
@@ -135,8 +142,10 @@ export default defineComponent({
 
     const bgColorClasses = computed(() => {
       if (props.color.includes('gradient')) return bgGradientClasses.value;
-      else if (props.outline) return 'bg-transparent';
-      else if (props.flat) return bgFlatClasses.value;
+      else if (props.color.includes('transparent')) return 'bg-transparent';
+      else if (props.outline) {
+        return 'bg-blue-400 hover:bg-blue-500';
+      } else if (props.flat) return bgFlatClasses.value;
       else if (props.color === 'white') {
         return 'bg-gray-50 hover:bg-white dark:bg-gray-800';
       } else {
@@ -158,7 +167,12 @@ export default defineComponent({
       if (props.outline) {
         if (props.disabled)
           return `border border-gray-200 dark:border-gray-700`;
-        return `border border-${props.color}-200 dark:border-${props.color}-700 dark:hover:border-${props.color}-600 dark:focus:border-${props.color}-600 hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200`;
+        else if (props.color === 'transparent-blue')
+          return `border border-blue-200 dark:border-blue-700 dark:hover:border-blue-600 dark:focus:border-blue-600 hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200`;
+        else if (props.color === 'transparent-gray')
+          return `border border-gray-200 dark:border-gray-700 dark:hover:border-gray-600 dark:focus:border-gray-600 hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200`;
+
+        return `border border-${props.color}-200 dark:border-${props.color}-700 dark:hover:border-${props.color}-600 dark:focus:border-${props.color}-600 hover:text-gray-600 dark:hover:text-gray-200 dark:focus:text-gray-200 bg-blend-darken`;
       }
       return 'border-none';
     });
@@ -166,12 +180,16 @@ export default defineComponent({
     const textColorClasses = computed(() => {
       if (props.outline && props.disabled)
         return 'text-gray-400 dark:text-gray-700';
-      if (props.outline && props.color === 'gradient') return 'text-purple-700';
-      if (props.color === 'white') {
+      // if (props.outline && props.color === 'gradient') return 'text-purple-700';
+      if (props.color === 'white' || props.color.includes('gradient')) {
         if (props.outline)
           return 'text-white hover:text-yellow-500 dark:hover:text-yellow-500';
         else return 'text-gray-800 hover:text-blue-600 dark:text-gray-100';
       }
+      if (props.outline && props.color === 'transparent-blue')
+        return `text-blue-500 dark:text-blue-400`;
+      if (props.outline && props.color === 'transparent-gray')
+        return `text-gray-500 dark:text-gray-400`;
       if (props.outline || props.flat)
         return `text-${props.color}-500 dark:text-${props.color}-400`;
       return 'text-white';
@@ -195,7 +213,6 @@ export default defineComponent({
 
     const shadowClasses = computed(() => {
       if (props.flat || props.disabled || props.loading) return '';
-      if (props.size === 'sm') return 'shadow hover:shadow-none';
       return 'shadow hover:shadow-none';
     });
 
@@ -235,6 +252,7 @@ export default defineComponent({
   transition: all 0.2s ease;
   text-decoration: none !important;
   line-height: 0;
+  position: relative;
 }
 
 .bal-btn:focus,

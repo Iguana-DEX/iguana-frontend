@@ -367,7 +367,11 @@ function onAlertMountChange() {
                 <BalBtn
                   :disabled="maxTokenAmountReached"
                   outline
-                  :color="maxTokenAmountReached ? 'gray' : 'blue'"
+                  :color="
+                    maxTokenAmountReached
+                      ? 'transparent-gray'
+                      : 'transparent-blue'
+                  "
                   size="sm"
                   @click="addTokenToPool"
                 >
