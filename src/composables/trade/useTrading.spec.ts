@@ -1,7 +1,7 @@
 import { provide, ref } from 'vue';
 
 import useTrading from '@/composables/trade/useTrading';
-import { SwapInfo } from '@balancer-labs/sdk';
+import { SwapInfo } from '@iguana-dex/sdk';
 
 import * as useSor from '@/composables/trade/useSor';
 import mockSorOutput from './__mocks__/mockSorOutput';

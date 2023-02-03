@@ -7,9 +7,10 @@ export const getNativeAssetId = (chainId: string): string => {
   const mapping = {
     '1': 'ethereum',
     '5': 'ethereum',
+    '10': 'ethereum',
     '42': 'ethereum',
-    '56': 'bsc',
-    '97': 'bsc-testnet',
+    '56': 'binancecoin',
+    '97': 'binancecoin',
     '137': 'matic-network',
     '42161': 'ethereum',
   };
@@ -21,6 +22,7 @@ export const getPlatformId = (chainId: string): string => {
   const mapping = {
     '1': 'ethereum',
     '5': 'ethereum',
+    '10': 'ethereum',
     '42': 'ethereum',
     '56': 'binance-smart-chain',
     '97': 'binance-smart-chain',

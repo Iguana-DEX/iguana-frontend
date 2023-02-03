@@ -303,6 +303,10 @@ export const GOERLI_POOLS: Pool[] = [
   },
 ];
 
+export const BSC_POOLS: Pool[] = [];
+
+export const BSCTESTNET_POOLS: Pool[] = [];
+
 export const ARBITRUM_POOLS: Pool[] = [
   {
     id: '0xb340b6b1a34019853cb05b2de6ee8ffd0b89a008000100000000000000000036',

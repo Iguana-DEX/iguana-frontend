@@ -22,7 +22,7 @@ import { configService } from '@/services/config/config.service';
 import useWeb3 from '@/services/web3/useWeb3';
 
 import { useTokens } from '@/providers/tokens.provider';
-import { PoolType } from '@balancer-labs/sdk';
+import { PoolType } from '@iguana-dex/sdk';
 
 export const POOL_CREATION_STATE_VERSION = '1.0';
 export const POOL_CREATION_STATE_KEY = 'poolCreationState';

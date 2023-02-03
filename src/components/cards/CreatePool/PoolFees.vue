@@ -13,7 +13,7 @@ const emit = defineEmits(['update:height']);
 /**
  * STATIC
  */
-const FIXED_FEE_OPTIONS = ['0.001', '0.003', '0.01'];
+const FIXED_FEE_OPTIONS = ['0.0005', '0.001', '0.003'];
 
 /**
  * STATE
@@ -72,7 +72,7 @@ const feeOptions = FIXED_FEE_OPTIONS.map(option => {
     label: fNum2(option, {
       style: 'percent',
       minimumFractionDigits: 1,
-      maximumFractionDigits: 1,
+      maximumFractionDigits: 2,
       fixedFormat: true,
     }),
     value: option,

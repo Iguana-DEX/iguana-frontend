@@ -3,7 +3,7 @@ import { indexOfAddress, selectByAddress } from '@/lib/utils';
 import { GasPriceService } from '@/services/gas-price/gas-price.service';
 import { Pool } from '@/services/pool/types';
 import { TransactionBuilder } from '@/services/web3/transactions/transaction.builder';
-import { BalancerSDK, PoolWithMethods } from '@balancer-labs/sdk';
+import { BalancerSDK, PoolWithMethods } from '@iguana-dex/sdk';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { formatFixed, parseFixed } from '@ethersproject/bignumber';
 import { Ref } from 'vue';

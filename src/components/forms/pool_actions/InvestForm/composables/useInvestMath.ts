@@ -1,4 +1,4 @@
-import { queryBatchSwapTokensIn, SOR } from '@balancer-labs/sdk';
+import { queryBatchSwapTokensIn, SOR } from '@iguana-dex/sdk';
 import { parseUnits } from '@ethersproject/units';
 import { BigNumber } from 'ethers';
 import { computed, Ref, ref, watch } from 'vue';

@@ -5,7 +5,7 @@ import {
   GraphQLArgs,
   PoolRepository as SDKPoolRepository,
   PoolsFallbackRepository,
-} from '@balancer-labs/sdk';
+} from '@iguana-dex/sdk';
 import { balancerAPIService } from '@/services/balancer/api/balancer-api.service';
 import { Pool } from '@/services/pool/types';
 import { TokenInfoMap } from '@/types/TokenList';

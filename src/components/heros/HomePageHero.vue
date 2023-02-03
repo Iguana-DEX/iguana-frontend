@@ -16,17 +16,19 @@
     </span>
     <div class="flex justify-center mt-6">
       <BalBtn
-        tag="router-link"
-        :to="{ name: 'trade', params: { networkSlug } }"
+        tag="a"
         size="lg"
         color="gradient-blue-green"
         rounded
         target="_blank"
         outline
       >
-        <span class="glow">
+        <router-link
+          :to="{ name: 'trade', params: { networkSlug } }"
+          class="glow"
+        >
           {{ $t('trade') }}
-        </span>
+        </router-link>
       </BalBtn>
     </div>
   </AppHero>

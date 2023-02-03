@@ -1,7 +1,7 @@
 import { configService } from '@/services/config/config.service';
 import { Pool } from '@/services/pool/types';
 import { PoolsQueryBuilder } from '@/types/subgraph';
-import { GraphQLArgs, GraphQLQuery } from '@balancer-labs/sdk';
+import { GraphQLArgs, GraphQLQuery } from '@iguana-dex/sdk';
 import axios from 'axios';
 
 import Service from '../../balancer-api.service';

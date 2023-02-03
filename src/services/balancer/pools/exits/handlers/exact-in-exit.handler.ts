@@ -1,7 +1,7 @@
 import { balancer } from '@/lib/balancer.sdk';
 import { GasPriceService } from '@/services/gas-price/gas-price.service';
 import { Pool } from '@/services/pool/types';
-import { BalancerSDK, PoolWithMethods } from '@balancer-labs/sdk';
+import { BalancerSDK, PoolWithMethods } from '@iguana-dex/sdk';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { Ref } from 'vue';
 import { ExitParams, ExitPoolHandler, QueryOutput } from './exit-pool.handler';
