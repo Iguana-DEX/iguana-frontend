@@ -42,7 +42,7 @@
     "vault": "",
     "weightedPoolFactory": "",
     "stablePoolFactory": "",
-    "weth": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+    "weth": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
     "rETH": "",
     "stMATIC": "",
     "stETH": "",
@@ -66,7 +66,6 @@
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",
     "alchemy": "cQGZUiTLRCFsQS7kbRxPJK4eH4fTTu88",
-    "balancerApi": "da2-7a3ukmnw7bexndpx5x522uafui",
     "nodereal": "672561ef85dd4c94a8be7a26b996097a"
   },
   "strategies": {

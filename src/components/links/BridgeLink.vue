@@ -16,7 +16,7 @@ const bridgeUrl = computed((): string => {
     case Network.OPTIMISM:
       return 'https://app.optimism.io/bridge/';
     case Network.BSC:
-      return 'https://app.multichain.org/';
+      return 'https://bsc.anyswap.exchange/bridge#/router';
     default:
       return '';
   }

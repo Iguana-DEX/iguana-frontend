@@ -9,12 +9,12 @@ interface Env {
   APP_ENV: string;
   NETWORK: Network;
   APP_DOMAIN: string;
-  APP_HOST: string;
   IPFS_NODE: string;
   BLOCKNATIVE_DAPP_ID: string;
   ALCHEMY_KEY: string;
   GRAPH_KEY: string;
   INFURA_PROJECT_ID: string;
+  NODEREAL_KEY: string;
   ENABLE_STABLE_POOLS: boolean;
   WALLET_SCREENING: boolean;
 }
@@ -23,8 +23,7 @@ export default class ConfigService {
     return {
       APP_ENV: import.meta.env.VITE_ENV || 'development',
       NETWORK: networkId.value,
-      APP_DOMAIN: import.meta.env.VITE_DOMAIN || 'app.balancer.fi',
-      APP_HOST: import.meta.env.VITE_HOST || 'balancer.fi',
+      APP_DOMAIN: import.meta.env.VITE_DOMAIN || 'iguanadex.com',
       IPFS_NODE: import.meta.env.VITE_IPFS_NODE || 'cloudflare-ipfs.com',
       BLOCKNATIVE_DAPP_ID:
         import.meta.env.VITE_BLOCKNATIVE_DAPP_ID || 'MISSING_KEY',
@@ -41,6 +40,10 @@ export default class ConfigService {
       INFURA_PROJECT_ID:
         import.meta.env.VITE_INFURA_PROJECT_ID ||
         this.getNetworkConfig(networkId.value).keys.infura ||
+        'MISSING_KEY',
+      NODEREAL_KEY:
+        import.meta.env.VITE_NODEREAL_KEY ||
+        this.getNetworkConfig(networkId.value).keys.nodereal ||
         'MISSING_KEY',
       ENABLE_STABLE_POOLS: import.meta.env.VITE_ENABLE_STABLE_POOLS === 'true',
       WALLET_SCREENING: import.meta.env.VITE_WALLET_SCREENING === 'true',

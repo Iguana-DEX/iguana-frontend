@@ -76,6 +76,7 @@ export interface Config {
   keys: {
     infura: string;
     alchemy: string;
+    nodereal?: string;
     graph?: string;
     balancerApi?: string;
   };

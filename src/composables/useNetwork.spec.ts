@@ -9,7 +9,7 @@ vi.mock('@/services/config/config.service', () => {
   return {
     configService: {
       env: {
-        APP_DOMAIN: 'app.balancer.fi',
+        APP_DOMAIN: 'iguanadex.com',
       },
     },
   };
