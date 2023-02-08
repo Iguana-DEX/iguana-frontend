@@ -66,6 +66,7 @@ export default class ConfigService {
     return template(networkConfig.rpc, {
       INFURA_KEY: networkConfig.keys.infura,
       ALCHEMY_KEY: networkConfig.keys.alchemy,
+      NODEREAL_KEY: networkConfig.keys.nodereal,
     });
   }
 
@@ -73,6 +74,7 @@ export default class ConfigService {
     return template(this.network.rpc, {
       INFURA_KEY: this.env.INFURA_PROJECT_ID,
       ALCHEMY_KEY: this.env.ALCHEMY_KEY,
+      NODEREAL_KEY: this.env.NODEREAL_KEY,
     });
   }
 
@@ -91,6 +93,7 @@ export default class ConfigService {
     return template(this.network.ws, {
       INFURA_KEY: this.env.INFURA_PROJECT_ID,
       ALCHEMY_KEY: this.env.ALCHEMY_KEY,
+      NODEREAL_KEY: this.env.NODEREAL_KEY,
     });
   }
 }

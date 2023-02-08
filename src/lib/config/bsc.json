@@ -9,18 +9,17 @@
   "unknown": false,
   "rpc": "https://bsc-mainnet.nodereal.io/v1/672561ef85dd4c94a8be7a26b996097a",
   "ws": "wss://bsc-mainnet.nodereal.io/ws/v1/672561ef85dd4c94a8be7a26b996097a",
+  "publicRpc": "https://bsc-dataseed2.ninicoin.io",
   "explorer": "https://bscscan.com",
   "explorerName": "bscscan",
-  "subgraph": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
-  "balancerApi": "https://berfqtb52bc4hetoouojoshqem.appsync-api.eu-west-2.amazonaws.com/graphql",
-  "poolsUrlV2": "https://storageapi.fleek.co/johngrantuk-team-bucket/poolsV2.json",
+  "subgraph": "",
+  "balancerApi": "",
+  "poolsUrlV2": "",
   "subgraphs": {
-    "main": [
-      "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-arbitrum-v2"
-    ],
+    "main": [""],
     "aave": "",
-    "gauge": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gauges-arbitrum",
-    "blocks": "https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-one-blocks"
+    "gauge": "",
+    "blocks": "https://api.thegraph.com/subgraphs/name/matthewlilley/bsc-blocks"
   },
   "supportsEIP1559": false,
   "supportsElementPools": false,

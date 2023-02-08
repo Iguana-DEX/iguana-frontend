@@ -35,6 +35,7 @@ export default class RpcProviderService {
     const rpcUrl = template(this.config.getNetworkConfig(networkKey).rpc, {
       INFURA_KEY: this.config.env.INFURA_PROJECT_ID,
       ALCHEMY_KEY: this.config.env.ALCHEMY_KEY,
+      NODEREAL_KEY: this.config.env.NODEREAL_KEY,
     });
     return new StaticJsonRpcBatchProvider(rpcUrl);
   }

@@ -12,6 +12,7 @@ import { GasPrice, GasSettings } from './providers/types';
 import { JsonRpcSigner, TransactionRequest } from '@ethersproject/providers';
 import ArbitrumProvider from './providers/arbitrum.provider';
 import BscProvider from './providers/bsc.provider';
+import BsctestnetProvider from './providers/bsctestnet.provider';
 
 const USE_BLOCKNATIVE_GAS_PLATFORM =
   import.meta.env.VITE_USE_BLOCKNATIVE_GAS_PLATFORM === 'false' ? false : true;
@@ -23,7 +24,8 @@ export class GasPriceService {
     private readonly blocknativeProvider = new BlocknativeProvider(),
     private readonly polygonProvider = new PolygonProvider(),
     private readonly arbitrumProvider = new ArbitrumProvider(),
-    private readonly bscProvider = new BscProvider()
+    private readonly bscProvider = new BscProvider(),
+    private readonly bsctestnetProvider = new BsctestnetProvider()
   ) {}
 
   public async getGasPrice(): Promise<GasPrice | null> {
@@ -36,6 +38,8 @@ export class GasPriceService {
         return await this.arbitrumProvider.getGasPrice();
       case '56':
         return await this.bscProvider.getGasPrice();
+      case '97':
+        return await this.bsctestnetProvider.getGasPrice();
       default:
         return null;
     }
@@ -48,8 +52,14 @@ export class GasPriceService {
   ): Promise<GasSettings> {
     let gasSettings: GasSettings = {};
 
-    const gasLimit = await signer.estimateGas(options);
-    gasSettings.gasLimit = this.formatGasLimit(gasLimit.toNumber());
+    if (this.configService.network.key == '97') {
+      const gasPrice = await this.getGasPrice();
+      // BSC Testnet only, using maxPriorityFeePerGas field to store gasEstimate
+      gasSettings.gasLimit = gasPrice?.maxPriorityFeePerGas;
+    } else {
+      const gasLimit = await signer.estimateGas(options);
+      gasSettings.gasLimit = this.formatGasLimit(gasLimit.toNumber());
+    }
 
     if (this.shouldSetGasPriceSettings(options)) {
       gasSettings = await this.setGasPriceSettings(
@@ -70,11 +80,17 @@ export class GasPriceService {
   ): Promise<GasSettings> {
     let gasSettings: GasSettings = {};
 
-    const gasLimit = await contractWithSigner.estimateGas[action](
-      ...params,
-      options
-    );
-    gasSettings.gasLimit = this.formatGasLimit(gasLimit.toNumber());
+    if (this.configService.network.key == '97') {
+      const gasPrice = await this.getGasPrice();
+      // BSC Testnet only, using maxPriorityFeePerGas field to store gasEstimate
+      gasSettings.gasLimit = gasPrice?.maxPriorityFeePerGas;
+    } else {
+      const gasLimit = await contractWithSigner.estimateGas[action](
+        ...params,
+        options
+      );
+      gasSettings.gasLimit = this.formatGasLimit(gasLimit.toNumber());
+    }
 
     if (this.shouldSetGasPriceSettings(options)) {
       gasSettings = await this.setGasPriceSettings(

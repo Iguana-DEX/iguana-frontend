@@ -1,6 +1,6 @@
 {
-  "name": "@iguana-dex/iguana-frontend-v2",
-  "version": "0.0.3",
+  "name": "@iguana-dex/iguana-frontend",
+  "version": "0.0.4",
   "engines": {
     "node": "=16",
     "npm": ">=8"
@@ -48,6 +48,7 @@
     "@ethersproject/contracts": "~5.7.0",
     "@ethersproject/providers": "~5.7.0",
     "@ethersproject/units": "~5.7.0",
+    "@iguana-dex/sdk": "^0.0.6",
     "@georgeroman/balancer-v2-pools": "^0.0.5",
     "@gnosis.pm/safe-apps-provider": "^0.6.0",
     "@gnosis.pm/safe-apps-sdk": "4.0.0",
@@ -149,9 +150,8 @@
     "*.{css,vue}": "stylelint --fix"
   },
   "license": "MIT",
-  "repository": "iguana-dex/iguana-frontend-v2",
+  "repository": "iguana-dex/iguana-frontend",
   "dependencies": {
-    "@iguana-dex/sdk": "^0.0.2",
     "coingecko-api": "^1.0.10",
     "papaparse": "^5.3.2"
   }
