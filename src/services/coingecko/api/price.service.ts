@@ -279,4 +279,30 @@ export class PriceService {
       throw error;
     }
   }
+
+  /**
+   * Added by Styliann
+   */
+  async getTokensWithChangeNEW(addresses: string[]): Promise<TokenPrices> {
+    const addressString = addresses.join(',');
+
+    try {
+      const endpoint = `/simple/token_price/binance-smart-chain?contract_addresses=${addressString}&vs_currencies=usd&include_24hr_change=true&precision=4`;
+
+      const results = await retryPromiseWithDelay(
+        this.client.get<PriceResponse>(endpoint),
+        3,
+        2000
+      );
+
+      return results;
+    } catch (error) {
+      console.error(
+        'Unable to fetch token prices and 24hchange',
+        addresses,
+        error
+      );
+      throw error;
+    }
+  }
 }

@@ -9,8 +9,8 @@ const network = ((): Network => {
       return Network.MAINNET;
     case '5':
       return Network.GOERLI;
-    case '10':
-      return Network.OPTIMISM;
+    // case '10':
+    //   return Network.OPTIMISM;
     case '56':
       return Network.BSC;
     case '97':

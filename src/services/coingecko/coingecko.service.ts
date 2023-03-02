@@ -15,7 +15,7 @@ export const getNativeAssetId = (chainId: string): string => {
     '42161': 'ethereum',
   };
 
-  return mapping[chainId] || 'ethereum';
+  return mapping[chainId] || 'binancecoin';
 };
 
 export const getPlatformId = (chainId: string): string => {
@@ -30,7 +30,7 @@ export const getPlatformId = (chainId: string): string => {
     '42161': 'arbitrum-one',
   };
 
-  return mapping[chainId] || 'ethereum';
+  return mapping[chainId] || 'binance-smart-chain';
 };
 
 export class CoingeckoService {

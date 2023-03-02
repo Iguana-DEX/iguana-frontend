@@ -181,7 +181,11 @@ export default defineComponent({
       if (props.outline && props.disabled)
         return 'text-gray-400 dark:text-gray-700';
       // if (props.outline && props.color === 'gradient') return 'text-purple-700';
-      if (props.color === 'white' || props.color.includes('gradient')) {
+      if (
+        props.color === 'white' ||
+        props.color.includes('gradient') ||
+        props.color === 'transparent'
+      ) {
         if (props.outline)
           return 'text-white hover:text-yellow-500 dark:hover:text-yellow-500';
         else return 'text-gray-800 hover:text-blue-600 dark:text-gray-100';

@@ -146,7 +146,7 @@ function getTrustWalletAssetsURI(
     [Network.ARBITRUM]: 'arbitrum',
     [Network.POLYGON]: 'polygon',
     [Network.GOERLI]: 'goerli',
-    [Network.OPTIMISM]: 'optimism',
+    // [Network.OPTIMISM]: 'optimism',
     [Network.BSC]: 'bsc',
     [Network.BSCTESTNET]: 'bsc-testnet',
   };

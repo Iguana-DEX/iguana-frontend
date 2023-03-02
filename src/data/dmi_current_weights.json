@@ -6,7 +6,7 @@
     "price": 17242.3344988387,
     "volume": 3904685541.0733347,
     "realMarketCap": 357006721159.4556,
-    "weight": 0.2671456427
+    "weight": 0.26715
   },
   {
     "symbol": "ETH",
@@ -15,7 +15,7 @@
     "price": 1327.0828833471,
     "volume": 1490688740.9709945,
     "realMarketCap": 163555171436.7822,
-    "weight": 0.1808181573
+    "weight": 0.18082
   },
   {
     "symbol": "XRP",
@@ -24,7 +24,7 @@
     "price": 0.3478886886,
     "volume": 230858877.34201378,
     "realMarketCap": 34779827212.06927,
-    "weight": 0.0833822498
+    "weight": 0.08338
   },
   {
     "symbol": "BNB",
@@ -33,7 +33,7 @@
     "price": 274.3706557987,
     "volume": 116370132.56274302,
     "realMarketCap": 29714320387.731693,
-    "weight": 0.0770713204
+    "weight": 0.07707
   },
   {
     "symbol": "DOT",
@@ -42,7 +42,7 @@
     "price": 4.878789362,
     "volume": 37494034.22245483,
     "realMarketCap": 16140797276.054264,
-    "weight": 0.0568031461
+    "weight": 0.0568
   },
   {
     "symbol": "DOGE",
@@ -51,7 +51,7 @@
     "price": 0.0760224444,
     "volume": 229990134.2159833,
     "realMarketCap": 14528935252.236181,
-    "weight": 0.0538923092
+    "weight": 0.05389
   },
   {
     "symbol": "SOL",
@@ -60,7 +60,7 @@
     "price": 15.9361917952,
     "volume": 411597965.11715335,
     "realMarketCap": 12011725589.040846,
-    "weight": 0.0490018639
+    "weight": 0.049
   },
   {
     "symbol": "ADA",
@@ -69,7 +69,7 @@
     "price": 0.3149674025,
     "volume": 163455564.60146254,
     "realMarketCap": 11855441812.198555,
-    "weight": 0.0486820402
+    "weight": 0.04868
   },
   {
     "symbol": "AVAX",
@@ -78,7 +78,7 @@
     "price": 12.4083745678,
     "volume": 44348470.1967524,
     "realMarketCap": 8926537474.347475,
-    "weight": 0.0422426753
+    "weight": 0.04224
   },
   {
     "symbol": "MATIC",
@@ -87,12 +87,12 @@
     "price": 0.8397506201,
     "volume": 99638910.18757348,
     "realMarketCap": 8392912948.707806,
-    "weight": 0.0409605951
+    "weight": 0.04096
   },
   {
-    "symbol": "BUSD",
-    "name": "Binance USD",
-    "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+    "symbol": "USDT",
+    "name": "Tether USD",
+    "address": "0x55d398326f99059fF775485246999027B3197955",
     "price": 1.0,
     "volume": 460819894.3168481,
     "realMarketCap": 0,

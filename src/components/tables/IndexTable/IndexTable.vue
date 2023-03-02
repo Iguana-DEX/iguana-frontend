@@ -262,14 +262,6 @@ function formatCoinChange(change) {
   change = Math.round(change * 10) / 10;
   const formattedChange = change.toString() + '%';
 
-  // let formattedChange = '0%';
-
-  // if (change > 0) {
-  //   formattedChange = change.toString() + '%';
-  // } else if (change < 0) {
-  //   formattedChange = change.toString() + '%';
-  // }
-
   return formattedChange;
 }
 </script>

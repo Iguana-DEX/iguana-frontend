@@ -149,7 +149,7 @@
     "*.{md,json,yaml,html}": "prettier --write",
     "*.{css,vue}": "stylelint --fix"
   },
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "repository": "iguana-dex/iguana-frontend",
   "dependencies": {
     "coingecko-api": "^1.0.10",

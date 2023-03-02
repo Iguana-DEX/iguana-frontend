@@ -32,7 +32,7 @@ export const networkLabelMap = {
   [Network.POLYGON]: 'Polygon',
   [Network.ARBITRUM]: 'Arbitrum',
   [Network.GOERLI]: 'Goerli',
-  [Network.OPTIMISM]: 'Optimism',
+  // [Network.OPTIMISM]: 'Optimism',
   [Network.BSC]: 'BNB Chain',
   [Network.BSCTESTNET]: 'BSC Testnet',
 };
@@ -56,7 +56,8 @@ export const isBscTestnet = computed(
 export const isL2 = computed(
   () => isPolygon.value || isArbitrum.value || isOptimism.value || isBsc.value
 );
-export const isTestnet = computed(() => isGoerli.value || isBscTestnet.value);
+// export const isTestnet = computed(() => isGoerli.value || isBscTestnet.value);
+export const isTestnet = false;
 
 /**
  * METHODS

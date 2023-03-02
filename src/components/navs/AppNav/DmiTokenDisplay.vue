@@ -2,7 +2,7 @@
 import { coingeckoService } from '@/services/coingecko/coingecko.service';
 
 const dmiTokenPrice = await coingeckoService.prices.getTokens([
-  '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
+  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
 ]);
 </script>
 
@@ -17,7 +17,7 @@ const dmiTokenPrice = await coingeckoService.prices.getTokens([
       v-if="dmiTokenPrice"
       class="pt-1 pr-2 text-lg font-bold cursor-pointer"
     >
-      {{ dmiTokenPrice['0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984']['usd'] }}
+      {{ dmiTokenPrice[Object.keys(dmiTokenPrice)[0]]['usd'] }}
     </span>
   </suspense>
 </template>

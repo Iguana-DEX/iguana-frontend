@@ -51,7 +51,7 @@ const emit = defineEmits<{
   (e: 'close'): void;
 }>();
 
-const services = ['nodereal', 'alchemy', 'the-graph', 'sentry'];
+const services = ['nodereal', 'thirdweb', 'the-graph', 'sentry'];
 </script>
 
 <style scoped>

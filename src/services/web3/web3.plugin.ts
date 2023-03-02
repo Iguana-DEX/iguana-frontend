@@ -59,7 +59,7 @@ export const networkMap = {
   [Network.MAINNET]: 'mainnet',
   [Network.GOERLI]: 'goerli',
   [Network.POLYGON]: 'polygon',
-  [Network.OPTIMISM]: 'optimism',
+  // [Network.OPTIMISM]: 'optimism',
   [Network.BSC]: 'bsc',
   [Network.BSCTESTNET]: 'bsc-testnet',
   [Network.ARBITRUM]: 'arbitrum-one',

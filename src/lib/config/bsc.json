@@ -7,8 +7,8 @@
   "slug": "bsc",
   "network": "bsc",
   "unknown": false,
-  "rpc": "https://bsc-mainnet.nodereal.io/v1/672561ef85dd4c94a8be7a26b996097a",
-  "ws": "wss://bsc-mainnet.nodereal.io/ws/v1/672561ef85dd4c94a8be7a26b996097a",
+  "rpc": "https://bsc-mainnet.nodereal.io/v1/{{NODEREAL_KEY}}",
+  "ws": "wss://bsc-mainnet.nodereal.io/ws/v1/{{NODEREAL_KEY}}",
   "publicRpc": "https://bsc-dataseed2.ninicoin.io",
   "explorer": "https://bscscan.com",
   "explorerName": "bscscan",
@@ -65,7 +65,7 @@
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",
     "alchemy": "cQGZUiTLRCFsQS7kbRxPJK4eH4fTTu88",
-    "nodereal": "672561ef85dd4c94a8be7a26b996097a"
+    "nodereal": "77e0f7b90d2f499196289fb0021242e3"
   },
   "strategies": {
     "0": {

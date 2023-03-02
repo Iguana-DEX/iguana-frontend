@@ -801,9 +801,10 @@
   "sell": "Sell",
   "send": "Send",
   "services": {
-    "nodereal": "NodeReal's MegaNode RPC service is used to query BNB Chain data and construct contract calls.",
+    "nodereal": "NodeReal's MegaNode RPC service is used to query on-chain data and construct contract calls.",
     "infura": "Used to fetch data on the Avalanche C-Chain and construct contract calls via the Infura API.",
     "alchemy": "Used to fetch data on the Polygon network and construct contract calls via the Alchemy API.",
+    "thirdweb": "Thirdweb is a web3 development framework - a suite of tools used to connect apps to blockchains.",
     "the-graph": "Used to fetch blockchain data from The Graph’s hosted service.",
     "fathom-analytics": "Used to understand user behavior on the site and marketing performance.",
     "TRM-labs": "Used to securely collect wallet addresses and shares it with TRM Labs Inc. for risk and compliance reasons.",

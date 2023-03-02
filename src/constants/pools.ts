@@ -51,6 +51,8 @@ export type NamedPools = {
   };
   veBAL: string;
   DMI: string;
+  USDI: string;
+  Iguana: string;
 };
 
 export type Pools = {
@@ -143,7 +145,9 @@ const POOLS_BSC: Pools = {
 };
 
 const POOLS_BSCTESTNET: Pools = {
-  IdsMap: {},
+  IdsMap: {
+    USDI: '0x2bddff056afe8792b7c570c503928d9e7a97dc68000000000000000000000014',
+  },
   Pagination: {
     PerPage: 10,
     PerPool: 10,
@@ -168,14 +172,8 @@ const POOLS_BSCTESTNET: Pools = {
   ],
   Stable: {
     AllowList: [
-      // '0x9be7de742865d021c0e8fb9d64311b2c040c1ec1000200000000000000000012', // arbitrum
-      // '0x1533a3278f3f9141d5f820a184ea4b017fce2382000000000000000000000016', // arbitrum
-      // '0x386b5d43ba8b97c43d4afb4cdae7877a1b295e8a000000000000000000000020', // tusd arbitrum
-      // '0x0510ccf9eb3ab03c1508d3b9769e8ee2cfd6fdcf00000000000000000000005d', // mai
-      // '0x5a5884fc31948d59df2aeccca143de900d49e1a300000000000000000000006f', // VST
-      // '0xd89746affa5483627a87e55713ec1905114394950002000000000000000000bf', // fluid stable
-      // '0x7bceaa9c5e7f4836fec3bce2d5346637c9b13970000000000000000000000102', // vesta new stable
-      // '0xfb5e6d0c1dfed2ba000fbc040ab8df3615ac329c000000000000000000000159', // stETH
+      // [ These should be poolIds, not addresses ]
+      '0x2bddff056afe8792b7c570c503928d9e7a97dc68000000000000000000000014', // ComposableStable USDC / USDT
     ],
   },
   Investment: {
@@ -192,7 +190,12 @@ const POOLS_BSCTESTNET: Pools = {
       // '0x0510ccf9eb3ab03c1508d3b9769e8ee2cfd6fdcf00000000000000000000005d',
     ],
   },
-  Metadata: {},
+  Metadata: {
+    '0x2bddff056afe8792b7c570c503928d9e7a97dc68000000000000000000000014': {
+      name: 'USDI',
+      hasIcon: false,
+    },
+  },
   DisabledJoins: [],
 };
 
@@ -232,11 +235,11 @@ const POOLS_GOERLI: Pools = {
   ],
   Stable: {
     AllowList: [
-      '0x13acd41c585d7ebb4a9460f7c8f50be60dc080cd00000000000000000000005f',
-      '0xb60e46d90f2de35f7062a27d3a98749414036d5d000200000000000000000061',
-      '0xdcdd4a3d36dec8d57594e89763d069a7e9b223e2000000000000000000000062',
+      '0x13acd41c585d7ebb4a9460f7c8f50be60dc080cd00000000000000000000005f', // bb-a-USD [StablePhantomPool]
+      '0xb60e46d90f2de35f7062a27d3a98749414036d5d000200000000000000000061', // MetaStablePool
+      '0xdcdd4a3d36dec8d57594e89763d069a7e9b223e2000000000000000000000062', // StablePool
       '0xc957b1acceb21707b782eb8eee2ed8e20088463d000200000000000000000076',
-      '0x3d5981bdd8d3e49eb7bbdc1d2b156a3ee019c18e0000000000000000000001a7',
+      '0x3d5981bdd8d3e49eb7bbdc1d2b156a3ee019c18e0000000000000000000001a7', // bb-a-usd2 [ComposabelStablePool]
       '0x14f93df8a4e37bfdb49d2cec4789df7a010603d700000000000000000000011d',
       '0x00a62d31b6c776b6813543bc99ff265f7222dbe100000000000000000000011e',
       '0x0c925fce89a22e36ebd9b3c6e0262234e853d2f600000000000000000000019c',
@@ -509,7 +512,7 @@ const POOLS_POLYGON: Pools = {
       '0xaf5e0b5425de1f5a630a8cb5aa9d97b8141c908d000200000000000000000366',
       '0x8159462d255c1d24915cb51ec361f700174cd99400000000000000000000075d',
       '0xb20fc01d21a50d2c734c4a1262b4404d41fa7bf000000000000000000000075c',
-      '0xb54b2125b711cd183edd3dd09433439d5396165200000000000000000000075e', // mai / bb-am-USD
+      '0xb54b2125b711cd183edd3dd09433439d5396165200000000000000000000075e', // mai / bb-am-USD [COMPOSABLE STABLE]
       '0x48e6b98ef6329f8f0a30ebb8c7c960330d64808500000000000000000000075b', // bb-am-USD
       '0xa48d164f6eb0edc68bd03b56fa59e12f24499ad10000000000000000000007c4', // ageur stable
       '0x2d46979fd4c5f7a04f65111399cff3da2dab5bd9000000000000000000000807', // ankr stable
@@ -769,6 +772,7 @@ const POOLS_MAP = {
   [Network.MAINNET]: POOLS_MAINNET,
   [Network.POLYGON]: POOLS_POLYGON,
   [Network.ARBITRUM]: POOLS_ARBITRUM,
+  // [Network.OPTIMISM]: POOLS_OPTIMISM,
   [Network.BSC]: POOLS_BSC,
   [Network.BSCTESTNET]: POOLS_BSCTESTNET,
 };

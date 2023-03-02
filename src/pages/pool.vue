@@ -1,3 +1,39 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+
+import PoolsPageHero from '@/components/heros/PoolsPageHero.vue';
+import TokenSearchInput from '@/components/inputs/TokenSearchInput.vue';
+import FeaturedProtocols from '@/components/sections/FeaturedProtocols.vue';
+import PoolsTable from '@/components/tables/PoolsTable/PoolsTable.vue';
+import usePoolFilters from '@/composables/pools/usePoolFilters';
+import useBreakpoints from '@/composables/useBreakpoints';
+import useNetwork from '@/composables/useNetwork';
+import useWeb3 from '@/services/web3/useWeb3';
+import usePools from '@/composables/pools/usePools';
+
+// COMPOSABLES
+const router = useRouter();
+const { appNetworkConfig } = useWeb3();
+const isElementSupported = appNetworkConfig.supportsElementPools;
+const { selectedTokens, addSelectedToken, removeSelectedToken } =
+  usePoolFilters();
+
+const { pools, isLoading, poolsIsFetchingNextPage, loadMorePools } =
+  usePools(selectedTokens);
+const { upToMediumBreakpoint } = useBreakpoints();
+const { networkSlug, networkConfig } = useNetwork();
+
+const isPaginated = computed(() => pools.value.length >= 10);
+
+/**
+ * METHODS
+ */
+function navigateToCreatePool() {
+  router.push({ name: 'create-pool', params: { networkSlug } });
+}
+</script>
+
 <template>
   <div>
     <PoolsPageHero />
@@ -62,44 +98,6 @@
     </div>
   </div>
 </template>
-
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-
-import PoolsPageHero from '@/components/heros/PoolsPageHero.vue';
-import TokenSearchInput from '@/components/inputs/TokenSearchInput.vue';
-import FeaturedProtocols from '@/components/sections/FeaturedProtocols.vue';
-import PoolsTable from '@/components/tables/PoolsTable/PoolsTable.vue';
-import usePoolFilters from '@/composables/pools/usePoolFilters';
-import useBreakpoints from '@/composables/useBreakpoints';
-import useNetwork from '@/composables/useNetwork';
-import useWeb3 from '@/services/web3/useWeb3';
-import usePools from '@/composables/pools/usePools';
-
-// COMPOSABLES
-const router = useRouter();
-const { appNetworkConfig } = useWeb3();
-const isElementSupported = appNetworkConfig.supportsElementPools;
-const { selectedTokens, addSelectedToken, removeSelectedToken } =
-  usePoolFilters();
-
-const { pools, isLoading, poolsIsFetchingNextPage, loadMorePools } =
-  usePools(selectedTokens);
-const { upToMediumBreakpoint } = useBreakpoints();
-const { networkSlug, networkConfig } = useNetwork();
-
-const isPaginated = computed(() => pools.value.length >= 10);
-
-/**
- * METHODS
- */
-function navigateToCreatePool() {
-  router.push({ name: 'create-pool', params: { networkSlug } });
-}
-</script>
-
 
 <style>
 .pools-table-loading-height {

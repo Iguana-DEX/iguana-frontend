@@ -63,7 +63,7 @@ function navigateToGetVeBAL() {
             href="https://docs.balancer.fi/ecosystem/vebal-and-gauges"
             target="_blank"
             rel="noreferrer"
-            color="white"
+            color="transparent"
             class="hero-btn"
             outline
           >

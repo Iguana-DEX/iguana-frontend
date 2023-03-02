@@ -30,7 +30,8 @@ const networkFilters = [
   Network.MAINNET,
   Network.POLYGON,
   Network.ARBITRUM,
-  Network.OPTIMISM,
+  // Network.OPTIMISM,
+  Network.BSC,
 ];
 
 /**
