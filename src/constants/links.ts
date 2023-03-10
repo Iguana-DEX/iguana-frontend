@@ -49,4 +49,7 @@ export const EXTERNAL_LINKS = {
   Multichain: {
     Home: 'https://multichain.org',
   },
+  Dewhales: {
+    Twitter: 'https://twitter.com/DewhalesCapital',
+  },
 };

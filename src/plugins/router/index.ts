@@ -56,6 +56,10 @@ const PortfolioPage = () =>
   import(
     /* webpackChunkName: "PortfolioPage" */ /* webpackPrefetch: true */ '@/pages/portfolio.vue'
   );
+const PrivateRoundsPage = () =>
+  import(
+    /* webpackChunkName: "PrivateRoundsPage" */ '@/pages/private-rounds.vue'
+  );
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -172,6 +176,11 @@ const routes: RouteRecordRaw[] = [
     path: '/:networkSlug?',
     name: 'home',
     component: HomePage,
+  },
+  {
+    path: '/:networkSlug/private-rounds',
+    name: 'private-rounds',
+    component: PrivateRoundsPage,
   },
   {
     path: '/:pathMatch(.*)*',

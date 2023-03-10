@@ -56,8 +56,8 @@ export const isBscTestnet = computed(
 export const isL2 = computed(
   () => isPolygon.value || isArbitrum.value || isOptimism.value || isBsc.value
 );
+export const isTestnet = computed(() => isGoerli.value);
 // export const isTestnet = computed(() => isGoerli.value || isBscTestnet.value);
-export const isTestnet = false;
 
 /**
  * METHODS

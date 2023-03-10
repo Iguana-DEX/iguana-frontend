@@ -25,7 +25,7 @@ npm install
 Start the app:
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 The app should now be live at [http://localhost:8080](http://localhost:8080)

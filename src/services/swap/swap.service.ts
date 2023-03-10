@@ -48,6 +48,10 @@ export default class SwapService {
     }
     console.log('[Swap Service] batchSwapV2');
     const overrides: any = {};
+    // overrides.gasLimit = 7920027;
+    // overrides.gasPrice = 110338476996;
+    // overrides.maxFeePerGas = 383384769960;
+    // overrides.maxPriorityFeePerGas = 300847699;
 
     if (isSameAddress(tokenIn.address, AddressZero)) {
       overrides.value = tokenIn.amount;

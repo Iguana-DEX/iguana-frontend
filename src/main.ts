@@ -18,6 +18,11 @@ import Jazzicon from 'vue3-jazzicon/src/components';
 
 import Root from './Root.vue';
 
+import PrimeVue from 'primevue/config';
+import 'primevue/resources/themes/saga-blue/theme.css'; //theme
+import 'primevue/resources/primevue.min.css'; //core CSS
+import 'primeicons/primeicons.css'; //icons
+
 echarts.use([
   TooltipComponent,
   CanvasRenderer,
@@ -31,6 +36,9 @@ echarts.use([
 const app = createApp(Root);
 
 app.component('Jazzicon', Jazzicon);
+
+// PrimeVue
+app.use(PrimeVue, { ripple: true });
 
 registerPlugins(app);
 registerDirectives(app);

@@ -1,45 +1,36 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-
 import AppHero from '@/components/heros/AppHero.vue';
 import { EXTERNAL_LINKS } from '@/constants/links';
 import useWeb3 from '@/services/web3/useWeb3';
 
 import HeroConnectWalletButton from './HeroConnectWalletButton.vue';
-
 import useBreakpoints from '@/composables/useBreakpoints';
+
+import { computed } from 'vue';
+import useDarkMode from '@/composables/useDarkMode';
 
 /**
  * COMPOSABLES
  */
 const { isWalletReady, isWalletConnecting } = useWeb3();
-const { isDesktop, upToLargeBreakpoint } = useBreakpoints();
+const { upToLargeBreakpoint } = useBreakpoints();
+const { darkMode } = useDarkMode();
 
-/**
- * COMPUTED
- */
-const classes = computed(() => ({
-  ['h-64']: !isWalletReady.value && !isWalletConnecting.value,
-  ['h-60']: isWalletReady.value || isWalletConnecting.value,
-}));
-
-const bgHeader = '/images/backgrounds/bg-header.webp';
+const bgHeader = computed((): string => {
+  if (darkMode.value) {
+    return '/images/backgrounds/dewhales-capital.svg';
+  } else {
+    return '/images/backgrounds/dewhales-capital-light.svg';
+  }
+});
 </script>
 
 <template>
-  <AppHero :image="`url(${bgHeader})`" :class="classes">
-    <span v-if="isDesktop">
-      <h1 class="headline" v-text="$t('putYourCoinsToWork')" />
-      <p class="subheadline" v-text="$t('andCollectFees')" />
-    </span>
-    <span v-else>
-      <h1 class="headline_m" v-text="$t('putYourCoinsToWork')" />
-      <p class="subheadline_m" v-text="$t('andCollectFees')" />
-    </span>
-    <div class="flex justify-center mt-6">
+  <AppHero :image="`url(${bgHeader})`" class="mt-14 w-full aspect-[723/76.5]">
+    <div class="flex justify-center mt-6 height=400px">
       <HeroConnectWalletButton
         v-if="!isWalletReady && !isWalletConnecting"
-        class="mr-4"
+        class="top-24 mr-4"
       />
 
       <BalBtn
@@ -48,7 +39,8 @@ const bgHeader = '/images/backgrounds/bg-header.webp';
         :href="EXTERNAL_LINKS.Balancer.Docs"
         target="_blank"
         rel="noreferrer"
-        color="white"
+        color=""
+        class="top-24"
         outline
       >
         {{ $t('learnMore') }}

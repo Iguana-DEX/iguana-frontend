@@ -32,6 +32,8 @@ export class GasPriceService {
     switch (this.configService.network.key) {
       case '1':
         return await this.blocknativeProvider.getGasPrice();
+      case '5':
+        return await this.blocknativeProvider.getGasPrice();
       case '137':
         return await this.polygonProvider.getGasPrice();
       case '42161':
@@ -84,6 +86,9 @@ export class GasPriceService {
       const gasPrice = await this.getGasPrice();
       // BSC Testnet only, using maxPriorityFeePerGas field to store gasEstimate
       gasSettings.gasLimit = gasPrice?.maxPriorityFeePerGas;
+    } else if (this.configService.network.key == '5') {
+      // GOERLI
+      gasSettings.gasLimit = 7920027;
     } else {
       const gasLimit = await contractWithSigner.estimateGas[action](
         ...params,

@@ -66,10 +66,12 @@ const isLoadingLockAndStaking = computed(
 const isLoadingTotalValue = computed(
   (): boolean => isLoadingUserPools.value || isLoadingLockAndStaking.value
 );
+
+const bgHeader = '/images/backgrounds/bg-header.webp';
 </script>
 
 <template>
-  <AppHero :class="classes">
+  <AppHero :image="`url(${bgHeader})`" :class="classes">
     <h1
       class="mb-2 font-body text-base font-medium text-white opacity-90"
       v-text="$t('myBalancerBalance')"

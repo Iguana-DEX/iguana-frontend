@@ -1,5 +1,32 @@
+<script lang="ts" setup>
+import { computed } from 'vue';
+
+import AppHero from '@/components/heros/AppHero.vue';
+import useNetwork from '@/composables/useNetwork';
+import useWeb3 from '@/services/web3/useWeb3';
+
+import useBreakpoints from '@/composables/useBreakpoints';
+
+/**
+ * COMPOSABLES
+ */
+const { isWalletReady, isWalletConnecting } = useWeb3();
+const { isDesktop } = useBreakpoints();
+const { networkSlug } = useNetwork();
+
+/**
+ * COMPUTED
+ */
+const classes = computed(() => ({
+  ['h-64']: !isWalletReady.value && !isWalletConnecting.value,
+  ['h-60']: isWalletReady.value || isWalletConnecting.value,
+}));
+
+const bgHeader = '/images/backgrounds/bg-header.webp';
+</script>
+
 <template>
-  <AppHero :class="classes">
+  <AppHero :image="`url(${bgHeader})`" :class="classes">
     <span v-if="isDesktop">
       <h1
         class="headline"
@@ -33,31 +60,6 @@
     </div>
   </AppHero>
 </template>
-
-<script lang="ts" setup>
-import { computed } from 'vue';
-
-import AppHero from '@/components/heros/AppHero.vue';
-import useNetwork from '@/composables/useNetwork';
-import useWeb3 from '@/services/web3/useWeb3';
-
-import useBreakpoints from '@/composables/useBreakpoints';
-
-/**
- * COMPOSABLES
- */
-const { isWalletReady, isWalletConnecting } = useWeb3();
-const { isDesktop } = useBreakpoints();
-const { networkSlug } = useNetwork();
-
-/**
- * COMPUTED
- */
-const classes = computed(() => ({
-  ['h-64']: !isWalletReady.value && !isWalletConnecting.value,
-  ['h-60']: isWalletReady.value || isWalletConnecting.value,
-}));
-</script>
 
 <style>
 .headline {

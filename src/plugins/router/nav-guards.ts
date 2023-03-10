@@ -103,7 +103,7 @@ function applyNetworkPathRedirects(router: Router): Router {
         if (to.redirectedFrom || !nonNetworkedRoutes.includes(to.fullPath)) {
           const newPath = to.redirectedFrom?.fullPath ?? to.fullPath;
           const newNetwork = newPath.includes('/pool')
-            ? config[Network.MAINNET].slug
+            ? config[Network.BSC].slug
             : networkSlug;
           router.push({ path: `/${newNetwork}${newPath}` });
         } else {
