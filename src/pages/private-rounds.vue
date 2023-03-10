@@ -60,7 +60,7 @@ const investmentRounds = [
   {
     id: 2,
     title: 'IguanaDEX',
-    image: 'http://localhost:8080/src/assets/images/logo-light.webp',
+    image: 'https://www.iguanadex.com/assets/logo-light-3549251d.webp',
     start: 1678372202,
     end: 1678372322,
     story: 'Lorem ipsum',
