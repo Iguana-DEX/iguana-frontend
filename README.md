@@ -72,16 +72,6 @@ npm run build:watch
 
 This mode is useful when you need to reproduce/fix bugs/issues in a **production-like** environment.
 
-## Self-Hosting
-
-As we believe in decentralization at all layers, we've made it easy to host your own Balancer Frontend.
-
-### Vercel Deployment
-
-You'll need your own [Infura](https://infura.io), [Alchemy](https://www.alchemy.com/),
-[Blocknative](https://blocknative.com) and [NodeReal](https://nodereal.io/meganode) API keys in order to fetch data and
-execute transactions.
-
 ## Vite setup
 
 This app is powered by [vite](https://vitejs.dev/), which:
@@ -89,7 +79,7 @@ This app is powered by [vite](https://vitejs.dev/), which:
 - Runs a development dev server with [esbuild](https://esbuild.github.io/).
 - Builds production bundle with [Rollup](https://rollupjs.org/guide/en/).
 
-Both tools above rely on native ES modules but our app also depends on libraries like [ethers.js](https://docs.ethers.io/) which use Node.js built-in modules (like Buffer, stream or crypto) that require browser polyfills. Thats why our `vite.config.ts` uses `node-pollyfills` and [rollup-plugin-polyfill-node](https://www.npmjs.com/package/rollup-plugin-polyfill-node).
+Both tools above rely on native ES modules but our app also depends on libraries like [ethers.js](https://docs.ethers.io/) which use Node.js built-in modules (like Buffer, stream or crypto) that require browser polyfills. This is why our `vite.config.ts` uses `node-pollyfills` and [rollup-plugin-polyfill-node](https://www.npmjs.com/package/rollup-plugin-polyfill-node).
 
 ### unplugin-vue magic 🪄
 
@@ -140,30 +130,36 @@ There is also a "Time Machine" tab providing a wealth of information and charts 
 
 This is meant as information, something that users refer to quite often. Iguana uses it to promote the trading part of the DApp along with the option to _buy the DMI token off-chain_.
 
-## B) Swaps tab:
+## B) Pool tab:
 
-Here "trader" iggies are able to swap a coin for another directly on-chain as long as both the token they're selling and the one they're buying are part of the 11 coins in the DMI pool (top 10 coins by real market cap + BUSD)
+Here investors can deposit to the **main DMI pool** - which is a SMM ("Smart Automated Market-Maker) with weights set to match the Digital Market Index. Note that the Digital Market Index's weights change at 12am UTC on the 1st of each month.
 
-The swap fee is 0.15%, out of which 0.12% are redistributed to the Liquidity Providers (see **1.**) and 0.03% go to the $IGN token holders.
-This swap fee is collected in the token being sold, e.g. if an iggie is swapping 1 BTC for ETH, 0.0015 BTC would be collected as swap fees.
+## C) Trade tab:
 
-## C) DMI Pool tab:
+### a) Spot trading:
 
-Here "saver" iggies can deposit to the **main DMI pool** - which is a **Balancer v2 weighted pool** (tweaked for IguanaDEX's needs) with weights set to match the Digital Market Index. Note that the Digital Market Index's weights change at 12am UTC on the 1st of each month.
+Here traders are able to swap a coin for another directly on-chain as long as both the token they're selling and the one they're buying are part of the 11 coins in the DMI pool (top 10 coins by real market cap + USDT)
 
-## D) DMI Borrow Market tab:
+The swap fee differs depending on the pair you are trading.
+This swap fee is collected in the token being sold, e.g. if a trader is swapping 1 BTC for ETH (swap fee 0.05%), then 0.0005 BTC will be collected as swap fees.
 
-Here "savvy" iggies can either provide DMI tokens and borrow some BUSD against them or vice-versa. The interest rate on the DMI and/or BUSD borrowed is based on a utilisation curve. This market will be based on Aave v3's isolated markets implementation (?).
+### b) Perpetual swap trading:
 
-It is important that "arbitrager" iggies are able to borrow DMI tokens so that they can _short-sell_ spot DMI tokens and buy perpetual swaps against them in cases where the perpetual swap trades lower than the spot DMI token. This will be incentivised by a classic funding mechanism in addition to the opportunity to capture small price differentials - more on this in **4.**
-
-## E) DMI Perpetual Swaps tab:
-
-"Leveraged trader" or "Hedger" iggies can go long or short the Digital Market Index with up to 50x leverage cheaply and in large size.
-The trading of those perpetual swaps underpinned by an auction mechanism occuring twice a day, at 9am UTC and 9pm UTC.
+Leveraged traders and hedgers can go long or short the Digital Market Index with up to 50x leverage in a cost-effective way and in decent size.
+The trading of those perpetual swaps is underpinned by an auction mechanism occuring twice a day, at 9am UTC and 9pm UTC.
 
 This process is similar to Nasdaq's [Opening Cross](https://www.investopedia.com/terms/o/opening-cross.asp).
 30 minutes before the auction, iggies can place limit buy and limit sell orders for DMI perpetual swaps.
+
+## D) DMI Borrow Market tab:
+
+Here traders and arbitragers can either provide DMI tokens and borrow some USDT against them or vice-versa. The interest rate on the DMI and/or USDT borrowed is based on a utilisation curve. This market will be based on Aave v3's isolated markets implementation (?).
+
+It is important that arbitragers are able to borrow DMI tokens so that they can _short-sell_ spot DMI tokens and buy perpetual swaps against them in cases where the perpetual swap trades lower than the spot DMI token. This will be incentivised by a classic funding mechanism in addition to the opportunity to capture small price differentials - more on this in **4.**
+
+## E) Portfolio tab:
+
+Monitor your entire crypto portfolio in one place. Here you can view your positions on all EVM chains along with spot and future positions on the Binance and Bybit centralized exchanges.
 
 ## F) DAO tab:
 
