@@ -15,6 +15,8 @@ import {
   getPlatformId,
 } from '../coingecko.service';
 
+import dmiComponents from '../../../data/dmi_current_weights.json';
+
 /**
  * TYPES
  */
@@ -27,6 +29,9 @@ export interface HistoricalPriceResponse {
   total_volumes: number[][];
 }
 export type HistoricalPrices = { [timestamp: string]: number[] };
+
+export type PriceWithChange = { usd: number; usd_24h_change: number };
+export type DmiComponentPrices = { [address: string]: PriceWithChange };
 
 export class PriceService {
   client: CoingeckoClient;
@@ -237,53 +242,7 @@ export class PriceService {
   /**
    * Added by Styliann
    */
-  async getTokensWithChange(
-    addresses: string[],
-    addressesPerRequest = 100
-  ): Promise<TokenPrices> {
-    try {
-      if (addresses.length / addressesPerRequest > 10)
-        throw new Error('Too many requests for rate limit.');
-
-      addresses = addresses
-        .map(getAddressFromPoolId)
-        .map(address => this.addressMapIn(address));
-      const pageCount = Math.ceil(addresses.length / addressesPerRequest);
-      const pages = Array.from(Array(pageCount).keys());
-      const requests: Promise<PriceResponse>[] = [];
-
-      pages.forEach(page => {
-        const addressString = addresses.slice(
-          addressesPerRequest * page,
-          addressesPerRequest * (page + 1)
-        );
-        const endpoint = `/simple/token_price/binance-smart-chain?contract_addresses=${addressString}&vs_currencies=${this.fiatParam}&include_24hr_change=true&precision=4`;
-        const request = retryPromiseWithDelay(
-          this.client.get<PriceResponse>(endpoint),
-          3,
-          2000
-        );
-        requests.push(request);
-      });
-
-      const paginatedResults = await Promise.all(requests);
-      const results = this.parsePaginatedTokens(paginatedResults);
-
-      return results;
-    } catch (error) {
-      console.error(
-        'Unable to fetch token prices and 24hchange',
-        addresses,
-        error
-      );
-      throw error;
-    }
-  }
-
-  /**
-   * Added by Styliann
-   */
-  async getTokensWithChangeNEW(addresses: string[]): Promise<TokenPrices> {
+  async getTokensWithChange(addresses: string[]): Promise<TokenPrices> {
     const addressString = addresses.join(',');
 
     try {
@@ -304,5 +263,143 @@ export class PriceService {
       );
       throw error;
     }
+  }
+
+  async getToken(address: string): Promise<TokenPrices> {
+    try {
+      const endpoint = `/simple/token_price/binance-smart-chain?contract_addresses=${address}&vs_currencies=${this.fiatParam}`;
+      const request = retryPromiseWithDelay(
+        this.client.get<PriceResponse>(endpoint),
+        3,
+        2000
+      );
+
+      const result = await request;
+
+      return result;
+    } catch (error) {
+      console.error('Unable to fetch token prices', address, error);
+      throw error;
+    }
+  }
+
+  async getDMIPrice(address: string): Promise<TokenPrices> {
+    // COINPAPRIKA for DMI/USD
+    const coinpaprikaResponse = await fetch(
+      'https://api.coinpaprika.com/v1/price-converter?base_currency_id=cake-pancakeswap&quote_currency_id=usd-us-dollars&amount=1'
+    );
+
+    const result = {} as TokenPrices;
+
+    if (coinpaprikaResponse?.ok) {
+      const responseJson = await coinpaprikaResponse.json();
+
+      result[address] = {
+        usd: Math.round(parseFloat(responseJson.price) * 100) / 100,
+      };
+    } else {
+      console.error('Unable to fetch token prices', address);
+    }
+
+    return result;
+  }
+
+  async getTokensWithChangeNEW(): Promise<DmiComponentPrices> {
+    const addressesNotLowerCase: string[] = [];
+    const addresses: string[] = [];
+    const symbols: string[] = [];
+    const symbolsUSDT: string[] = [];
+    for (let i = 0; i < dmiComponents.length; i++) {
+      addressesNotLowerCase.push(dmiComponents[i].address);
+      addresses.push(dmiComponents[i].address.toLowerCase());
+      symbols.push(dmiComponents[i].symbol);
+      symbolsUSDT.push(dmiComponents[i].symbol + 'USDT');
+    }
+    const symbolCount = symbols.length;
+
+    const addressString = addressesNotLowerCase.join(',');
+
+    let results: DmiComponentPrices = {};
+
+    // COINGECKO
+    const coingeckoResponse = await fetch(
+      'https://api.coingecko.com/api/v3/simple/token_price/binance-smart-chain?contract_addresses=' +
+        addressString +
+        '&vs_currencies=usd&include_24hr_change=true&precision=4'
+    );
+
+    if (coingeckoResponse?.ok) {
+      results = await coingeckoResponse.json();
+    } else {
+      // COINCAP
+      const coincapResponse = await fetch('https://api.coincap.io/v2/assets');
+
+      if (coincapResponse?.ok) {
+        const responseJson = await coincapResponse.json();
+        const responseData = responseJson.data;
+
+        results = {} as DmiComponentPrices;
+
+        let counter;
+        for (let i = 0; i < responseData.length; i++) {
+          if (counter > symbolCount) {
+            break;
+          }
+
+          const index = symbols.indexOf(responseData[i].symbol);
+          if (index > -1) {
+            results[dmiComponents[index].address] = {
+              usd: parseFloat(responseData[i].priceUsd),
+              usd_24h_change: parseFloat(responseData[i].changePercent24Hr),
+            };
+            counter++;
+          }
+        }
+      } else {
+        // BINANCE: token prices in USDT
+        const binanceResponse = await fetch(
+          'https://data.binance.com/api/v3/ticker/24hr'
+        );
+        // COINPAPRIKA: USDT/USD
+        const coinpaprikaResponse = await fetch(
+          'https://api.coinpaprika.com/v1/price-converter?base_currency_id=usdt-tether&quote_currency_id=usd-us-dollars&amount=1'
+        );
+
+        if (binanceResponse?.ok && coinpaprikaResponse?.ok) {
+          const responseJson1 = await coinpaprikaResponse.json();
+          const index = symbols.indexOf('USDT');
+
+          results = {} as DmiComponentPrices;
+
+          results[dmiComponents[index].address] = {
+            usd: parseFloat(responseJson1.price),
+            usd_24h_change: 0,
+          };
+
+          const responseJson = await binanceResponse.json();
+
+          for (let i = 0; i < responseJson.length; i++) {
+            const index = symbolsUSDT.indexOf(responseJson[i].symbol);
+
+            if (index > -1) {
+              results[dmiComponents[index].address.toLowerCase()] = {
+                usd:
+                  parseFloat(responseJson[i].lastPrice) * responseJson1.price,
+                usd_24h_change:
+                  parseFloat(responseJson[i].priceChangePercent) *
+                  responseJson1.price,
+              };
+            }
+          }
+        } else {
+          console.error('Unable to fetch prices of DMI components.');
+        }
+
+        // 3)
+        // all coins (against usdt) from binance
+      }
+    }
+
+    return results;
   }
 }

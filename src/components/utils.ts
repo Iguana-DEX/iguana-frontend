@@ -41,3 +41,16 @@ export const DecimalPrecision = (function () {
     },
   };
 })();
+
+export function formatBio(dollarValue) {
+  dollarValue /= 1e9;
+  if (dollarValue <= 0) return '-';
+  return '$' + Math.round(dollarValue) + ' bn';
+}
+
+export function formatCoinChange(change) {
+  change = Math.round(change * 10) / 10;
+  const formattedChange = change.toString() + '%';
+
+  return formattedChange;
+}

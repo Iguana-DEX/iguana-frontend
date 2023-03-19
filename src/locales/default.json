@@ -320,7 +320,7 @@
     },
     "oldVersion": "old version"
   },
-  "createARound": "Create a new round",
+  "createRound": "Create New Round",
   "contractAddress": "Contract address",
   "creator": "Creator",
   "owner": "Owner",
@@ -546,6 +546,7 @@
   "lpTokens": "LP tokens",
   "managedPool": "Managed pool",
   "manageLists": "Manage lists",
+  "manageMembers": "Manage Members",
   "marketConditionsWarning": "Market conditions may change between the time your order is submitted and the time it gets executed on Ethereum. Slippage tolerance is the maximum change in price you are willing to accept. This protects you from front-running bots and miner extractable value (MEV).",
   "max": "Max",
   "maxed": "Maxed",
@@ -775,7 +776,9 @@
     "description": "The swap price has updated by more than {0}",
     "title": "Price updated"
   },
+  "privateGroups": "Private Groups",
   "privateInvestmentRounds": "Private investment rounds",
+  "privateRounds": "Private Rounds",
   "proceed": "Proceed",
   "profit": "Profit (1{0})",
   "proportionalSuggestion": "Proportional suggestion",

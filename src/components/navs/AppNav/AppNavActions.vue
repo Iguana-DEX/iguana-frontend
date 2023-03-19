@@ -48,11 +48,13 @@ function connectWalletHandler() {
       @click="connectWalletHandler"
     >
       <WalletIcon class="mr-2" />
-      <span class="hidden lg:inline-block">
+      <span class="hidden lg:inline-block" v-text="$t('connectWallet')" />
+      <span class="lg:hidden" v-text="$t('connect')" />
+      <!-- <span class="hidden lg:inline-block">
         <span v-if="upToLargeBreakpoint" v-text="$t('connect')" />
         <span v-else v-text="$t('connectWallet')" />
-      </span>
-      <span class="lg:hidden" v-text="$t('connect')" />
+      </span> -->
+      <!-- <span class="lg:hidden" v-text="$t('connect')" /> -->
     </BalBtn>
     <AppNavNetworkSelect v-if="!hideNetworkSelect" />
     <BalBtn

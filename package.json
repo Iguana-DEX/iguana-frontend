@@ -152,6 +152,8 @@
   "license": "GPL-3.0-or-later",
   "repository": "iguana-dex/iguana-frontend",
   "dependencies": {
+    "@azure/cosmos": "^3.17.3",
+    "binance-api-node": "^0.12.3",
     "coingecko-api": "^1.0.10",
     "papaparse": "^5.3.2",
     "primeicons": "^6.0.1",

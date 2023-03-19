@@ -51,5 +51,6 @@ export const EXTERNAL_LINKS = {
   },
   Dewhales: {
     Twitter: 'https://twitter.com/DewhalesCapital',
+    Website: 'https://dewhales.capital',
   },
 };

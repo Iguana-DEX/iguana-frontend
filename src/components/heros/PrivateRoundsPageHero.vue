@@ -36,10 +36,10 @@ const bgHeader = computed((): string => {
       <BalBtn
         v-if="!upToLargeBreakpoint"
         tag="a"
-        :href="EXTERNAL_LINKS.Balancer.Docs"
+        :href="EXTERNAL_LINKS.Dewhales.Twitter"
         target="_blank"
         rel="noreferrer"
-        color=""
+        color="white"
         class="top-24"
         outline
       >

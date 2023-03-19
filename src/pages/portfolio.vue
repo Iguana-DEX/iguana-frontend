@@ -7,7 +7,6 @@ import { useLock } from '@/composables/useLock';
 import StakingProvider from '@/providers/local/staking/staking.provider';
 
 // COMPOSABLES
-
 const { lockPool, lock } = useLock();
 </script>
 

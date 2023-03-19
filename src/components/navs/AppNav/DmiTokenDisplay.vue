@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { coingeckoService } from '@/services/coingecko/coingecko.service';
+import { TokenPrices } from '@/services/coingecko/api/price.service';
 
-const dmiTokenPrice = await coingeckoService.prices.getTokens([
-  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
-]);
+import { ref } from 'vue';
+
+const dmiTokenPrice = ref(
+  (await coingeckoService.prices.getDMIPrice(
+    '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
+  )) as TokenPrices
+);
 </script>
 
 <template>

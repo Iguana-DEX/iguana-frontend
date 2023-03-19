@@ -60,6 +60,10 @@ const PrivateRoundsPage = () =>
   import(
     /* webpackChunkName: "PrivateRoundsPage" */ '@/pages/private-rounds.vue'
   );
+const PrivateGroupsPage = () =>
+  import(
+    /* webpackChunkName: "PrivateGroupsPage" */ '@/pages/private-groups.vue'
+  );
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -181,6 +185,11 @@ const routes: RouteRecordRaw[] = [
     path: '/:networkSlug/private-rounds',
     name: 'private-rounds',
     component: PrivateRoundsPage,
+  },
+  {
+    path: '/:networkSlug/private-groups',
+    name: 'private-groups',
+    component: PrivateGroupsPage,
   },
   {
     path: '/:pathMatch(.*)*',

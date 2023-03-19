@@ -19,9 +19,9 @@ import Jazzicon from 'vue3-jazzicon/src/components';
 import Root from './Root.vue';
 
 import PrimeVue from 'primevue/config';
-import 'primevue/resources/themes/saga-blue/theme.css'; //theme
-import 'primevue/resources/primevue.min.css'; //core CSS
-import 'primeicons/primeicons.css'; //icons
+import 'primevue/resources/themes/viva-dark/theme.css'; // PrimeVue Theme
+import 'primevue/resources/primevue.min.css'; // Core CSS
+import 'primeicons/primeicons.css'; // Icons
 
 echarts.use([
   TooltipComponent,

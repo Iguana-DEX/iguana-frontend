@@ -1,106 +1,3 @@
-<template>
-  <BalCard
-    shadow="lg"
-    :square="upToLargeBreakpoint"
-    :noBorder="upToLargeBreakpoint"
-    noPad
-  >
-    <BalTable
-      :columns="visibleColumns"
-      :data="data"
-      :noResultsLabel="noCoinsLabel"
-      :isLoading="isLoading"
-      :isLoadingMore="isLoadingMore"
-      :skeletonClass="skeletonClass"
-      sticky="both"
-      :square="upToLargeBreakpoint"
-      :onRowClick="handleRowClick"
-      :isPaginated="isPaginated"
-      :initialState="{
-        sortColumn: sortColumn,
-        sortDirection: 'desc',
-      }"
-    >
-      <template #coinCell="coin">
-        <div class="flex items-center">
-          <div class="coin-data">
-            <!-- <BalAsset
-              :address="coin.address"
-              :style="{
-                position: 'relative',
-                top: '4px',
-                width: '25px',
-              }"
-            /> -->
-            <img
-              :src="coinsAddInfo[coin.symbol].logoURI"
-              :style="{
-                position: 'relative',
-                top: '10px',
-                width: '31px',
-                'padding-left': '8px',
-              }"
-            />
-            <span
-              :style="{
-                position: 'relative',
-                'white-space': 'nowrap',
-                bottom: '13px',
-                'font-weight': 'bold',
-                'font-size': '18px',
-                'padding-left': '40px',
-                'padding-right': '9px',
-              }"
-              >{{ coin.name }}
-            </span>
-            <span
-              :style="{
-                position: 'relative',
-                bottom: '14px',
-                color: '#a9aba9',
-                'font-size': '14px',
-              }"
-              >{{ coin.symbol }}
-            </span>
-          </div>
-        </div>
-      </template>
-      <template #changeCell="coin">
-        <div
-          :key="columnStates.change24h"
-          class="flex justify-end py-4 px-6 -mt-1 text-right font-numeric"
-        >
-          <BalLoadingBlock v-if="!coin?.change24h" class="w-12 h-4" />
-          <template v-else>
-            <span v-if="coin.change24h >= 0" class="text-green-400">
-              {{ formatCoinChange(coin.change24h) }}
-            </span>
-            <span v-if="coin.change24h < 0" class="text-red-500">
-              {{ formatCoinChange(coin.change24h) }}
-            </span>
-            <!-- <APRTooltip v-if="coin?.apr" :pool="coin" /> -->
-          </template>
-        </div>
-      </template>
-      <template #mktCapCell="coin">
-        <div
-          :key="columnStates.realMarketCap"
-          class="flex justify-end py-4 px-6 -mt-1 font-numeric"
-        >
-          <BalLoadingBlock v-if="!coin?.realMarketCap" class="w-12 h-4" />
-          <span v-else class="text-right">
-            {{ formatBio(coin?.realMarketCap) }}
-          </span>
-        </div>
-      </template>
-    </BalTable>
-  </BalCard>
-</template>
-
-
-<!-- ///////////////////////////////////////////////////////////////// -->
-<!-- ///////////////////////////// SCRIPT //////////////////////////// -->
-<!-- ///////////////////////////////////////////////////////////////// -->
 <script setup lang="ts">
 import coinsAddInfo from '../../../data/coins_additional_info.json';
 import { computed } from 'vue';
@@ -138,7 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
   isLoadingMore: false,
   noCoinsLabel: 'No coins found',
   isPaginated: false,
-  sortColumn: 'poolValue',
+  sortColumn: 'realMarketCap',
   hiddenColumns: () => [],
   columnStates: () => ({}),
   data: () => [],
@@ -265,3 +162,102 @@ function formatCoinChange(change) {
   return formattedChange;
 }
 </script>
+
+<template>
+  <BalCard
+    shadow="lg"
+    :square="upToLargeBreakpoint"
+    :noBorder="upToLargeBreakpoint"
+    noPad
+  >
+    <BalTable
+      :columns="visibleColumns"
+      :data="data"
+      :noResultsLabel="noCoinsLabel"
+      :isLoading="isLoading"
+      :isLoadingMore="isLoadingMore"
+      :skeletonClass="skeletonClass"
+      sticky="both"
+      :square="upToLargeBreakpoint"
+      :onRowClick="handleRowClick"
+      :isPaginated="isPaginated"
+      :initialState="{
+        sortColumn: sortColumn,
+        sortDirection: 'desc',
+      }"
+    >
+      <template #coinCell="coin">
+        <div class="flex items-center">
+          <div class="coin-data">
+            <!-- <BalAsset
+              :address="coin.address"
+              :style="{
+                position: 'relative',
+                top: '4px',
+                width: '25px',
+              }"
+            /> -->
+            <img
+              :src="coinsAddInfo[coin.symbol].logoURI"
+              :style="{
+                position: 'relative',
+                top: '10px',
+                width: '31px',
+                'padding-left': '8px',
+              }"
+            />
+            <span
+              :style="{
+                position: 'relative',
+                'white-space': 'nowrap',
+                bottom: '13px',
+                'font-weight': 'bold',
+                'font-size': '18px',
+                'padding-left': '40px',
+                'padding-right': '9px',
+              }"
+              >{{ coin.name }}
+            </span>
+            <span
+              :style="{
+                position: 'relative',
+                bottom: '14px',
+                color: '#a9aba9',
+                'font-size': '14px',
+              }"
+              >{{ coin.symbol }}
+            </span>
+          </div>
+        </div>
+      </template>
+      <template #changeCell="coin">
+        <div
+          :key="columnStates.change24h"
+          class="flex justify-end py-4 px-6 -mt-1 text-right font-numeric"
+        >
+          <BalLoadingBlock v-if="!coin?.change24h" class="w-12 h-4" />
+          <template v-else>
+            <span v-if="coin.change24h >= 0" class="text-green-400">
+              {{ formatCoinChange(coin.change24h) }}
+            </span>
+            <span v-if="coin.change24h < 0" class="text-red-500">
+              {{ formatCoinChange(coin.change24h) }}
+            </span>
+            <!-- <APRTooltip v-if="coin?.apr" :pool="coin" /> -->
+          </template>
+        </div>
+      </template>
+      <template #mktCapCell="coin">
+        <div
+          :key="columnStates.realMarketCap"
+          class="flex justify-end py-4 px-6 -mt-1 font-numeric"
+        >
+          <BalLoadingBlock v-if="!coin?.realMarketCap" class="w-12 h-4" />
+          <span v-else class="text-right">
+            {{ formatBio(coin?.realMarketCap) }}
+          </span>
+        </div>
+      </template>
+    </BalTable>
+  </BalCard>
+</template>
