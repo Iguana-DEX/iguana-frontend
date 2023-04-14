@@ -59,7 +59,8 @@
     "veBALHelpers": "",
     "feeDistributor": "",
     "feeDistributorDeprecated": "",
-    "faucet": ""
+    "faucet": "",
+    "privateGroupsFactory": ""
   },
   "keys": {
     "infura": "",

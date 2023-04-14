@@ -15,6 +15,7 @@ const dmiTokenPrice = ref(
   <img
     class="pt-0 transition transform hover:scale-110 cursor-pointer"
     src="@/assets/images/dmi_icon.webp"
+    alt="DMI token logo"
     width="35"
   />
   <suspense>

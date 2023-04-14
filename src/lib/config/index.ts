@@ -32,6 +32,7 @@ export interface Config {
     aave: string;
     gauge: string;
     blocks: string;
+    privateGroups: string;
   };
   supportsEIP1559: boolean;
   supportsElementPools: boolean;
@@ -72,6 +73,7 @@ export interface Config {
     feeDistributorDeprecated: string;
     faucet: string;
     gaugeRewardsHelper?: string;
+    privateGroupsFactory: string;
   };
   keys: {
     infura: string;

@@ -4,7 +4,7 @@ import {
   JsonRpcSigner,
   Web3Provider,
 } from '@ethersproject/providers';
-import { resolveENSAvatar } from '@tomfrench/ens-avatar-resolver';
+// import { resolveENSAvatar } from '@tomfrench/ens-avatar-resolver';
 import { ComputedRef } from 'vue';
 
 import ConfigService, { configService } from '@/services/config/config.service';
@@ -15,10 +15,10 @@ import {
 import { TransactionBuilder } from './transactions/transaction.builder';
 // import { response } from 'msw';
 
-interface Web3Profile {
-  ens: string | null;
-  avatar: string | null;
-}
+// interface Web3Profile {
+//   ens: string | null;
+//   avatar: string | null;
+// }
 
 export default class Web3Service {
   appProvider: JsonRpcProvider;
@@ -62,20 +62,20 @@ export default class Web3Service {
     }
   }
 
-  async getEnsAvatar(address: string): Promise<string | null> {
-    try {
-      return await resolveENSAvatar(this.ensProvider, address);
-    } catch (error) {
-      return null;
-    }
-  }
+  // async getEnsAvatar(address: string): Promise<string | null> {
+  //   try {
+  //     return await resolveENSAvatar(this.ensProvider, address);
+  //   } catch (error) {
+  //     return null;
+  //   }
+  // }
 
-  async getProfile(address: string): Promise<Web3Profile> {
-    return {
-      ens: await this.getEnsName(address),
-      avatar: await this.getEnsAvatar(address),
-    };
-  }
+  // async getProfile(address: string): Promise<Web3Profile> {
+  //   return {
+  //     ens: await this.getEnsName(address),
+  //     avatar: await this.getEnsAvatar(address),
+  //   };
+  // }
 
   async getUserAddress(): Promise<string> {
     const signer = this.userProvider.value.getSigner();

@@ -19,7 +19,8 @@
     "main": [""],
     "aave": "",
     "gauge": "",
-    "blocks": "https://api.thegraph.com/subgraphs/name/matthewlilley/bsc-blocks"
+    "blocks": "https://api.thegraph.com/subgraphs/name/matthewlilley/bsc-blocks",
+    "privateGroups": "https://api.thegraph.com/subgraphs/name/iguana-dex/bsc"
   },
   "supportsEIP1559": false,
   "supportsElementPools": false,
@@ -60,7 +61,8 @@
     "feeDistributor": "",
     "feeDistributorDeprecated": "",
     "faucet": "",
-    "gaugeRewardsHelper": ""
+    "gaugeRewardsHelper": "",
+    "privateGroupsFactory": "0x3A352dE5EF98b4B16bEb8AF7E7f47A2F179E6c42"
   },
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",

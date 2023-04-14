@@ -1,5 +1,10 @@
 <template>
-  <img src="~@/assets/images/icon.webp" width="50" class="mr-2" />
+  <img
+    src="~@/assets/images/icon.webp"
+    alt="IguanaDEX icon"
+    width="50"
+    class="mr-2"
+  />
   <!-- <img
     v-if="useDarkLogo"
     src="~@/assets/images/logo-dark.webp"

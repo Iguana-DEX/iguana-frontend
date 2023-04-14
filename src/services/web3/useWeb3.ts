@@ -17,6 +17,8 @@ import { switchToAppNetwork } from './utils/helpers';
 import { Web3Plugin, Web3ProviderSymbol } from './web3.plugin';
 import { web3Service } from './web3.service';
 
+import { ThirdwebSDK } from '@thirdweb-dev/sdk';
+
 /** STATE */
 const blockNumber = ref(0);
 const isWalletSelectVisible = ref(false);
@@ -107,6 +109,8 @@ export default function useWeb3() {
   // METHODS
   const getProvider = () => new Web3Provider(provider.value as any, 'any'); // https://github.com/ethers-io/ethers.js/issues/866
   const getSigner = () => getProvider().getSigner();
+  const getSdk = () => ThirdwebSDK.fromSigner(getSigner());
+
   const connectToAppNetwork = () => switchToAppNetwork(provider.value as any);
 
   function startConnectWithInjectedProvider(): void {
@@ -133,7 +137,7 @@ export default function useWeb3() {
 
   const { isLoading: isLoadingProfile, data: profile } = useQuery(
     QUERY_KEYS.Account.Profile(networkId, account, chainId),
-    () => web3Service.getProfile(account.value),
+    () => web3Service.getEnsName(account.value),
     reactive({
       enabled: canLoadProfile,
     })
@@ -172,6 +176,7 @@ export default function useWeb3() {
     connectToAppNetwork,
     getProvider,
     getSigner,
+    getSdk,
     disconnectWallet,
     toggleWalletSelectModal,
     startConnectWithInjectedProvider,

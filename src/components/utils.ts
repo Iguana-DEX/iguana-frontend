@@ -1,3 +1,14 @@
+const stablecoins = [
+  'USDT',
+  'USDC',
+  'BUSD',
+  'USDP',
+  'LUSD',
+  'RAI',
+  'DAI',
+  'HAY',
+];
+
 export function getActiveClassName<T>(state: T, classes: [T, string][]) {
   return (classes.find(_class => _class[0] === state) || [])[1] || '';
 }
@@ -53,4 +64,85 @@ export function formatCoinChange(change) {
   const formattedChange = change.toString() + '%';
 
   return formattedChange;
+}
+
+export function formatAmount(num: number) {
+  if (num > 1000000) {
+    return DecimalPrecision.round(num / 1e6, 1).toString() + 'm';
+  }
+  if (num > 2000) {
+    return Math.round(num / 1e3).toString() + 'k';
+  }
+
+  return num;
+}
+
+export function getTimeLeft(dateTime) {
+  const now = Math.round(Date.now() / 1e3);
+  const timeDiffSecs = Math.abs(dateTime - now);
+
+  const timeDiffDays = timeDiffSecs / (60 * 60 * 24);
+  const wholeDays = Math.trunc(timeDiffDays);
+
+  if (wholeDays > 3) {
+    return wholeDays + ' days';
+  }
+
+  const hours = (timeDiffDays - wholeDays) * 24;
+  const wholeHours = Math.trunc(hours);
+
+  if (wholeDays > 1) {
+    if (wholeHours > 1) {
+      return wholeDays + ' days and ' + wholeHours + ' hours';
+    } else if (wholeHours == 1) {
+      return wholeDays + ' days and 1 hour';
+    } else {
+      return wholeDays + ' days';
+    }
+  }
+
+  if (wholeDays == 1) {
+    if (wholeHours > 1) {
+      return '1 day day and ' + wholeHours + ' hours';
+    } else if (wholeHours == 1) {
+      return '1 day and 1 hour';
+    } else {
+      return '1 day';
+    }
+  }
+
+  const mins = (hours - wholeHours) * 60;
+  const wholeMins = Math.trunc(mins);
+
+  if (wholeHours > 1) {
+    if (wholeMins > 1) {
+      return wholeHours + ' hours and ' + wholeMins + ' minutes';
+    } else if (wholeMins == 1) {
+      return wholeHours + ' hours and 1 minute';
+    } else {
+      return wholeHours + ' hours';
+    }
+  }
+
+  if (wholeHours == 1) {
+    if (wholeMins > 1) {
+      return '1 hour and ' + wholeMins + ' minutes';
+    } else if (wholeMins == 1) {
+      return '1 hour and 1 minute';
+    } else {
+      return '1 hour';
+    }
+  }
+
+  if (wholeMins > 1) {
+    return Math.round(mins) + ' minutes';
+  } else if (mins >= 1) {
+    return '1 minute';
+  } else {
+    return 'less than 1 minute';
+  }
+}
+
+export function isStablecoin(symbol: string): boolean {
+  return stablecoins.includes(symbol);
 }

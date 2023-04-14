@@ -19,7 +19,8 @@
     ],
     "aave": "https://api.thegraph.com/subgraphs/name/aave/protocol-v2",
     "gauge": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-gauges-goerli",
-    "blocks": "https://api.thegraph.com/subgraphs/name/blocklytics/goerli-blocks"
+    "blocks": "https://api.thegraph.com/subgraphs/name/blocklytics/goerli-blocks",
+    "privateGroups": "https://api.thegraph.com/subgraphs/name/iguana-dex/goerli"
   },
   "supportsEIP1559": true,
   "supportsElementPools": true,
@@ -60,7 +61,8 @@
     "feeDistributor": "0x7F91dcdE02F72b478Dc73cB21730cAcA907c8c44",
     "feeDistributorDeprecated": "0x7F91dcdE02F72b478Dc73cB21730cAcA907c8c44",
     "faucet": "0xccb0F4Cf5D3F97f4a55bb5f5cA321C3ED033f244",
-    "gaugeRewardsHelper": "0xC128a9954e6c874eA3d62ce62B468bA073093F25"
+    "gaugeRewardsHelper": "0xC128a9954e6c874eA3d62ce62B468bA073093F25",
+    "privateGroupsFactory": "0x1bf969C20909BedA25c2252673A0697077CE3041"
   },
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",

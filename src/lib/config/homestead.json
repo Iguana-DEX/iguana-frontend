@@ -66,7 +66,8 @@
     "veBALHelpers": "0x8e5698dc4897dc12243c8642e77b4f21349db97c",
     "feeDistributor": "0xD3cf852898b21fc233251427c2DC93d3d604F3BB",
     "feeDistributorDeprecated": "0x26743984e3357eFC59f2fd6C1aFDC310335a61c9",
-    "faucet": ""
+    "faucet": "",
+    "privateGroupsFactory": ""
   },
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",

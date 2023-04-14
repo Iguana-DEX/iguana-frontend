@@ -13,6 +13,7 @@ import { computed, reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useQuery } from 'vue-query';
 
+import { isStablecoin } from '@/components/utils';
 import { useTradeState } from '@/composables/trade/useTradeState';
 import useBreakpoints from '@/composables/useBreakpoints';
 import useTailwind from '@/composables/useTailwind';
@@ -132,14 +133,40 @@ const chartHeight = ref(
 );
 const activeTimespan = ref(chartTimespans[0]);
 
-const inputSym = computed(() => {
-  if (tokenInAddress.value === '') return 'Unknown';
-  return getToken(tokenInAddress.value)?.symbol;
+const symbols = computed(() => {
+  const inputSymbol =
+    tokenInAddress.value === ''
+      ? 'Unknown'
+      : getToken(tokenInAddress.value)?.symbol;
+
+  const outputSymbol =
+    tokenOutAddress.value === ''
+      ? 'Unknown'
+      : getToken(tokenOutAddress.value)?.symbol;
+
+  if (isStablecoin(inputSymbol) && !isStablecoin(outputSymbol)) {
+    return {
+      inputSym: outputSymbol,
+      outputSym: inputSymbol,
+      inverse: false,
+    };
+  } else {
+    return {
+      inputSym: inputSymbol,
+      outputSym: outputSymbol,
+      inverse: true,
+    };
+  }
 });
-const outputSym = computed(() => {
-  if (tokenOutAddress.value === '') return 'Unknown';
-  return getToken(tokenOutAddress.value)?.symbol;
-});
+
+// const inputSym = computed(() => {
+//   if (tokenInAddress.value === '') return 'Unknown';
+//   return getToken(tokenInAddress.value)?.symbol;
+// });
+// const outputSym = computed(() => {
+//   if (tokenOutAddress.value === '') return 'Unknown';
+//   return getToken(tokenOutAddress.value)?.symbol;
+// });
 
 const dataMin = computed(() => {
   return (minBy(priceData.value || [], v => v[1]) || [])[1] || 0;
@@ -169,7 +196,7 @@ const {
       nativeAsset?.address,
       wrappedNativeAsset.value?.address,
       activeTimespan.value.value,
-      true
+      symbols.value.inverse
     ),
   reactive({
     enabled: initialized,
@@ -200,7 +227,7 @@ const chartData = computed(() => {
   if (allChartValuesEqual.value) return [];
   return [
     {
-      name: `${inputSym.value}/${outputSym.value}`,
+      name: `${symbols.value.inputSym}/${symbols.value.outputSym}`,
       values: priceData.value || [],
     },
   ];
@@ -208,7 +235,7 @@ const chartData = computed(() => {
 
 const chartBlankText = computed(() => {
   if (allChartValuesEqual.value) {
-    return `${inputSym.value} -> ${outputSym.value} is 1:1`;
+    return `${symbols.value.inputSym} -> ${symbols.value.outputSym} is 1:1`;
   }
   return t('noData');
 });
@@ -216,10 +243,7 @@ const chartBlankText = computed(() => {
 const isNegativeTrend = computed(() => {
   const _priceData = priceData.value || [];
   if (_priceData.length > 2) {
-    if (
-      _priceData[_priceData.length - 1][1] <
-      _priceData[_priceData.length - 2][1]
-    ) {
+    if (_priceData[_priceData.length - 1][1] < _priceData[0][1]) {
       return true;
     }
   }
@@ -279,7 +303,9 @@ const chartGrid = computed(() => {
           <BalIcon v-if="isModal" name="x" class="text-secondary" />
         </button>
         <div v-if="!failedToLoadPriceData && !isLoadingPriceData" class="flex">
-          <h6 class="font-medium">{{ inputSym }}/{{ outputSym }}</h6>
+          <h6 class="font-medium">
+            {{ symbols.inputSym }}/{{ symbols.outputSym }}
+          </h6>
           <BalTooltip class="ml-2" :text="$t('coingeckoPricingTooltip')">
             <template #activator>
               <img class="h-5" src="@/assets/images/icons/coingecko.svg" />

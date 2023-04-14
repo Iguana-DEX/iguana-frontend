@@ -15,6 +15,7 @@ interface Env {
   GRAPH_KEY: string;
   INFURA_PROJECT_ID: string;
   NODEREAL_KEY: string;
+  DB_URL: string;
   ENABLE_STABLE_POOLS: boolean;
   WALLET_SCREENING: boolean;
 }
@@ -45,6 +46,7 @@ export default class ConfigService {
         import.meta.env.VITE_NODEREAL_KEY ||
         this.getNetworkConfig(networkId.value).keys.nodereal ||
         'MISSING_KEY',
+      DB_URL: import.meta.env.VITE_DB_URL || 'MISSING_URL',
       ENABLE_STABLE_POOLS: import.meta.env.VITE_ENABLE_STABLE_POOLS === 'true',
       WALLET_SCREENING: import.meta.env.VITE_WALLET_SCREENING === 'true',
     };

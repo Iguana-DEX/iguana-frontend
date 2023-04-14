@@ -10,7 +10,6 @@ import useDarkMode from '@/composables/useDarkMode';
 import { sleep } from '@/lib/utils';
 import useWeb3 from '@/services/web3/useWeb3';
 import useNetwork from '@/composables/useNetwork';
-import { Goals, trackGoal } from '@/composables/useFathom';
 import TwitterIcon from '@/components/_global/icons/brands/TwitterIcon.vue';
 import DiscordIcon from '@/components/_global/icons/brands/DiscordIcon.vue';
 import MediumIcon from '@/components/_global/icons/brands/MediumIcon.vue';
@@ -39,24 +38,25 @@ const router = useRouter();
 const blockIcon = ref<HTMLDivElement>();
 
 const navLinks = [
-  { label: t('home'), path: `/${networkSlug}`, goal: Goals.ClickNavPools },
-  { label: t('pool'), path: `/${networkSlug}/pool`, goal: Goals.ClickNavPools },
+  { label: t('home'), path: `/${networkSlug}` },
+  { label: t('pool'), path: `/${networkSlug}/pool` },
   {
     label: t('trade'),
     path: `/${networkSlug}/trade`,
-    goal: Goals.ClickNavSwap,
   },
   {
     label: t('claim'),
     path: `/${networkSlug}/claim`,
-    goal: Goals.ClickNavClaim,
   },
   {
     label: t('portfolio'),
     path: `/${networkSlug}/portfolio`,
-    goal: Goals.ClickNavPortfolio,
   },
-  { label: 'DAO', path: `/${networkSlug}/vebal`, goal: Goals.ClickNavVebal },
+  { label: 'DAO', path: `/${networkSlug}/vebal` },
+  {
+    label: t('privateGroups'),
+    path: `/${networkSlug}/private-groups`,
+  },
 ];
 
 const ecosystemLinks = [
@@ -104,8 +104,7 @@ function getSocialComponent(componentName) {
   return socialLinks[componentName].component;
 }
 
-async function navTo(path: string, goal: string) {
-  trackGoal(goal);
+async function navTo(path: string) {
   router.push(path);
   emit('close');
 }
@@ -133,7 +132,7 @@ watch(blockNumber, async () => {
         v-for="link in navLinks"
         :key="link.label"
         class="side-bar-link"
-        @click="navTo(link.path, link.goal)"
+        @click="navTo(link.path)"
       >
         {{ link.label }}
       </div>

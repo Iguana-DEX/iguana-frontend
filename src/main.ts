@@ -10,6 +10,7 @@ import {
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
+import { createPinia } from 'pinia';
 import { createApp } from 'vue';
 import registerDirectives from '@/plugins/directives';
 import { registerPlugins } from '@/plugins';
@@ -22,6 +23,7 @@ import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/viva-dark/theme.css'; // PrimeVue Theme
 import 'primevue/resources/primevue.min.css'; // Core CSS
 import 'primeicons/primeicons.css'; // Icons
+import Tooltip from 'primevue/tooltip';
 
 echarts.use([
   TooltipComponent,
@@ -37,8 +39,12 @@ const app = createApp(Root);
 
 app.component('Jazzicon', Jazzicon);
 
+// Pinia
+app.use(createPinia());
+
 // PrimeVue
 app.use(PrimeVue, { ripple: true });
+app.directive('tooltip', Tooltip);
 
 registerPlugins(app);
 registerDirectives(app);

@@ -56,13 +56,21 @@ const PortfolioPage = () =>
   import(
     /* webpackChunkName: "PortfolioPage" */ /* webpackPrefetch: true */ '@/pages/portfolio.vue'
   );
-const PrivateRoundsPage = () =>
-  import(
-    /* webpackChunkName: "PrivateRoundsPage" */ '@/pages/private-rounds.vue'
-  );
 const PrivateGroupsPage = () =>
   import(
     /* webpackChunkName: "PrivateGroupsPage" */ '@/pages/private-groups.vue'
+  );
+const CreateGroupPage = () =>
+  import(
+    /* webpackChunkName: "CreateGroupPage" */ '@/pages/private-groups/create-group.vue'
+  );
+const PrivateRoundsPage = () =>
+  import(
+    /* webpackChunkName: "PrivateRoundsPage" */ '@/pages/private-groups/_groupAddress.vue'
+  );
+const CreateRoundPage = () =>
+  import(
+    /* webpackChunkName: "CreateRoundPage" */ '@/pages/private-groups/create-round.vue'
   );
 
 declare module 'vue-router' {
@@ -182,14 +190,26 @@ const routes: RouteRecordRaw[] = [
     component: HomePage,
   },
   {
-    path: '/:networkSlug/private-rounds',
+    path: '/:networkSlug/private-groups',
+    name: 'private-groups',
+    component: PrivateGroupsPage,
+  },
+  {
+    path: '/:networkSlug/private-groups/create-group',
+    name: 'create-group',
+    component: CreateGroupPage,
+    meta: { layout: 'FocusedLayout' },
+  },
+  {
+    path: '/:networkSlug/private-groups/:groupAddress',
     name: 'private-rounds',
     component: PrivateRoundsPage,
   },
   {
-    path: '/:networkSlug/private-groups',
-    name: 'private-groups',
-    component: PrivateGroupsPage,
+    path: '/:networkSlug/private-groups/:groupAddress/create-round',
+    name: 'create-round',
+    component: CreateRoundPage,
+    meta: { layout: 'FocusedLayout' },
   },
   {
     path: '/:pathMatch(.*)*',

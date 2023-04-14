@@ -28,11 +28,11 @@ export default class PoolSwaps {
     const ensData = await Promise.all(
       swaps.map(async (poolSwap: PoolSwap) => {
         const ensName = await web3Service.getEnsName(poolSwap.userAddress.id);
-        let ensAvatar: null | string = null;
+        const ensAvatar: null | string = null;
 
-        if (ensName) {
-          ensAvatar = await web3Service.getEnsAvatar(ensName);
-        }
+        // if (ensName) {
+        //   ensAvatar = await web3Service.getEnsAvatar(ensName);
+        // }
 
         return {
           ensName,

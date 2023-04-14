@@ -19,7 +19,8 @@
     "main": ["https://api.thegraph.com/subgraphs/name/styliann-eth/iguanadex"],
     "aave": "",
     "gauge": "",
-    "blocks": "https://api.thegraph.com/subgraphs/name/styliann-eth/bsc-testnet-blocks"
+    "blocks": "https://api.thegraph.com/subgraphs/name/styliann-eth/bsc-testnet-blocks",
+    "privateGroups": "https://api.thegraph.com/subgraphs/name/iguana-dex/bsctestnet"
   },
   "supportsEIP1559": false,
   "supportsElementPools": false,
@@ -60,7 +61,8 @@
     "feeDistributor": "",
     "feeDistributorDeprecated": "",
     "faucet": "",
-    "gaugeRewardsHelper": "0x3Ad01d31313f5D0AcF14452c5b41E6967746cBA7"
+    "gaugeRewardsHelper": "0x3Ad01d31313f5D0AcF14452c5b41E6967746cBA7",
+    "privateGroupsFactory": "0x237F0B5FDFC744084aD269c87eE1cc8B23D0157e"
   },
   "keys": {
     "infura": "daaa68ec242643719749dd1caba2fc66",

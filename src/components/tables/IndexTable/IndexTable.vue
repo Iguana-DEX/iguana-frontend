@@ -199,6 +199,7 @@ function formatCoinChange(change) {
             /> -->
             <img
               :src="coinsAddInfo[coin.symbol].logoURI"
+              :alt="coin.symbol + ' logo'"
               :style="{
                 position: 'relative',
                 top: '10px',
