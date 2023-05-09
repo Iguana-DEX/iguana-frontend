@@ -59,7 +59,7 @@ const groupAddress = (route.params.groupAddress as string).toLowerCase();
 
 const roundsInfo = ref([] as RoundInfo[]);
 
-const nativeAssetSymbol = configService.network.nativeAsset.symbol;
+// const nativeAssetSymbol = configService.network.nativeAsset.symbol;
 
 /** TYPES */
 type RoundInfo = {
@@ -234,7 +234,7 @@ function hidePopup() {
           <label
             for="target"
             class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 required"
-            >Target (in {{ nativeAssetSymbol }})</label
+            >Soft Cap (in USD)</label
           >
           <div class="mt-2.5">
             <input
@@ -252,7 +252,7 @@ function hidePopup() {
           <label
             for="allocation"
             class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 required"
-            >Group Allocation (in {{ nativeAssetSymbol }})</label
+            >Hard Cap (in USD)</label
           >
           <div class="mt-2.5">
             <input

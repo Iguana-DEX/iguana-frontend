@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, watch } from 'vue';
 
 import IndexTable from '@/components/tables/IndexTable/IndexTable.vue';
 import HomePageHero from '@/components/heros/HomePageHero.vue';
 
 import { coingeckoService } from '@/services/coingecko/coingecko.service';
 import dmiComponents from '../data/dmi_current_weights.json';
+import { useCoreDataStore } from '@/store/CoreDataStore';
 
 // import { CoinData } from '@/services/pool/types';
+
+import TradingViewChart from '@/components/charts/TradingViewChart.vue';
 
 const addresses: string[] = [];
 for (let i = 0; i < dmiComponents.length; i++) {
   addresses.push(dmiComponents[i].address.toLowerCase());
 }
 
-let isDataReady = ref(true);
+let isDataLoading = ref(true);
+
+const coreDataStore = useCoreDataStore();
+
 // let priceData = ref({} as TokenPrices);
 
 /**
@@ -36,8 +42,15 @@ onBeforeMount(async () => {
     dmiComponents[i]['change24h'] = priceData[addresses[i]]['usd_24h_change'];
   }
 
-  isDataReady.value = false;
+  isDataLoading.value = false;
 });
+
+watch(
+  () => coreDataStore.selectedTicker,
+  () => {
+    componentKey.value += 1;
+  }
+);
 
 // function handleRowClick(coin: CoinData) {
 //   // const route = router.resolve({
@@ -47,6 +60,8 @@ onBeforeMount(async () => {
 //   // inNewTab ? window.open(route.href) : router.push(route);
 //   console.log(coin.name);
 // }
+
+const componentKey = ref(0);
 </script>
 
 <template>
@@ -60,12 +75,16 @@ onBeforeMount(async () => {
         <Suspense>
           <IndexTable
             :data="dmiComponents"
-            :isLoading="isDataReady"
+            :isLoading="isDataLoading"
             class="mb-8"
             skeletonClass="pools-table-loading-height"
           />
         </Suspense>
       </BalStack>
+      <TradingViewChart
+        :key="componentKey"
+        :ticker="coreDataStore.selectedTicker"
+      />
     </div>
   </div>
 </template>

@@ -81,7 +81,7 @@ onBeforeMount(async () => {
   await fetchGroups();
 });
 
-watch(account, async () => {
+watch([account, networkSlug], async () => {
   if (!configService.network.subgraphs.privateGroups) {
     return;
   }
@@ -241,7 +241,7 @@ async function fetchGroups() {
         {{ networkConfig.chainName }}:
       </h3>
       <div class="mt-5 text-md">
-        => Switch to BNB Chain or Arbitrum to check the Private Groups.
+        => Switch to BNB Chain to check the Private Groups.
       </div>
     </div>
     <div class="mt-5 text-md">

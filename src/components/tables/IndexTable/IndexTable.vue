@@ -12,6 +12,8 @@ import useBreakpoints from '@/composables/useBreakpoints';
 import useNumbers from '@/composables/useNumbers';
 import { CoinData } from '@/services/pool/types';
 
+import { useCoreDataStore } from '@/store/CoreDataStore';
+
 /**
  * TYPES
  */
@@ -55,6 +57,7 @@ const coinsWidth = computed(() => (upToMediumBreakpoint.value ? 190 : 90));
 const weightsWidth = computed(() => (upToMediumBreakpoint.value ? 70 : 120));
 const changeWidth = computed(() => (upToMediumBreakpoint.value ? 85 : 135));
 
+const coreDataStore = useCoreDataStore();
 /**
  * DATA
  */
@@ -146,7 +149,8 @@ function handleRowClick(coin: CoinData) {
   //   params: { id: coin.name },
   // });
   // inNewTab ? window.open(route.href) : router.push(route);
-  console.log(coin.name);
+
+  coreDataStore.selectedTicker = coin.symbol;
 }
 
 function formatBio(dollarValue) {
