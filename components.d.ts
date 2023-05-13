@@ -60,6 +60,7 @@ declare module '@vue/runtime-core' {
     GithubIcon: typeof import('./src/components/_global/icons/brands/GithubIcon.vue')['default']
     LightBulbIcon: typeof import('./src/components/_global/icons/LightBulbIcon.vue')['default']
     MediumIcon: typeof import('./src/components/_global/icons/brands/MediumIcon.vue')['default']
+    MetamaskNetworkDetails: typeof import('./src/components/_global/MetamaskNetworkDetails/MetamaskNetworkDetails.vue')['default']
     MinusSquareIcon: typeof import('./src/components/_global/icons/MinusSquareIcon.vue')['default']
     MoonIcon: typeof import('./src/components/_global/icons/MoonIcon.vue')['default']
     NetworkIcon: typeof import('./src/components/_global/icons/NetworkIcon.vue')['default']

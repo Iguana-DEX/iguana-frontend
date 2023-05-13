@@ -9,7 +9,7 @@ import { isJoinsDisabled } from '@/composables/usePool';
 import config from '@/lib/config';
 import { Network } from '@iguana-dex/sdk';
 import { Router } from 'vue-router';
-
+import { changeMetamaskNetwork } from '@/services/web3/useWeb3';
 /**
  * State
  */
@@ -39,6 +39,9 @@ export function hardRedirectTo(url: string) {
   location.reload();
 }
 
+async function callChangeMetamaskNetworkUtility(newNetworkChainId: number) {
+  await changeMetamaskNetwork(Number(newNetworkChainId));
+}
 /**
  * Checks current URL for legacy network as subdomain URL and redirects to
  * app.balancer.fi if required.
@@ -93,6 +96,7 @@ function applyNetworkPathRedirects(router: Router): Router {
           noNetworkChangeCallback,
           networkChangeCallback
         );
+        callChangeMetamaskNetworkUtility(networkFromPath);
       } else {
         const nonNetworkedRoutes = [
           '/',

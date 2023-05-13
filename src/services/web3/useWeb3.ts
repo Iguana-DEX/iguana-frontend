@@ -18,6 +18,7 @@ import { Web3Plugin, Web3ProviderSymbol } from './web3.plugin';
 import { web3Service } from './web3.service';
 
 import { ThirdwebSDK } from '@thirdweb-dev/sdk';
+import { metamaskNetworkDetails } from '../../components/utils';
 
 /** STATE */
 const blockNumber = ref(0);
@@ -35,6 +36,38 @@ const toggleWalletSelectModal = (value?: boolean) => {
   isWalletSelectVisible.value = value ?? !isWalletSelectVisible.value;
 };
 const delayedToggleWalletSelectModal = debounce(toggleWalletSelectModal, 200);
+
+/**
+ * @dev this function uses the metamask api to changes the network
+ * that metamask is using by requesting wallet_switchEthereumChain
+ * otherwise adds the network to metamask using wallet_addEthereumChain
+ */
+
+export async function changeMetamaskNetwork(_chainId: number) {
+  try {
+    await window.ethereum?.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: '0x'.concat(_chainId.toString(16)) }],
+    });
+  } catch (switchError) {
+    // This error code indicates that the chain has not been added to MetaMask.
+    if (switchError.code === 4902) {
+      try {
+        const newNetwork = metamaskNetworkDetails.find(
+          network => network.chainId === _chainId
+        );
+        await window.ethereum?.request({
+          method: 'wallet_addEthereumChain',
+          params: [newNetwork],
+        });
+      } catch (addError) {
+        // handle "add" error
+        console.log(addError?.code);
+      }
+    }
+    // handle other "switch" errors
+  }
+}
 
 export default function useWeb3() {
   const {
