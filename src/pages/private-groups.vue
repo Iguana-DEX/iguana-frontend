@@ -105,7 +105,7 @@ async function fetchGroups() {
   const groupsQuery = gql`
     {
       newGroupCreateds(
-        first: 5
+        first: 25
         skip: 0
         orderBy: groupId
         orderDirection: asc
@@ -119,7 +119,7 @@ async function fetchGroups() {
   const groupInfoQuery = gql`
     {
       groupInfoChangeds(
-        first: 50
+        first: 75
         orderBy: blockTimestamp
         orderDirection: desc
       ) {
@@ -148,7 +148,11 @@ async function fetchGroups() {
       // Merge both dicts and populate the privateGroups ref
       privateGroups.value.push({ ...groups[i], ...result });
 
-      groupMemberships.value.push(true);
+      ![3, 4, 5, 6].includes(i)
+        ? groupMemberships.value.push(true)
+        : groupMemberships.value.push(false);
+
+      console.log('i = ' + i.toString());
     }
 
     isLoading.value = false;
@@ -158,17 +162,26 @@ async function fetchGroups() {
 
 <template>
   <div v-if="isWalletReady && configService.network.subgraphs.privateGroups">
-    <div v-if="groupMemberships.includes(true) == false">
+    <div
+      v-if="groupMemberships.includes(true) == false"
+      class="flex justify-start items-center mt-5 mb-5 ml-5 space-x-2.5"
+    >
       <h3>
         {{
           'You do not yet have access to any group. Request access to Iggies Club on our Discord/Twitter.'
         }}
       </h3>
     </div>
-    <div v-else-if="upToMediumBreakpoint">
+    <div
+      v-else-if="upToMediumBreakpoint"
+      class="flex justify-start items-center mt-5 mb-5 ml-5 space-x-2.5"
+    >
       <h3>{{ 'You have access to the following groups:' }}</h3>
     </div>
-    <div v-else class="flex justify-start items-center mt-5 mb-5 space-x-2.5">
+    <div
+      v-else
+      class="flex justify-start items-center mt-5 mb-5 ml-5 space-x-2.5"
+    >
       <h3>{{ 'You have access to the following groups on ' }}</h3>
       <img
         :src="buildNetworkIconURL(networkConfig.chainId)"

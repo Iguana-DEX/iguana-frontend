@@ -38,12 +38,11 @@ const router = useRouter();
 const blockIcon = ref<HTMLDivElement>();
 
 const navLinks = [
-  { label: t('home'), path: `/${networkSlug}` },
-  { label: t('pool'), path: `/${networkSlug}/pool` },
   {
     label: t('trade'),
     path: `/${networkSlug}/trade`,
   },
+  { label: t('pools'), path: `/${networkSlug}/pool` },
   {
     label: t('claim'),
     path: `/${networkSlug}/claim`,
@@ -61,15 +60,10 @@ const navLinks = [
 
 const ecosystemLinks = [
   { label: t('build'), url: 'https://balancer.fi/build' },
-  { label: t('blog'), url: 'https://medium.com/balancer-protocol' },
+  { label: t('blog'), url: 'https://medium.com/iguanadex' },
   { label: t('docs'), url: 'https://docs.iguanadex.com/' },
-  { label: t('governance'), url: 'https://vote.balancer.fi/#/' },
+  { label: t('governance'), url: 'https://www.tally.xyz/group/IguanaDEX' },
   { label: t('analytics'), url: 'https://dune.xyz/balancerlabs' },
-  { label: t('forum'), url: 'https://forum.balancer.fi/' },
-  {
-    label: t('grants'),
-    url: 'http://grants.balancer.community',
-  },
 ];
 
 const socialLinks = {

@@ -24,22 +24,16 @@ function isActive(page: string): boolean {
 <template>
   <div class="desktop-links">
     <DesktopLinkItem
-      :to="{ name: 'home', params: { networkSlug } }"
-      :active="isActive('home')"
+      :to="{ name: 'trade', params: { networkSlug } }"
+      :active="isActive('trade')"
     >
-      {{ $t('home') }}
+      {{ $t('trade') }}
     </DesktopLinkItem>
     <DesktopLinkItem
       :to="{ name: 'pools', params: { networkSlug } }"
       :active="isActive('pools')"
     >
-      {{ $t('pool') }}
-    </DesktopLinkItem>
-    <DesktopLinkItem
-      :to="{ name: 'trade', params: { networkSlug } }"
-      :active="isActive('trade')"
-    >
-      {{ $t('trade') }}
+      {{ $t('pools') }}
     </DesktopLinkItem>
     <DesktopLinkItem
       :to="{ name: 'claim', params: { networkSlug } }"

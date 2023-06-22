@@ -52,7 +52,7 @@ export const WalletNameMap: Record<Wallet, string> = {
   walletconnect: 'WalletConnect',
   gnosis: 'Gnosis Safe',
   walletlink: 'Coinbase Wallet',
-  tally: 'Tally',
+  tally: 'Taho',
 };
 
 export const networkMap = {

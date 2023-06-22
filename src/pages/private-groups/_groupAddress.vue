@@ -55,9 +55,11 @@ let contract;
 
 const isDefaultAdmin = ref(false);
 const isMember = ref(false);
-const isLoading = ref(false);
+const isLoading = ref(true);
 const isCheckingMembership = ref(false);
 const privateRounds = ref([] as RoundData[]);
+
+const isRoundStatusLoaded = ref([] as boolean[]);
 
 const roundId = ref(0);
 const tokenAddress = ref('');
@@ -169,6 +171,7 @@ async function fetchRounds() {
         first: 50
         orderBy: blockTimestamp
         orderDirection: desc
+        where: { groupAddress: "${groupAddress}" }
       ) {
         roundId
         roundImageUrl
@@ -184,6 +187,7 @@ async function fetchRounds() {
         first: 50
         orderBy: blockTimestamp
         orderDirection: desc
+        where: { groupAddress: "${groupAddress}" }
       ) {
         roundId
         totalEthPledged
@@ -201,6 +205,7 @@ async function fetchRounds() {
     const raisedAmounts = data[2].totalEthPledgedChangeds;
 
     privateRounds.value = [];
+    isRoundStatusLoaded.value = [];
 
     rounds.forEach(roundBasics => {
       // Search groupInfo for groupId field with i value and return first one found
@@ -215,7 +220,9 @@ async function fetchRounds() {
           item.roundId === roundBasics.roundId
       );
 
-      if (!totalEthPledged) {
+      if (totalEthPledged) {
+        totalEthPledged.totalEthPledged /= 1e18;
+      } else {
         totalEthPledged = { roundId: roundBasics.roundId, totalEthPledged: 0 };
       }
 
@@ -225,6 +232,14 @@ async function fetchRounds() {
         ...addInfo,
         ...totalEthPledged,
       });
+
+      isRoundStatusLoaded.value.push(true);
+    });
+
+    privateRounds.value.forEach(round => {
+      round.target /= 1e18;
+      round.groupAllocation /= 1e18;
+      // round.totalEthPledged /= 1e18;
     });
 
     enrichRounds();
@@ -240,6 +255,7 @@ async function enrichRounds() {
         first: 10
         orderBy: blockTimestamp
         orderDirection: asc
+        where: { groupAddress: "${groupAddress}" }
       ) {
         roundId
         amount
@@ -255,9 +271,9 @@ async function enrichRounds() {
   let isTokensDeposited = {} as RoundTokenInfo;
 
   privateRounds.value.forEach(round => {
-    round.target /= 1e18;
-    round.groupAllocation /= 1e18;
-    round.totalEthPledged /= 1e18;
+    // round.target /= 1e18;
+    // round.groupAllocation /= 1e18;
+    // round.totalEthPledged /= 1e18;
 
     const currentDate = Math.round(Date.now() / 1e3);
 
@@ -286,6 +302,8 @@ async function enrichRounds() {
       );
     }
   });
+
+  console.log();
 }
 
 function showPopup(_header: string, _roundId: number) {
@@ -347,13 +365,41 @@ async function depositTokens() {
 }
 async function withdrawTotalEthPledged(roundId: number) {
   await contract.call('withdrawTotalEthPledged', roundId);
+
+  const unsubscribe = contract.events.addEventListener(
+    'TotalEthWithdrawn',
+    event => {
+      console.log(event.data.amount + 'tokens withdrawn successfully');
+      unsubscribe();
+    }
+  );
 }
 
 async function refund(roundId: number) {
   await contract.call('refund', roundId);
+
+  const unsubscribe = contract.events.addEventListener(
+    'InvestorRefunded',
+    event => {
+      if (event.data.caller == account) {
+        console.log(event.data.amount + 'tokens refunded successfully');
+      }
+      unsubscribe();
+    }
+  );
 }
 async function claimTokens(roundId: number) {
   await contract.call('claimTokens', roundId);
+
+  const unsubscribe = contract.events.addEventListener(
+    'InvestorClaimedTokens',
+    event => {
+      if (event.data.caller == account) {
+        console.log(event.data.amount + 'tokens claimed successfully');
+      }
+      unsubscribe();
+    }
+  );
 }
 </script>
 
@@ -377,7 +423,16 @@ async function claimTokens(roundId: number) {
       />
     </div>
     <div class="flex-auto mt-5">
-      <label for="amount" class="block mb-2 font-bold"> Amount </label>
+      <label
+        v-if="popupHeader == 'Deposit Tokens'"
+        for="amount"
+        class="block mb-2 font-bold"
+      >
+        Token Amount
+      </label>
+      <label v-else for="amount" class="block mb-2 font-bold">
+        {{ nativeAssetSymbol }} Amount
+      </label>
       <InputNumber v-model="amount" inputId="amount" required />
     </div>
     <template #footer>
@@ -452,7 +507,7 @@ async function claimTokens(roundId: number) {
           v-for="(round, index) in Object.entries(privateRounds)"
           :key="index"
         >
-          <Card class="card">
+          <Card v-if="isRoundStatusLoaded[index]" class="card">
             <template #header>
               <InlineMessage
                 v-if="round[1].status == Status.Ongoing"
@@ -543,7 +598,7 @@ async function claimTokens(roundId: number) {
             <template #title> {{ round[1].roundTitle }} </template>
             <template #subtitle>
               {{
-                'Group allocation: ' +
+                'Hard Cap: ' +
                 formatAmount(round[1].groupAllocation) +
                 ' ' +
                 nativeAssetSymbol
@@ -555,8 +610,9 @@ async function claimTokens(roundId: number) {
               </p>
               <div v-if="round[1].status == Status.Ongoing" class="mt-5">
                 {{
-                  '$' +
                   formatAmount(round[1].totalEthPledged) +
+                  ' ' +
+                  nativeAssetSymbol +
                   ' raised - ' +
                   getTimeLeft(round[1].endAt) +
                   ' left'

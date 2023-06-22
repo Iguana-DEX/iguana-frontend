@@ -28,16 +28,6 @@ const route = useRoute();
 
 const { darkMode } = useDarkMode();
 
-async function getContract(contractAddress: string): Promise<SmartContract> {
-  let contract;
-
-  if (isWalletReady) {
-    const sdk = getSdk();
-    contract = await sdk.getContract(contractAddress);
-  }
-  return contract;
-}
-
 /** STATE */
 const displayPopup = ref(false);
 const popupHeader = ref('');
@@ -59,7 +49,7 @@ const groupAddress = (route.params.groupAddress as string).toLowerCase();
 
 const roundsInfo = ref([] as RoundInfo[]);
 
-// const nativeAssetSymbol = configService.network.nativeAsset.symbol;
+const nativeAssetSymbol = configService.network.nativeAsset.symbol;
 
 /** TYPES */
 type RoundInfo = {
@@ -67,6 +57,16 @@ type RoundInfo = {
 };
 
 /** FUNCTIONS */
+async function getContract(contractAddress: string): Promise<SmartContract> {
+  let contract;
+
+  if (isWalletReady) {
+    const sdk = getSdk();
+    contract = await sdk.getContract(contractAddress);
+  }
+  return contract;
+}
+
 async function fetchRounds() {
   const roundInfoQuery = gql`
     {
@@ -234,7 +234,7 @@ function hidePopup() {
           <label
             for="target"
             class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 required"
-            >Soft Cap (in USD)</label
+            >Soft Cap (in {{ nativeAssetSymbol }})</label
           >
           <div class="mt-2.5">
             <input
@@ -252,7 +252,7 @@ function hidePopup() {
           <label
             for="allocation"
             class="block text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 required"
-            >Hard Cap (in USD)</label
+            >Hard Cap (in {{ nativeAssetSymbol }})</label
           >
           <div class="mt-2.5">
             <input
