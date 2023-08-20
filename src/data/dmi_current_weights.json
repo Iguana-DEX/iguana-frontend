@@ -1,101 +1,56 @@
 [
   {
-    "symbol": "BTC",
-    "name": "Bitcoin",
-    "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-    "price": 17242.3344988387,
-    "volume": 3904685541.0733347,
-    "realMarketCap": 357006721159.4556,
-    "weight": 0.26715
+    "symbol": "BTC.b",
+    "name": "BTC.b",
+    "address": "0x2297aEbD383787A160DD0d9F71508148769342E3",
+    "network": "arbitrum",
+    "baseTokenSymbol": "BTC",
+    "baseTokenAddressBSC": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
+    "weight": 0.18
   },
   {
-    "symbol": "ETH",
-    "name": "Ethereum",
-    "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-    "price": 1327.0828833471,
-    "volume": 1490688740.9709945,
-    "realMarketCap": 163555171436.7822,
-    "weight": 0.18082
+    "symbol": "ETHx",
+    "name": "ETHx",
+    "address": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
+    "network": "ethereum",
+    "baseTokenSymbol": "ETH",
+    "baseTokenAddressBSC": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+    "weight": 0.25
   },
   {
-    "symbol": "XRP",
-    "name": "XRP",
-    "address": "0x1D2F0da169ceB9fC7B3144628dB156f3F6c60dBE",
-    "price": 0.3478886886,
-    "volume": 230858877.34201378,
-    "realMarketCap": 34779827212.06927,
-    "weight": 0.08338
+    "symbol": "MATICx",
+    "name": "MATICx",
+    "address": "0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6",
+    "network": "polygon",
+    "baseTokenSymbol": "MATIC",
+    "baseTokenAddressBSC": "0xCC42724C6683B7E57334c4E856f4c9965ED682bD",
+    "weight": 0.065
   },
   {
-    "symbol": "BNB",
-    "name": "BNB",
-    "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    "price": 274.3706557987,
-    "volume": 116370132.56274302,
-    "realMarketCap": 29714320387.731693,
-    "weight": 0.07707
+    "symbol": "sAVAX",
+    "name": "Staked AVAX",
+    "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
+    "network": "avax",
+    "baseTokenSymbol": "AVAX",
+    "baseTokenAddressBSC": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041",
+    "weight": 0.05
   },
   {
-    "symbol": "DOT",
-    "name": "Polkadot",
-    "address": "0x7083609fCE4d1d8Dc0C979AAb8c869Ea2C873402",
-    "price": 4.878789362,
-    "volume": 37494034.22245483,
-    "realMarketCap": 16140797276.054264,
-    "weight": 0.0568
+    "symbol": "BNBx",
+    "name": "BNBx",
+    "address": "0x1bdd3Cf7F79cfB8EdbB955f20ad99211551BA275",
+    "network": "bsc",
+    "baseTokenSymbol": "BNB",
+    "baseTokenAddressBSC": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    "weight": 0.05
   },
   {
-    "symbol": "DOGE",
-    "name": "Dogecoin",
-    "address": "0xbA2aE424d960c26247Dd6c32edC70B295c744C43",
-    "price": 0.0760224444,
-    "volume": 229990134.2159833,
-    "realMarketCap": 14528935252.236181,
-    "weight": 0.05389
-  },
-  {
-    "symbol": "SOL",
-    "name": "Solana",
-    "address": "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
-    "price": 15.9361917952,
-    "volume": 411597965.11715335,
-    "realMarketCap": 12011725589.040846,
-    "weight": 0.049
-  },
-  {
-    "symbol": "ADA",
-    "name": "Cardano",
-    "address": "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
-    "price": 0.3149674025,
-    "volume": 163455564.60146254,
-    "realMarketCap": 11855441812.198555,
-    "weight": 0.04868
-  },
-  {
-    "symbol": "AVAX",
-    "name": "Avalanche",
-    "address": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041",
-    "price": 12.4083745678,
-    "volume": 44348470.1967524,
-    "realMarketCap": 8926537474.347475,
-    "weight": 0.04224
-  },
-  {
-    "symbol": "MATIC",
-    "name": "Polygon",
-    "address": "0xCC42724C6683B7E57334c4E856f4c9965ED682bD",
-    "price": 0.8397506201,
-    "volume": 99638910.18757348,
-    "realMarketCap": 8392912948.707806,
-    "weight": 0.04096
-  },
-  {
-    "symbol": "USDT",
-    "name": "Tether USD",
-    "address": "0x55d398326f99059fF775485246999027B3197955",
-    "price": 1.0,
-    "volume": 460819894.3168481,
-    "realMarketCap": 0,
-    "weight": 0.1
+    "symbol": "STBT",
+    "name": "Short-term T-Bill Token",
+    "address": "0x530824da86689c9c17cdc2871ff29b058345b44a",
+    "network": "ethereum",
+    "baseTokenSymbol": "USDT",
+    "baseTokenAddressBSC": "0x55d398326f99059fF775485246999027B3197955",
+    "weight": 0.34
   }
 ]

@@ -53,7 +53,7 @@ const { t } = useI18n();
 // const { darkMode } = useDarkMode();
 const { upToLargeBreakpoint, upToMediumBreakpoint } = useBreakpoints();
 
-const coinsWidth = computed(() => (upToMediumBreakpoint.value ? 190 : 90));
+const coinsWidth = computed(() => (upToMediumBreakpoint.value ? 280 : 250));
 const weightsWidth = computed(() => (upToMediumBreakpoint.value ? 70 : 120));
 const changeWidth = computed(() => (upToMediumBreakpoint.value ? 85 : 135));
 
@@ -68,6 +68,46 @@ const columns = computed<ColumnDefinition<CoinData>[]>(() => [
     accessor: 'name',
     Cell: 'coinCell',
     width: coinsWidth.value,
+  },
+  {
+    name: t('baseToken'),
+    id: 'baseToken',
+    // accessor: coin => '[ ' + coin.baseTokenSymbol + ' ]',
+    accessor: 'baseTokenSymbol',
+    width: 120,
+  },
+  {
+    name: t('price'),
+    accessor: coin =>
+      fNum2(coin.price, {
+        style: 'currency',
+        maximumFractionDigits: 2,
+        fixedFormat: false,
+      }),
+    align: 'right',
+    id: 'price',
+    sortKey: coin => Number(coin.price),
+    width: 115,
+    cellClassName: 'font-numeric',
+  },
+  {
+    name: t('priceChange24h'),
+    accessor: coin =>
+      fNum2(coin.change24h / 100, {
+        style: 'percent',
+        maximumFractionDigits: 1,
+        fixedFormat: true,
+      }),
+    align: 'right',
+    id: 'change24h',
+    Cell: 'changeCell',
+    sortKey: coin => {
+      const change24h = Number(coin?.change24h);
+      if (change24h === Infinity || isNaN(change24h)) return 0;
+      return change24h;
+    },
+    width: changeWidth.value,
+    cellClassName: 'font-numeric',
   },
   {
     name: t('weight'),
@@ -88,52 +128,33 @@ const columns = computed<ColumnDefinition<CoinData>[]>(() => [
     width: weightsWidth.value,
   },
   {
-    name: t('change24h'),
-    accessor: coin =>
-      fNum2(coin.change24h / 100, {
-        style: 'percent',
-        maximumFractionDigits: 1,
-        fixedFormat: true,
-      }),
+    name: t('utilization'),
+    accessor: 'utilization',
     align: 'right',
-    id: 'change24h',
-    Cell: 'changeCell',
+    id: 'utilization',
+    Cell: 'utilizationCell',
     sortKey: coin => {
       const change24h = Number(coin?.change24h);
       if (change24h === Infinity || isNaN(change24h)) return 0;
       return change24h;
     },
-    width: changeWidth.value,
-    cellClassName: 'font-numeric',
-  },
-  {
-    name: t('price'),
-    accessor: coin =>
-      fNum2(coin.price, {
-        style: 'currency',
-        maximumFractionDigits: 2,
-        fixedFormat: false,
-      }),
-    align: 'right',
-    id: 'price',
-    sortKey: coin => Number(coin.price),
-    width: 145,
-    cellClassName: 'font-numeric',
-  },
-  {
-    name: t('yPlus10MktCap'),
-    accessor: 'realMarketCap',
-    align: 'right',
-    id: 'realMarketCap',
-    Cell: 'mktCapCell',
-    sortKey: coin => {
-      const mktCap = Number(coin.realMarketCap);
-      if (mktCap === Infinity || isNaN(mktCap)) return 0;
-      return mktCap;
-    },
     width: 155,
     cellClassName: 'font-numeric',
   },
+  // {
+  //   name: t('yPlus10MktCap'),
+  //   accessor: 'realMarketCap',
+  //   align: 'right',
+  //   id: 'realMarketCap',
+  //   Cell: 'mktCapCell',
+  //   sortKey: coin => {
+  //     const mktCap = Number(coin.realMarketCap);
+  //     if (mktCap === Infinity || isNaN(mktCap)) return 0;
+  //     return mktCap;
+  //   },
+  //   width: 155,
+  //   cellClassName: 'font-numeric',
+  // },
 ]);
 
 const visibleColumns = computed(() =>
@@ -250,6 +271,17 @@ function formatCoinChange(change) {
             </span>
             <!-- <APRTooltip v-if="coin?.apr" :pool="coin" /> -->
           </template>
+        </div>
+      </template>
+      <template #utilizationCell="coin">
+        <div
+          :key="columnStates.change24h"
+          class="flex justify-end py-4 px-6 -mt-1 text-right font-numeric"
+        >
+          <BalLoadingBlock v-if="!coin?.change24h" class="w-12 h-4" />
+          <span v-else class="text-right">
+            {{ formatCoinChange(coin.change24h) }}
+          </span>
         </div>
       </template>
       <template #mktCapCell="coin">

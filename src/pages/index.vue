@@ -5,7 +5,7 @@ import IndexTable from '@/components/tables/IndexTable/IndexTable.vue';
 import HomePageHero from '@/components/heros/HomePageHero.vue';
 
 import { coingeckoService } from '@/services/coingecko/coingecko.service';
-import dmiComponents from '../data/dmi_current_weights.json';
+import savComponents from '../data/dmi_current_weights.json';
 import { useCoreDataStore } from '@/store/CoreDataStore';
 
 // import { CoinData } from '@/services/pool/types';
@@ -13,8 +13,8 @@ import { useCoreDataStore } from '@/store/CoreDataStore';
 import TradingViewChart from '@/components/charts/TradingViewChart.vue';
 
 const addresses: string[] = [];
-for (let i = 0; i < dmiComponents.length; i++) {
-  addresses.push(dmiComponents[i].address.toLowerCase());
+for (let i = 0; i < savComponents.length; i++) {
+  addresses.push(savComponents[i].baseTokenAddressBSC.toLowerCase());
 }
 
 let isDataLoading = ref(true);
@@ -38,8 +38,8 @@ onBeforeMount(async () => {
   );
 
   for (let i = 0; i < addresses.length; i++) {
-    dmiComponents[i]['price'] = priceData[addresses[i]]['usd'];
-    dmiComponents[i]['change24h'] = priceData[addresses[i]]['usd_24h_change'];
+    savComponents[i]['price'] = priceData[addresses[i]]['usd'];
+    savComponents[i]['change24h'] = priceData[addresses[i]]['usd_24h_change'];
   }
 
   isDataLoading.value = false;
@@ -70,11 +70,11 @@ const componentKey = ref(0);
     <div class="xl:container xl:px-4 pt-10 md:pt-12 xl:mx-auto">
       <BalStack vertical>
         <h3 class="flex justify-between items-end mb-8">
-          Composition of the Digital Market Index
+          Composition of the Staked Asset Vault
         </h3>
         <Suspense>
           <IndexTable
-            :data="dmiComponents"
+            :data="savComponents"
             :isLoading="isDataLoading"
             class="mb-8"
             skeletonClass="pools-table-loading-height"

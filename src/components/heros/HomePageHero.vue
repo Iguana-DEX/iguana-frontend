@@ -28,18 +28,12 @@ const bgHeader = '/images/backgrounds/bg-header.webp';
 <template>
   <AppHero :image="`url(${bgHeader})`" :class="classes">
     <span v-if="isDesktop">
-      <h1
-        class="headline"
-        v-text="$t('homeOfThe') + $t('digitalMarketIndex')"
-      />
-      <p class="subheadline" v-text="$t('cryptoInvestingSimple')" />
+      <h1 class="headline" v-text="$t('decentralizedTradingPlatform')" />
+      <p class="subheadline" v-text="$t('cryptoTradingSimple')" />
     </span>
     <span v-else>
-      <h1
-        class="headline_m"
-        v-text="$t('homeOfThe') + $t('digitalMarketIndex')"
-      />
-      <p class="subheadline_m" v-text="$t('cryptoInvestingSimple')" />
+      <h1 class="headline_m" v-text="$t('decentralizedTradingPlatform')" />
+      <p class="subheadline_m" v-text="$t('cryptoTradingSimple')" />
     </span>
     <div class="flex justify-center mt-6">
       <BalBtn

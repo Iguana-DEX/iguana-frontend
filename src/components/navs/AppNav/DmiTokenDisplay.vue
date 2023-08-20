@@ -5,7 +5,7 @@ import { TokenPrices } from '@/services/coingecko/api/price.service';
 import { ref } from 'vue';
 
 const dmiTokenPrice = ref(
-  (await coingeckoService.prices.getDMIPrice(
+  (await coingeckoService.prices.getIGNPrice(
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
   )) as TokenPrices
 );

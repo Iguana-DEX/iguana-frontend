@@ -8,6 +8,7 @@ export { PoolType } from '@iguana-dex/sdk';
 // Added by Styliann
 export interface CoinData {
   address: string;
+  baseTokenSymbol: string;
   name: string;
   symbol: string;
   weight: number;

@@ -15,7 +15,7 @@ import {
   getPlatformId,
 } from '../coingecko.service';
 
-import dmiComponents from '../../../data/dmi_current_weights.json';
+import savComponents from '../../../data/dmi_current_weights.json';
 
 /**
  * TYPES
@@ -31,7 +31,7 @@ export interface HistoricalPriceResponse {
 export type HistoricalPrices = { [timestamp: string]: number[] };
 
 export type PriceWithChange = { usd: number; usd_24h_change: number };
-export type DmiComponentPrices = { [address: string]: PriceWithChange };
+export type SavComponentPrices = { [address: string]: PriceWithChange };
 
 export class PriceService {
   client: CoingeckoClient;
@@ -283,8 +283,8 @@ export class PriceService {
     }
   }
 
-  async getDMIPrice(address: string): Promise<TokenPrices> {
-    // COINPAPRIKA for DMI/USD
+  async getIGNPrice(address: string): Promise<TokenPrices> {
+    // COINPAPRIKA for IGN/USD
     const coinpaprikaResponse = await fetch(
       'https://api.coinpaprika.com/v1/price-converter?base_currency_id=cake-pancakeswap&quote_currency_id=usd-us-dollars&amount=1'
     );
@@ -304,22 +304,22 @@ export class PriceService {
     return result;
   }
 
-  async getTokensWithChangeNEW(): Promise<DmiComponentPrices> {
+  async getTokensWithChangeNEW(): Promise<SavComponentPrices> {
     const addressesNotLowerCase: string[] = [];
     const addresses: string[] = [];
     const symbols: string[] = [];
     const symbolsUSDT: string[] = [];
-    for (let i = 0; i < dmiComponents.length; i++) {
-      addressesNotLowerCase.push(dmiComponents[i].address);
-      addresses.push(dmiComponents[i].address.toLowerCase());
-      symbols.push(dmiComponents[i].symbol);
-      symbolsUSDT.push(dmiComponents[i].symbol + 'USDT');
+    for (let i = 0; i < savComponents.length; i++) {
+      addressesNotLowerCase.push(savComponents[i].baseTokenAddressBSC);
+      addresses.push(savComponents[i].baseTokenAddressBSC.toLowerCase());
+      symbols.push(savComponents[i].baseTokenSymbol);
+      symbolsUSDT.push(savComponents[i].baseTokenSymbol + 'USDT');
     }
     const symbolCount = symbols.length;
 
     const addressString = addressesNotLowerCase.join(',');
 
-    let results: DmiComponentPrices = {};
+    let results: SavComponentPrices = {};
 
     // COINGECKO
     const coingeckoResponse = await fetch(
@@ -338,7 +338,7 @@ export class PriceService {
         const responseJson = await coincapResponse.json();
         const responseData = responseJson.data;
 
-        results = {} as DmiComponentPrices;
+        results = {} as SavComponentPrices;
 
         let counter;
         for (let i = 0; i < responseData.length; i++) {
@@ -348,7 +348,7 @@ export class PriceService {
 
           const index = symbols.indexOf(responseData[i].symbol);
           if (index > -1) {
-            results[dmiComponents[index].address] = {
+            results[savComponents[index].address] = {
               usd: parseFloat(responseData[i].priceUsd),
               usd_24h_change: parseFloat(responseData[i].changePercent24Hr),
             };
@@ -369,9 +369,9 @@ export class PriceService {
           const responseJson1 = await coinpaprikaResponse.json();
           const index = symbols.indexOf('USDT');
 
-          results = {} as DmiComponentPrices;
+          results = {} as SavComponentPrices;
 
-          results[dmiComponents[index].address] = {
+          results[savComponents[index].address] = {
             usd: parseFloat(responseJson1.price),
             usd_24h_change: 0,
           };
@@ -382,7 +382,7 @@ export class PriceService {
             const index = symbolsUSDT.indexOf(responseJson[i].symbol);
 
             if (index > -1) {
-              results[dmiComponents[index].address.toLowerCase()] = {
+              results[savComponents[index].address.toLowerCase()] = {
                 usd:
                   parseFloat(responseJson[i].lastPrice) * responseJson1.price,
                 usd_24h_change:
@@ -392,11 +392,8 @@ export class PriceService {
             }
           }
         } else {
-          console.error('Unable to fetch prices of DMI components.');
+          console.error('Unable to fetch prices of SAV components.');
         }
-
-        // 3)
-        // all coins (against usdt) from binance
       }
     }
 

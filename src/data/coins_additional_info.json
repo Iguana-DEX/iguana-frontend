@@ -130,5 +130,29 @@
   "HAY": {
     "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
     "logoURI": "https://assets.coingecko.com/coins/images/26947/small/HAY.png?1660984091"
+  },
+  "BTC.b": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c/logo.png"
+  },
+  "ETHx": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0x2170Ed0880ac9A755fd29B2688956BD959F933F8/logo.png"
+  },
+  "MATICx": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912"
+  },
+  "sAVAX": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png?1670992574"
+  },
+  "BNBx": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets-cdn.trustwallet.com/blockchains/smartchain/assets/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c/logo.png"
+  },
+  "STBT": {
+    "address": "0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5",
+    "logoURI": "https://assets.coingecko.com/coins/images/29239/small/STBT_icon.png?1677570331"
   }
 }
