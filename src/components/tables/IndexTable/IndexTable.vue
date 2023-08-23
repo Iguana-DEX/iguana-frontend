@@ -53,7 +53,7 @@ const { t } = useI18n();
 // const { darkMode } = useDarkMode();
 const { upToLargeBreakpoint, upToMediumBreakpoint } = useBreakpoints();
 
-const coinsWidth = computed(() => (upToMediumBreakpoint.value ? 280 : 250));
+const coinsWidth = computed(() => (upToMediumBreakpoint.value ? 260 : 230));
 const weightsWidth = computed(() => (upToMediumBreakpoint.value ? 70 : 120));
 const changeWidth = computed(() => (upToMediumBreakpoint.value ? 85 : 135));
 
@@ -171,7 +171,7 @@ function handleRowClick(coin: CoinData) {
   // });
   // inNewTab ? window.open(route.href) : router.push(route);
 
-  coreDataStore.selectedTicker = coin.symbol;
+  coreDataStore.selectedTicker = coin.baseTokenSymbol;
 }
 
 function formatBio(dollarValue) {

@@ -6,7 +6,7 @@
     "network": "arbitrum",
     "baseTokenSymbol": "BTC",
     "baseTokenAddressBSC": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-    "weight": 0.18
+    "weight": 0.2
   },
   {
     "symbol": "ETHx",
@@ -18,22 +18,22 @@
     "weight": 0.25
   },
   {
+    "symbol": "bSOL",
+    "name": "BlazeStake SOL",
+    "address": "0x570A5D26f7765Ecb712C0924E4De545B89fD43dF",
+    "network": "bsc",
+    "baseTokenSymbol": "SOL",
+    "baseTokenAddressBSC": "0x570A5D26f7765Ecb712C0924E4De545B89fD43dF",
+    "weight": 0.065
+  },
+  {
     "symbol": "MATICx",
     "name": "MATICx",
     "address": "0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6",
     "network": "polygon",
     "baseTokenSymbol": "MATIC",
     "baseTokenAddressBSC": "0xCC42724C6683B7E57334c4E856f4c9965ED682bD",
-    "weight": 0.065
-  },
-  {
-    "symbol": "sAVAX",
-    "name": "Staked AVAX",
-    "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
-    "network": "avax",
-    "baseTokenSymbol": "AVAX",
-    "baseTokenAddressBSC": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041",
-    "weight": 0.05
+    "weight": 0.055
   },
   {
     "symbol": "BNBx",
@@ -45,8 +45,17 @@
     "weight": 0.05
   },
   {
+    "symbol": "sAVAX",
+    "name": "Staked AVAX",
+    "address": "0x2b2C81e08f1Af8835a78Bb2A90AE924ACE0eA4bE",
+    "network": "avax",
+    "baseTokenSymbol": "AVAX",
+    "baseTokenAddressBSC": "0x1CE0c2827e2eF14D5C4f29a091d735A204794041",
+    "weight": 0.04
+  },
+  {
     "symbol": "STBT",
-    "name": "Short-term T-Bill Token",
+    "name": "Short-term T-Bill",
     "address": "0x530824da86689c9c17cdc2871ff29b058345b44a",
     "network": "ethereum",
     "baseTokenSymbol": "USDT",

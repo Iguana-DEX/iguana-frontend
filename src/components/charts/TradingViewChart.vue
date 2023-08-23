@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
   ticker: 'BTC',
 });
 
-const symbol = ref('BITSTAMP:' + props.ticker + 'USD');
+const symbol = ref('BINANCE:' + props.ticker + 'USDT');
 const snapsSymbol = ref(`${props.ticker}USD`);
 const feedMode = ref('market');
 const market = ref('crypto');
@@ -19,7 +19,7 @@ const market = ref('crypto');
 const { upToLargeBreakpoint } = useBreakpoints();
 
 if (props.ticker == 'DMF') {
-  symbol.value = 'BITSTAMP:BTCUSD';
+  symbol.value = 'BINANCE:BTCUSDT';
   feedMode.value = 'symbol';
   market.value = '';
   snapsSymbol.value = '';
