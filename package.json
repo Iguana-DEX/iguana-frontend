@@ -2,7 +2,7 @@
   "name": "@iguana-dex/iguana-frontend",
   "version": "0.0.4",
   "engines": {
-    "node": "=16",
+    "node": ">=16",
     "npm": ">=8"
   },
   "scripts": {
