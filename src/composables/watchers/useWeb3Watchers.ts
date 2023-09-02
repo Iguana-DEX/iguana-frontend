@@ -10,6 +10,7 @@ import useAlerts, { AlertPriority, AlertType } from '../useAlerts';
 import useBlocknative from '../useBlocknative';
 import { useTokens } from '@/providers/tokens.provider';
 import useTransactions, { ReplacementReason } from '../useTransactions';
+import { sleep } from '@/lib/utils';
 
 export default function useWeb3Watchers() {
   // COMPOSABLES
@@ -45,11 +46,8 @@ export default function useWeb3Watchers() {
     }
   }
 
-  function checkIsUnsupportedNetwork() {
-    if (
-      chainId.value &&
-      (isUnsupportedNetwork.value || isMismatchedNetwork.value)
-    ) {
+  async function checkIsUnsupportedNetwork() {
+    if (chainId.value && isUnsupportedNetwork.value) {
       addAlert({
         id: 'network-mismatch',
         label: t('networkMismatch', [appNetworkConfig.name]),
@@ -59,6 +57,21 @@ export default function useWeb3Watchers() {
         actionLabel: t('switchNetwork'),
         priority: AlertPriority.HIGH,
       });
+    } else if (isMismatchedNetwork.value) {
+      connectToAppNetwork();
+
+      await sleep(4500);
+      if (isMismatchedNetwork.value) {
+        addAlert({
+          id: 'network-mismatch',
+          label: t('networkMismatch', [appNetworkConfig.name]),
+          type: AlertType.ERROR,
+          persistent: true,
+          action: connectToAppNetwork,
+          actionLabel: t('switchNetwork'),
+          priority: AlertPriority.HIGH,
+        });
+      }
     } else {
       removeAlert('network-mismatch');
     }

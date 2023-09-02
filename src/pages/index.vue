@@ -52,15 +52,6 @@ watch(
   }
 );
 
-// function handleRowClick(coin: CoinData) {
-//   // const route = router.resolve({
-//   //   name: 'coin',
-//   //   params: { id: coin.name },
-//   // });
-//   // inNewTab ? window.open(route.href) : router.push(route);
-//   console.log(coin.name);
-// }
-
 const componentKey = ref(0);
 </script>
 
